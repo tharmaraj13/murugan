@@ -1,0 +1,210 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body p-4">
+                <h5 class="card-title">Add New Intimation</h5>
+                <hr />
+                <div class="form-body mt-4">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="border border-3 p-4 rounded">
+                                <form class="row g-3" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                    <div class="col-md-4">
+                                        <label for="vendorname" class="form-label">Vendor Name</label>
+                                        <select class="form-select" id="vendorname" formControlName="vendorname">
+                                            <option *ngFor="let vend of vendor_names" value="{{vend.id}}">{{vend.name}}
+                                            </option>
+                                        </select>
+                                        <small *ngIf="myForm.get('vendorname').errors && myForm.get('vendorname').touched"><i class="bi bi-exclamation-circle"></i> Vendor Name is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="patientname" class="form-label">Patient Name</label>
+                                        <input type="text" class="form-control" id="patientname"
+                                            formControlName="patientname">
+                                        <small *ngIf="myForm.get('patientname').errors && myForm.get('patientname').touched"><i class="bi bi-exclamation-circle"></i> Patient Name is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="patientage" class="form-label">Age (years)</label>
+                                        <input type="number" class="form-control" id="patientage"
+                                            formControlName="patientage">
+                                        <small *ngIf="myForm.get('patientage').errors && myForm.get('patientage').touched"><i class="bi bi-exclamation-circle"></i> Patient's Age is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="patientsex" class="form-label">Sex</label>
+                                        <select class="form-select" id="patientsex" formControlName="patientsex">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                            <option>Transgender</option>
+                                        </select>
+                                        <small *ngIf="myForm.get('patientsex').errors && myForm.get('patientsex').touched"><i class="bi bi-exclamation-circle"></i> Patient's Sex is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="doa" class="form-label">Date of Admission</label>
+                                        <input type="date" class="form-control" id="doa"
+                                            formControlName="doa">
+                                        <small *ngIf="myForm.get('doa').errors && myForm.get('doa').touched"><i class="bi bi-exclamation-circle"></i> Enter Admission Date</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="dod" class="form-label">Date of Discharge</label>
+                                        <input type="date" class="form-control" id="dod"
+                                            formControlName="dod">
+                                        <small *ngIf="myForm.get('dod').errors && myForm.get('dod').touched"><i class="bi bi-exclamation-circle"></i> Enter Discharge Date</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="doi" class="form-label">Date of Intimation</label>
+                                        <input type="date" class="form-control" id="doi"
+                                            formControlName="doi">
+                                        <small *ngIf="myForm.get('doi').errors && myForm.get('doi').touched"><i class="bi bi-exclamation-circle"></i> Enter Intimation Date</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="opno" class="form-label">OP Number</label>
+                                        <input type="text" class="form-control" id="opno"
+                                            formControlName="opno">
+                                        <small *ngIf="myForm.get('opno').errors && myForm.get('opno').touched"><i class="bi bi-exclamation-circle"></i> OP Number is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="ipno" class="form-label">IP Number</label>
+                                        <input type="text" class="form-control" id="ipno"
+                                            formControlName="ipno">
+                                        <small *ngIf="myForm.get('ipno').errors && myForm.get('ipno').touched"><i class="bi bi-exclamation-circle"></i> IP Number is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="hospdetail" class="form-label">Hospital Details</label>
+                                        <select class="form-select" id="hospdetail" formControlName="hospdetail">
+                                            <option *ngFor="let loc of prod_names" value="{{loc.id}}">{{loc.name}}
+                                            </option>
+                                        </select>
+                                        <small *ngIf="myForm.get('hospdetail').errors && myForm.get('hospdetail').touched"><i class="bi bi-exclamation-circle"></i> Hospital Details is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="trigger" class="form-label">Trigger</label>
+                                        <input type="text" class="form-control" id="trigger"
+                                            formControlName="trigger">
+                                        <small *ngIf="myForm.get('trigger').errors && myForm.get('trigger').touched"><i class="bi bi-exclamation-circle"></i> Enter Trigger Details</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="claimno" class="form-label">Claim Number</label>
+                                        <input type="text" class="form-control" id="claimno"
+                                            formControlName="claimno">
+                                        <small *ngIf="myForm.get('claimno').errors && myForm.get('claimno').touched"><i class="bi bi-exclamation-circle"></i> Claim Number is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="insurance_tpa" class="form-label">Insurance / TPA</label>
+                                        <select class="form-select" id="insurance_tpa" formControlName="insurance_tpa">
+                                            <option *ngFor="let loc of insurance" value="{{loc.id}}">{{loc.name}}
+                                            </option>
+                                        </select>
+                                        <small *ngIf="myForm.get('insurance_tpa').errors && myForm.get('insurance_tpa').touched"><i class="bi bi-exclamation-circle"></i> Select Insurance / TPA</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="policy_type" class="form-label">Type of Policy</label>
+                                        <select class="form-select" id="policy_type" formControlName="policy_type">
+                                            <option>Corporate</option>
+                                            <option>Individual</option>
+                                        </select>
+                                        <small *ngIf="myForm.get('policy_type').errors && myForm.get('policy_type').touched"><i class="bi bi-exclamation-circle"></i> Select Type of Policy</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="doj" class="form-label">Date of Joining</label>
+                                        <input type="date" class="form-control" id="doj"
+                                            formControlName="doj">
+                                        <small *ngIf="myForm.get('doj').errors && myForm.get('doj').touched"><i class="bi bi-exclamation-circle"></i> Date of Joining is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="claim_type" class="form-label">Claim Type</label>
+                                        <select class="form-select" id="claim_type" formControlName="claim_type">
+                                            <option>Reimbursement</option>
+                                            <option>Cashless</option>
+                                            <option>PA</option>
+                                            <option>MPA</option>
+                                            <option>Critical Illness</option>
+                                            <option>Life Insurance</option>
+                                        </select>
+                                        <small *ngIf="myForm.get('claim_type').errors && myForm.get('claim_type').touched"><i class="bi bi-exclamation-circle"></i> Claim Type is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="fees" class="form-label">Fees (Rs.)</label>
+                                        <input type="number" class="form-control" id="fees"
+                                            formControlName="fees">
+                                        <small *ngIf="myForm.get('fees').errors && myForm.get('fees').touched"><i class="bi bi-exclamation-circle"></i> Enter Fees</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="incentive" class="form-label">Incentive for TAT (Rs.)</label>
+                                        <input type="number" class="form-control" id="incentive"
+                                            formControlName="incentive">
+                                        <small *ngIf="myForm.get('incentive').errors && myForm.get('incentive').touched"><i class="bi bi-exclamation-circle"></i> Enter Incentive</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="mrd" class="form-label">MRD Charges (Rs.)</label>
+                                        <input type="number" class="form-control" id="mrd"
+                                            formControlName="mrd">
+                                        <small *ngIf="myForm.get('mrd').errors && myForm.get('mrd').touched"><i class="bi bi-exclamation-circle"></i> Enter MRD Charges</small>                                            
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="transport" class="form-label">Transportation Charges (Rs.)</label>
+                                        <input type="number" class="form-control" id="transport"
+                                            formControlName="transport">
+                                        <small *ngIf="myForm.get('transport').errors && myForm.get('transport').touched"><i class="bi bi-exclamation-circle"></i> Enter Transport Charges</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="case_type" class="form-label">Type of Case</label>
+                                        <select class="form-select" id="case_type" formControlName="case_type">
+                                            <option>Genuinity</option>
+                                            <option>PED</option>
+                                            <option>Accident</option>
+                                            <option>Infertility</option>
+                                            <option>OPD to IPD</option>
+                                        </select>
+                                        <small *ngIf="myForm.get('case_type').errors && myForm.get('case_type').touched"><i class="bi bi-exclamation-circle"></i> Select Type of Case</small>
+                                    </div>
+                                    <!-- <div class="col-md-4">
+                                        <label class="form-label">Type of Case</label>
+                                        <label for="case_type1" class="form-label">Genuinity</label>
+                                        <input type="radio" class="form-control" id="case_type1"
+                                            name="case_type" formControlName="case_type" value="Genuinity">
+                                        <label for="case_type2" class="form-label">PED</label>
+                                        <input type="radio" class="form-control" id="case_type2"
+                                            name="case_type" formControlName="case_type" value="PED">
+                                        <label for="case_type3" class="form-label">Accident</label>
+                                        <input type="radio" class="form-control" id="case_type3"
+                                            name="case_type" formControlName="case_type" value="Accident">
+                                        <label for="case_type4" class="form-label">Infertility</label>
+                                        <input type="radio" class="form-control" id="case_type4"
+                                            name="case_type" formControlName="case_type" value="Infertility">
+                                        <label for="case_type5" class="form-label">OPD to IPD</label>
+                                        <input type="radio" class="form-control" id="case_type5"
+                                            name="case_type" formControlName="case_type" value="OPD to IPD">
+                                        <small *ngIf="myForm.get('case_type').errors && myForm.get('case_type').touched"><i class="bi bi-exclamation-circle"></i> Select Type of Case</small>
+                                    </div> -->
+                                    <div class="col-md-4">
+                                        <label for="invoice" class="form-label">Create Invoice</label>
+                                        <input type="checkbox" id="invoice" formControlName="invoice">
+                                    </div>
+                                    <div class="col-md-4" *ngIf="myForm.get('invoice').value">
+                                        <label for="created" class="form-label">Invoice Date</label>
+                                        <input type="date" class="form-control" id="created"
+                                            formControlName="created">
+                                    </div>
+                                    <div class="row g-3 mt-3">
+                                        <div class="col-md-4">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-light">Save Intimation</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--end page wrapper -->
+<app-footer></app-footer>
