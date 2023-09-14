@@ -8,8 +8,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ApiserviceService {
   // website = "http://10.10.10.195/mur_api/";
-  website = "http://3.94.116.52/api/";
-  // website = "/api/";
+  // website = "http://3.94.116.52/api/";
+  website = "/api/";
   constructor(private http: HttpClient, private Cookies: CookieService) { }
   checking(): Observable<Object> {
     var token = this.Cookies.get('token');

@@ -23,6 +23,7 @@ import { ViewVendorComponent } from './view-vendor/view-vendor.component';
 import { ViewInsuranceComponent } from './view-insurance/view-insurance.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { CompanyComponent } from './company/company.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CompanyComponent } from './company/company.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

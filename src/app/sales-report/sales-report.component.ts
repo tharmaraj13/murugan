@@ -13,6 +13,7 @@ export class SalesReportComponent {
   insurance: any;
   vendor_names: any;
   table_data: any;
+  dtOptions: any = {};
   constructor(private apiservice: ApiserviceService) { }
   ngAfterViewInit(): void {
     this.apiservice.view_vendors().subscribe((res) => {
@@ -26,6 +27,15 @@ export class SalesReportComponent {
     })
   }
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 10,
+      processing: false,
+      dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'print'
+        ]
+    };
     let currentDate = new Date().toJSON().slice(0, 10);
     this.myForm = new FormGroup(
       {

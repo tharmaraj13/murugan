@@ -51,6 +51,7 @@ if ($check->num_rows > 0) {
 
     $resp_status->fees = $result['fees'];
     $resp_status->mrd = $result['mrd'];
+    $resp_status->incentive = $result['incentive'];
     $resp_status->transport = $result['transportation'];
     echo json_encode($resp_status);
 } else {

@@ -35,6 +35,8 @@ if ($check->num_rows > 0) {
         $resp_status->claimno = $result['claimno'];
         $resp_status->fees = $result['fees'];
         $resp_status->mrd = $result['mrd'];
+        $resp_status->incentive = $result['incentive'];
+        $resp_status->payment = $result['payment'];
         $resp_status->transport = $result['transportation'];
 
         $response[] = $resp_status;

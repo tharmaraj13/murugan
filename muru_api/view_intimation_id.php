@@ -37,6 +37,7 @@ if ($id == 'undefined') {
         $resp->transportation = $result['transportation'];
         $resp->created = Date("Y-m-d", $result['created']);
         $resp->created_by = $result['created_by'];
+        $resp->payment = $result['payment'];
         $resp->invoice = $result['invoice'] == '0' ? 0 : 1;
     } else {
         $resp->status = 'error';

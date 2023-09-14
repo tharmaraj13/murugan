@@ -41,7 +41,7 @@
                         <div class="col-lg-12 mt-3">
                             <div class="border border-3 p-4 rounded">
                                 <div class="table-responsive">
-                                    <table class="table mb-0">
+                                    <table class="table mb-0" *ngIf="table_data?.length" datatable [dtOptions]="dtOptions">
                                         <thead class="table-light">
                                             <tr>
                                                 <th>S.No</th>
@@ -53,8 +53,10 @@
                                                 <th>Date of Intimation</th>
                                                 <th>Claim Number</th>
                                                 <th>Fees</th>
+                                                <th>Incentive</th>
                                                 <th>MRD</th>
                                                 <th>Transport</th>
+                                                <th>Payment Details</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -78,8 +80,10 @@
                                                 <td>{{prod.doi}}</td>
                                                 <td>{{prod.claimno}}</td>
                                                 <td>{{prod.fees}}</td>
+                                                <td>{{prod.incentive}}</td>
                                                 <td>{{prod.mrd}}</td>
                                                 <td>{{prod.transport}}</td>
+                                                <td>{{prod.payment}}</td>
                                                 <td><a href="/add-intimation/{{prod.id}}">Edit</a>
                                                     &nbsp;<a style="cursor: pointer;" (click)="remove(prod.id)">Remove</a></td>
                                             </tr>
