@@ -81,8 +81,11 @@
                                     <div class="col-md-4">
                                         <label class="form-label">Type of Case</label>:&nbsp;{{table_data?.case_type}}
                                     </div>
-                                    <div class="col-md-8">
+                                    <div class="col-md-4">
                                         <label class="form-label">Payment Details</label>:&nbsp;{{table_data?.payment}}
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Payment Date</label>:&nbsp;{{table_data?.paid_date}}
                                     </div>
                                     <div class="col-md-4" *ngIf="table_data?.status=='ok'">
                                         <label class="form-label">Doctor Questionnaire</label>&nbsp;

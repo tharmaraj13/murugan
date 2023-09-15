@@ -29,8 +29,8 @@ export class SalesReportComponent {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10,
-      processing: false,
+      pageLength: 30,
+      processing: true,
       dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'print'

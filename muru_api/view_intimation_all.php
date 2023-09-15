@@ -36,12 +36,13 @@ if ($check->num_rows > 0) {
         $resp_status->claim_type = $result['claim_type'];
         $resp_status->iname = $result['iname'];
         $resp_status->vname = $result['vname'];
-        $resp_status->doi = date('d-M-Y',$result['doi']);
+        $resp_status->doi = Date('d-M-Y',$result['doi']);
         $resp_status->claimno = $result['claimno'];
         $resp_status->fees = $result['fees'];
         $resp_status->mrd = $result['mrd'];
         $resp_status->incentive = $result['incentive'];
         $resp_status->payment = $result['payment'];
+        $resp_status->paid_date = $result['paid_date']==null ? '' : Date('d-M-Y',$result['paid_date']);
         $resp_status->transport = $result['transportation'];
 
         $response[] = $resp_status;

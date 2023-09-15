@@ -54,7 +54,8 @@ export class AddProductsComponent {
         transport: new FormControl('', Validators.required),
         invoice:new FormControl(false),
         created: new FormControl(''),
-        payment: new FormControl('')
+        payment: new FormControl(''),
+        paid_date: new FormControl('')
       }
     );
     this.apiservice.view_sales_id(this.id).subscribe((res:any) => {
@@ -84,6 +85,7 @@ export class AddProductsComponent {
         this.myForm.get('incentive').setValue(res.incentive);
         this.myForm.get('created').setValue(res.created);
         this.myForm.get('payment').setValue(res.payment);
+        this.myForm.get('paid_date').setValue(res.paid_date);
       }
     })
   }
@@ -119,6 +121,7 @@ export class AddProductsComponent {
       data.push(this.myForm.get('incentive').value);
       data.push(this.myForm.get('created').value);
       data.push(this.myForm.get('payment').value);
+      data.push(this.myForm.get('paid_date').value);
       this.apiservice.add_products(data).subscribe((res: any) => {
         Swal.fire({
           title: 'Intimation Added Successfully',

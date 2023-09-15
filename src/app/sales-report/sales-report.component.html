@@ -57,6 +57,7 @@
                                                 <th>MRD</th>
                                                 <th>Transport</th>
                                                 <th>Payment Details</th>
+                                                <th>Payment Date</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -84,6 +85,7 @@
                                                 <td>{{prod.mrd}}</td>
                                                 <td>{{prod.transport}}</td>
                                                 <td>{{prod.payment}}</td>
+                                                <td>{{prod.paid_date}}</td>
                                                 <td><a href="/add-intimation/{{prod.id}}">Edit</a>
                                                     &nbsp;<a style="cursor: pointer;" (click)="remove(prod.id)">Remove</a></td>
                                             </tr>

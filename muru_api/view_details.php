@@ -45,6 +45,7 @@ if ($check->num_rows > 0) {
     $resp_status->claim_type = $result['claim_type'];
     $resp_status->case_type = $result['case_type'];
     $resp_status->created = date('d-M-Y', $result['created']);
+    $resp_status->paid_date = $result['paid_date']==null ? '' : Date('d-M-Y',$result['paid_date']);
     $resp_status->vname = $result['vname'];
     $resp_status->created_by = $result['created_by'];
     $resp_status->caseno = $cases[$result['case_type']];
