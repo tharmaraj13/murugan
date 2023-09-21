@@ -46,7 +46,7 @@ export class AddStaffComponent {
       data.push(this.myForm.get('blood').value);
       data.push(this.myForm.get('contact').value);
       data.push(this.id);
-      this.apiservice.add_staff(data).subscribe((res: any) => {
+      this.apiservice.add_staff(data,this.myForm.get('contact').value).subscribe((res: any) => {
         Swal.fire({
           title: 'Advance Added Successfully',
           icon: 'success',

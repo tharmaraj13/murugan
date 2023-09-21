@@ -8,8 +8,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ApiserviceService {
   // website = "http://10.10.10.195/mur_api/";
-  // website = "http://3.94.116.52/api/";
-  website = "/api/";
+  website = "http://3.94.116.52/api/";
+  // website = "/api/";
   constructor(private http: HttpClient, private Cookies: CookieService) { }
   checking(): Observable<Object> {
     var token = this.Cookies.get('token');
@@ -176,10 +176,11 @@ export class ApiserviceService {
     return this.http.post(url, formData);
   }
 
-  add_staff(data: any): Observable<Object> {
+  add_staff(data: any,file:any): Observable<Object> {
     var url = this.website + 'add_staff.php';
     var formData = new FormData();
     formData.append("values", JSON.stringify(data));
+    formData.append("file", file);
     return this.http.post(url, formData);
   }
   view_staff_id(id:any): Observable<Object> {
