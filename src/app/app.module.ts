@@ -24,6 +24,9 @@ import { ViewInsuranceComponent } from './view-insurance/view-insurance.componen
 import { InvoiceComponent } from './invoice/invoice.component';
 import { CompanyComponent } from './company/company.component';
 import { DataTablesModule } from 'angular-datatables';
+import { ViewCardComponent } from './view-card/view-card.component';
+import { AddStaffComponent } from './add-staff/add-staff.component';
+import { ViewStaffComponent } from './view-staff/view-staff.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { DataTablesModule } from 'angular-datatables';
     ViewVendorComponent,
     ViewInsuranceComponent,
     InvoiceComponent,
-    CompanyComponent
+    CompanyComponent,
+    ViewCardComponent,
+    AddStaffComponent,
+    ViewStaffComponent
   ],
   imports: [
     BrowserModule,

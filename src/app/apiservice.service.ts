@@ -175,4 +175,28 @@ export class ApiserviceService {
     formData.append("id", id);
     return this.http.post(url, formData);
   }
+
+  add_staff(data: any): Observable<Object> {
+    var url = this.website + 'add_staff.php';
+    var formData = new FormData();
+    formData.append("values", JSON.stringify(data));
+    return this.http.post(url, formData);
+  }
+  view_staff_id(id:any): Observable<Object> {
+    var url = this.website + 'view_staff_id.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_staff(): Observable<Object> {
+    var url = this.website + 'view_staff.php';
+    var formData = new FormData();
+    return this.http.post(url, formData);
+  }
+  del_staff(id:any): Observable<Object> {
+    var url = this.website + 'del_staff.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
 }

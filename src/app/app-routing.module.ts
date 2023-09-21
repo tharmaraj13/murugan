@@ -13,6 +13,9 @@ import { ViewVendorComponent } from './view-vendor/view-vendor.component';
 import { ViewInsuranceComponent } from './view-insurance/view-insurance.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { CompanyComponent } from './company/company.component';
+import { ViewCardComponent } from './view-card/view-card.component';
+import { ViewStaffComponent } from './view-staff/view-staff.component';
+import { AddStaffComponent } from './add-staff/add-staff.component';
 
 const routes: Routes = [
   // {path:'',component:SalesReportComponent},
@@ -33,6 +36,10 @@ const routes: Routes = [
   {path:'hospitals',component:ViewHospitalComponent},
   {path:'vendors',component:ViewVendorComponent},
   {path:'insurance',component:ViewInsuranceComponent},
+  {path:'add-staff',component:AddStaffComponent},
+  {path:'add-staff/:id',component:AddStaffComponent},
+  {path:'view-staff',component:ViewStaffComponent},
+  {path:'view-card/:id',component:ViewCardComponent},
   {path:'**',component:SalesReportComponent},
 
 
