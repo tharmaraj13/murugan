@@ -19,6 +19,11 @@ if ($id == NULL) {
     '$array[2]',
     '$array[3]'
 );");
+    if ($_POST['filestat'] == 'Y') {
+        $last_id = $dbcon->insert_id;
+        $target_file = 'uploads/' . $last_id . '_photo.jpg';
+        move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+    }
     mysqli_close($dbcon);
 } else {
     $check = $dbcon->query("SELECT * FROM staffs where id='$id';");
@@ -26,6 +31,11 @@ if ($id == NULL) {
         $result = mysqli_fetch_assoc($check);
         $dbcon->query("UPDATE staffs SET sname='$array[0]',designation='$array[1]',blood='$array[2]',contact='$array[3]' 
         where id='$id';");
+        if ($_POST['filestat'] == 'Y') {
+            $last_id = $id;
+            $target_file = 'uploads/' . $last_id . '_photo.jpg';
+            move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+        }
         mysqli_close($dbcon);
     }
 }

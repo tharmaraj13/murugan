@@ -46,6 +46,11 @@
                                                 *ngIf="myForm.get('contact').errors && myForm.get('contact').touched"><i
                                                     class="bi bi-exclamation-circle"></i> Contact No is required</small>
                                         </div>
+                                        <div class="col-md-4">
+                                            <label for="fimage" class="form-label">Upload Photo</label>
+                                            <input type="file" class="form-control" id="fimage"
+                                                (change)="readThis($event)">
+                                        </div>
                                     </div>
                                 </div>
                                 
