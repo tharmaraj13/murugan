@@ -10,11 +10,11 @@ $response = [];
 $querysql='';
 $fdate= strtotime($_POST['fdate']);
 $tdate=strtotime($_POST['tdate']);
-$querysql.= " and X.doi<=".$tdate." and X.doi>=".$fdate;
+$querysql.= " and X.doi<='".$tdate."' and X.doi>='".$fdate."'";
 
 $ifdate= strtotime($_POST['ifdate']);
 $itdate=strtotime($_POST['itdate']);
-$querysql.= " and X.created<=".$itdate." and X.created>=".$ifdate;
+$querysql.= " and X.created<='".$itdate."' and X.created>='".$ifdate."'";
 
 $claimno=$_POST['claimno'];
 
