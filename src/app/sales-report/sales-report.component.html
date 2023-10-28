@@ -41,17 +41,18 @@
                         <div class="col-lg-12 mt-3">
                             <div class="border border-3 p-4 rounded">
                                 <div class="table-responsive">
-                                    <table class="table mb-0" *ngIf="table_data?.length" datatable [dtOptions]="dtOptions">
+                                    <table class="table mb-0" *ngIf="table_data?.length" datatable
+                                        [dtOptions]="dtOptions">
                                         <thead class="table-light">
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>GICS Id</th>
                                                 <th>Patient Name</th>
                                                 <th>Claim Type</th>
                                                 <th>Insurance/TPA</th>
-                                                <th>Vendor</th>
                                                 <th>Date of Intimation</th>
                                                 <th>Claim Number</th>
+                                                <th>Invoice Number</th>
+                                                <th>Invoice Date</th>
                                                 <th>Fees</th>
                                                 <th>Incentive</th>
                                                 <th>MRD</th>
@@ -66,20 +67,23 @@
                                                 <td>{{i+1}}</td>
                                                 <td>
                                                     <div class="d-flex align-items-center">
-                                                        <div class="ms-2">
-                                                            <h6 class="mb-0 font-14">
-                                                                <a target="_blank"
-                                                                    href="/view/{{prod.gicsid}}">{{prod.gicsid}}</a>
-                                                            </h6>
-                                                        </div>
+                                                        <h6 class="mb-0 font-14">
+                                                            <a target="_blank"
+                                                                href="/view/{{prod.gicsid}}">{{prod.pname}}</a>
+                                                        </h6>
                                                     </div>
                                                 </td>
-                                                <td>{{prod.pname}}</td>
                                                 <td>{{prod.claim_type}}</td>
                                                 <td>{{prod.iname}}</td>
-                                                <td>{{prod.vname}}</td>
                                                 <td>{{prod.doi}}</td>
                                                 <td>{{prod.claimno}}</td>
+                                                <td>
+                                                    <h6 class="mb-0 font-14">
+                                                        <a target="_blank"
+                                                            href="/invoice/{{prod.gicsid}}">{{prod.invoice_no}}</a>
+                                                    </h6>
+                                                </td>
+                                                <td>{{prod.invdate}}</td>
                                                 <td>{{prod.fees}}</td>
                                                 <td>{{prod.incentive}}</td>
                                                 <td>{{prod.mrd}}</td>
@@ -87,7 +91,8 @@
                                                 <td>{{prod.payment}}</td>
                                                 <td>{{prod.paid_date}}</td>
                                                 <td><a href="/add-intimation/{{prod.id}}">Edit</a>
-                                                    &nbsp;<a style="cursor: pointer;" (click)="remove(prod.id)">Remove</a></td>
+                                                    &nbsp;<a style="cursor: pointer;"
+                                                        (click)="remove(prod.id)">Remove</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

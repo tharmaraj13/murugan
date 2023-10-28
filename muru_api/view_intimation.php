@@ -9,12 +9,13 @@ include 'config.php';
 $response = [];
 $check = $dbcon->query("SELECT
 X.*,
+V.invoice_no,
 Y.hname,
 Y.hplace,
 Z.vname,
 W.iname
 FROM
-intimations X,
+intimations X left join invoice V ON V.intimations_id=X.id,
 hospitals Y,
 vendors Z,
 insurance W
@@ -39,6 +40,8 @@ if ($check->num_rows > 0) {
         $resp_status->payment = $result['payment'];
         $resp_status->paid_date = $result['paid_date']==null ? '' : Date('d-M-Y',$result['paid_date']);
         $resp_status->transport = $result['transportation'];
+        $resp_status->invoice_no = $result['invoice']!=0 ? $result['invoice_no'] : '';
+        $resp_status->invdate = $result['invoice']!=0 ? Date('d-M-Y',$result['created']) : '';
 
         $response[] = $resp_status;
     }

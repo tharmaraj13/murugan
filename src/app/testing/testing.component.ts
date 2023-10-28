@@ -25,14 +25,20 @@ export class TestingComponent {
     ['infertile_doctor.docx', 'infertile_insured.docx'],
     ['opd_doctor.docx', 'opd_insured.docx']
   ];
+  typenos=[
+    'final_report.docx',
+    'pa_final_report.docx'
+  ];
   docx: any;
+  typesno:any;
   constructor(private apiservice: ApiserviceService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.apiservice.view_details(this.id).subscribe((res: any) => {
       this.table_data = res
       if (res.status == 'ok') {
-        this.docx = this.cases[res.caseno]
+        this.docx = this.cases[res.caseno];
+        this.typesno = this.typenos[res.typeno];
       }
     })
   }
@@ -41,7 +47,7 @@ export class TestingComponent {
   }
   downloading1() {
     loadFile(
-      "assets/template/final_report.docx",
+      "assets/template/" + this.typesno,
       (error: any, content: any) => {
         if (error) {
           throw error;
@@ -59,7 +65,7 @@ export class TestingComponent {
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         });
         // Output the document using Data-URI
-        saveAs(blob, "final_report.docx");
+        saveAs(blob, this.typesno);
       }
     );
   }

@@ -49,6 +49,12 @@ if ($check->num_rows > 0) {
     $resp_status->vname = $result['vname'];
     $resp_status->created_by = $result['created_by'];
     $resp_status->caseno = $cases[$result['case_type']];
+    if($result['claim_type']=='PA' || $result['claim_type']=='MPA'){
+        $resp_status->typeno = 1;
+    }
+    else{
+        $resp_status->typeno = 0;
+    }
 
     $resp_status->fees = $result['fees'];
     $resp_status->mrd = $result['mrd'];
