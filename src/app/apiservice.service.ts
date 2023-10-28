@@ -137,11 +137,13 @@ export class ApiserviceService {
     var formData = new FormData();
     return this.http.post(url, formData);
   }
-  view_sales_all(fdate: any, tdate: any, claimno: any): Observable<Object> {
+  view_sales_all(fdate: any, tdate: any,ifdate: any, itdate: any, claimno: any): Observable<Object> {
     var url = this.website + 'view_intimation_all.php';
     var formData = new FormData();
     formData.append("fdate", fdate);
     formData.append("tdate", tdate);
+    formData.append("ifdate", ifdate);
+    formData.append("itdate", itdate);
     formData.append("claimno", claimno);
     return this.http.post(url, formData);
   }

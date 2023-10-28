@@ -41,6 +41,8 @@ export class SalesReportComponent {
       {
         fromdate: new FormControl(currentDate),
         todate: new FormControl(currentDate),
+        ifromdate: new FormControl(currentDate),
+        itodate: new FormControl(currentDate),
         claimno:new FormControl('')
       }
     );
@@ -52,6 +54,8 @@ export class SalesReportComponent {
     this.apiservice.view_sales_all(
       this.myForm.get('fromdate').value,
       this.myForm.get('todate').value,
+      this.myForm.get('ifromdate').value,
+      this.myForm.get('itodate').value,
       this.myForm.get('claimno').value
     ).subscribe((res) => {
       this.table_data = res;

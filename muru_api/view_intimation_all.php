@@ -7,24 +7,33 @@ header("Access-Control-Allow-Headers:Access-Control-Allow-Headers, Origin,Accept
 include 'config.php';
 
 $response = [];
+$querysql='';
 $fdate= strtotime($_POST['fdate']);
 $tdate=strtotime($_POST['tdate']);
+$querysql.= " and X.doi<=".$tdate." and X.doi>=".$fdate;
+
+$ifdate= strtotime($_POST['ifdate']);
+$itdate=strtotime($_POST['itdate']);
+$querysql.= " and X.created<=".$itdate." and X.created>=".$ifdate;
+
 $claimno=$_POST['claimno'];
 
 $check = $dbcon->query("SELECT
 X.*,
+V.invoice_no,
 Y.hname,
 Y.hplace,
 Z.vname,
 W.iname
 FROM
-intimations X,
+intimations X left join invoice V ON V.intimations_id=X.id,
 hospitals Y,
 vendors Z,
 insurance W
 WHERE
 X.vendor = Z.id AND X.hosp_details = Y.id AND W.id = X.insurance_tpa 
-and X.doi<='$tdate' and X.doi>='$fdate' and X.claimno like '%$claimno%'
+and X.claimno like '%$claimno%' 
+".$querysql." 
 ORDER by id DESC;");
 if ($check->num_rows > 0) {
     for ($i = 0; $i < $check->num_rows; $i++) {
@@ -44,6 +53,8 @@ if ($check->num_rows > 0) {
         $resp_status->payment = $result['payment'];
         $resp_status->paid_date = $result['paid_date']==null ? '' : Date('d-M-Y',$result['paid_date']);
         $resp_status->transport = $result['transportation'];
+        $resp_status->invoice_no = $result['invoice']!=0 ? $result['invoice_no'] : '';
+        $resp_status->invdate = $result['invoice']!=0 ? Date('d-M-Y',$result['created']) : '';
 
         $response[] = $resp_status;
     }
