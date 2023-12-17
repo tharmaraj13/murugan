@@ -24,12 +24,15 @@ $claimno=$_POST['claimno'];
 $check = $dbcon->query("SELECT
 X.*,
 V.invoice_no,
+V.bulk_status,
+V.id as invoice_id,
+V.created_date,
 Y.hname,
 Y.hplace,
 Z.vname,
 W.iname
 FROM
-intimations X left join invoice V ON V.intimations_id=X.id,
+intimations X left join invoice V ON FIND_IN_SET(X.id, V.intimations_id) > 0,
 hospitals Y,
 vendors Z,
 insurance W
@@ -53,11 +56,13 @@ if ($check->num_rows > 0) {
         $resp_status->fees = $result['fees'];
         $resp_status->mrd = $result['mrd'];
         $resp_status->incentive = $result['incentive'];
+        $resp_status->bulk_status = $result['bulk_status'];
+        $resp_status->invoice_id = $result['invoice_id'];
         $resp_status->payment = $result['payment'];
         $resp_status->paid_date = $result['paid_date']==null ? '' : Date('d-M-Y',$result['paid_date']);
         $resp_status->transport = $result['transportation'];
         $resp_status->invoice_no = $result['invoice']!=0 ? $result['invoice_no'] : '';
-        $resp_status->invdate = $result['invoice']!=0 ? Date('d-M-Y',$result['created']) : '';
+        $resp_status->invdate = $result['invoice']!=0 ? Date('d-M-Y',$result['created_date']) : '';
 
         $response[] = $resp_status;
     }

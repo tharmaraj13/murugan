@@ -16,15 +16,7 @@ export class SalesReportComponent {
   dtOptions: any = {};
   constructor(private apiservice: ApiserviceService) { }
   ngAfterViewInit(): void {
-    this.apiservice.view_vendors().subscribe((res) => {
-      this.vendor_names = res;
-    })
-    this.apiservice.view_names().subscribe((res) => {
-      this.prod_names = res;
-    })
-    this.apiservice.view_insurance().subscribe((res) => {
-      this.insurance = res;
-    })
+
   }
   ngOnInit(): void {
     this.dtOptions = {

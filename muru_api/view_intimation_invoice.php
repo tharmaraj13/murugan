@@ -5,48 +5,24 @@ header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT');
 header("Access-Control-Allow-Headers:Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
 
 include 'config.php';
+$id = $_POST['id'];
 
 $response = [];
-$check = $dbcon->query("SELECT
-X.*,
-V.invoice_no,
-V.bulk_status,
-V.id as invoice_id,
-V.created_date,
-Y.hname,
-Y.hplace,
-Z.vname,
-W.iname
-FROM
-intimations X left join invoice V ON FIND_IN_SET(X.id, V.intimations_id) > 0,
-hospitals Y,
-vendors Z,
-insurance W
-WHERE
-X.vendor = Z.id AND X.hosp_details = Y.id AND W.id = X.insurance_tpa
-ORDER by id DESC;");
+
+$check = $dbcon->query("SELECT * FROM intimations where invoice=0 and insurance_tpa='$id';");
 if ($check->num_rows > 0) {
     for ($i = 0; $i < $check->num_rows; $i++) {
         $result = mysqli_fetch_assoc($check);
         $resp_status = new stdClass;
         $resp_status->id = $result['id'];
-        $resp_status->gicsid = $result['gicsid'];
         $resp_status->pname = $result['pname'];
         $resp_status->claim_type = $result['claim_type'];
-        $resp_status->iname = $result['iname'];
-        $resp_status->vname = $result['vname'];
         $resp_status->doi = Date('d-M-Y',$result['doi']);
         $resp_status->claimno = $result['claimno'];
         $resp_status->fees = $result['fees'];
-        $resp_status->mrd = $result['mrd'];
         $resp_status->incentive = $result['incentive'];
-        $resp_status->bulk_status = $result['bulk_status'];
-        $resp_status->invoice_id = $result['invoice_id'];
-        $resp_status->payment = $result['payment'];
-        $resp_status->paid_date = $result['paid_date']==null ? '' : Date('d-M-Y',$result['paid_date']);
+        $resp_status->mrd = $result['mrd'];
         $resp_status->transport = $result['transportation'];
-        $resp_status->invoice_no = $result['invoice']!=0 ? $result['invoice_no'] : '';
-        $resp_status->invdate = $result['invoice']!=0 ? Date('d-M-Y',$result['created_date']) : '';
 
         $response[] = $resp_status;
     }

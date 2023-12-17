@@ -27,6 +27,14 @@ import { DataTablesModule } from 'angular-datatables';
 import { ViewCardComponent } from './view-card/view-card.component';
 import { AddStaffComponent } from './add-staff/add-staff.component';
 import { ViewStaffComponent } from './view-staff/view-staff.component';
+import { AuthLettersComponent } from './auth-letters/auth-letters.component';
+import { AuthorizationComponent } from './authorization/authorization.component';
+import { AuthTataComponent } from './auth-tata/auth-tata.component';
+import { AuthGicsComponent } from './auth-gics/auth-gics.component';
+import { BulkInvoiceComponent } from './bulk-invoice/bulk-invoice.component';
+import { BulkViewComponent } from './bulk-view/bulk-view.component';
+import { BulkInvoiceReportComponent } from './bulk-invoice-report/bulk-invoice-report.component';
+import { BulkInvoiceAnnexureComponent } from './bulk-invoice-annexure/bulk-invoice-annexure.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +56,15 @@ import { ViewStaffComponent } from './view-staff/view-staff.component';
     CompanyComponent,
     ViewCardComponent,
     AddStaffComponent,
-    ViewStaffComponent
+    ViewStaffComponent,
+    AuthLettersComponent,
+    AuthorizationComponent,
+    AuthTataComponent,
+    AuthGicsComponent,
+    BulkInvoiceComponent,
+    BulkViewComponent,
+    BulkInvoiceReportComponent,
+    BulkInvoiceAnnexureComponent
   ],
   imports: [
     BrowserModule,

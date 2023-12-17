@@ -11,7 +11,7 @@ $resp_status = new stdClass;
 $check = $dbcon->query("SELECT
 x.*,
 y.invoice_no,
-z.created,
+y.created_date,
 z.claimno,
 z.claim_type,
 z.fees,
@@ -33,7 +33,7 @@ z.id = y.intimations_id AND a.id = z.insurance_tpa AND z.gicsid = '$id';");
 if ($check->num_rows > 0) {
     $result = mysqli_fetch_assoc($check);
     $resp_status->status = 'ok';
-    $resp_status->created = date('d-M-Y', $result['created']);
+    $resp_status->created = date('d-M-Y', $result['created_date']);
     $resp_status->invoice = $result['invoice_no'];
     
     $resp_status->iname= $result['iname'];

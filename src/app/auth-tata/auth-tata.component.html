@@ -1,0 +1,79 @@
+<div class="container">
+    <div id="invoiceholder">
+        <div id="invoice1">
+            <div class="cta-group">
+                <a style="cursor: pointer;" (click)="downloadPdf();" class="btn-primary">Print</a>
+            </div>
+        </div>
+
+        <div id="invoice">
+            <div class="invoiceheader">
+                <!-- <div style="width: 100%;height: 150px;"></div> -->
+                <img class="company-logo" src="assets/images/tata.png" style="width: 30%;">
+            </div>
+            <div class="table-main" style="font-size: 0.9em;">
+                <p style="color: #444;font-weight: bold;text-align: right;">Date: {{table_data?.doi}}</p>
+                <div style="color: #444;font-weight: bold;padding: 10px 0px;">
+                    <p>To</p>
+                    <p>The Medical Superintendent /Hospital Authority,</p>
+                    <p>{{table_data?.hname}},</p>
+                    <p>{{table_data?.hplace}}.</p>
+                </div>
+                <div class="para-heads">
+                    <p>Dear Sir,</p>
+                    <p>Sub: Request for Records in respect of Patient <span>{{table_data?.pname}}</span></p>
+                    <p>Ref: OP/UHID No: <span>{{table_data?.opno}}</span>, IP No: <span>{{table_data?.ipno}}</span>, DOA: <span>{{table_data?.doa}}</span>, DOD: <span>{{table_data?.dod}}</span></p>
+                    <p>
+                        With reference to above subject, the patient / claimant has placed claim with
+                        us for insurance purpose. To process the claim, we request you to furnish the following copies
+                        of records.
+                    </p>
+                    <p>
+                        1. Case Sheet Copy / AR Copy (includes Admission Notes, Drug Chart, Vital Chart, Progress Notes,
+                        OT Notes, Anesthesia Record, Nurses Records during the period of entire hospitalization)
+                    </p>
+                    <p>
+                        2. Final Bill
+                    </p>
+                    <p>
+                        3. Previous OPD records if any
+                    </p>
+                    <p>
+                        4. Treating Doctor Questionnaire
+                    </p>
+                </div>
+                <div class="para-line">
+                    <p>We hereby authorize <span>{{table_data?.pname}}</span> from Global Insurance Claim Solutions for
+                        collection of documents
+                        and verification of the facts. If any additional information required, the same may kindly be
+                        conveyed to Global Insurance Claim Solutions representative
+                        (<span>{{table_data?.pname}}</span>).</p>
+                    <p>
+                        We request you to provide us the details of Medical Reimbursement / Cashless paid by the
+                        insurance company, if any, along with their details.
+                    </p>
+                </div>
+                <div>
+                    <p>Thanking you.</p>
+                </div>
+                <br>
+                <div>
+                    <p>Yours Faithfully,</p>
+                    <img src="assets/images/tata_sign.png" style="height: 80px;">
+                    <p><span>DR.Ananthanathan Cell:8939233345</span></p>
+                </div>
+                <div class="para-footer">
+                    <p>
+                        TATA AIG General Insurance Company Limited ; Address: 5th and 6th Floor, Imperial Towers
+                    </p>
+                    <p>
+                        H.No 7-1-6-617/A,GHMC no - 615,616, Ameerpet, Hyderabad, Telangana 500016
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

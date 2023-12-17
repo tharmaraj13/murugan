@@ -53,7 +53,7 @@ if ($id == NULL) {
                 $year = date('Y');
                 $check1 = $dbcon->query("SELECT * from invoice where invoice_no like '%$year%';");
                 $inv_no = str_pad($check1->num_rows + 1, 4, '0', STR_PAD_LEFT) . '/' . date('Y') . '-' . (substr(date('Y'), -2) + 1);
-                $dbcon->query("INSERT INTO invoice (invoice_no,intimations_id) VALUES ('$inv_no','$id');");
+                $dbcon->query("INSERT INTO invoice (invoice_no,intimations_id,created_date) VALUES ('$inv_no','$id','$values[23]');");
             }
         }
         mysqli_close($dbcon);

@@ -1,0 +1,79 @@
+<div class="container">
+    <div id="invoiceholder">
+        <div id="invoice1">
+            <div class="cta-group">
+                <a style="cursor: pointer;" (click)="downloadPdf();" class="btn-primary">Print</a>
+            </div>
+        </div>
+
+        <div id="invoice">
+            <div class="invoiceheader">
+                <!-- <div style="width: 100%;height: 150px;"></div> -->
+                <img class="company-logo" src="assets/images/aditya.png" style="width: 30%;">
+            </div>
+            <div class="table-main" style="font-size: 0.9em;">
+                <p style="color: #444;font-weight: bold;text-align: right;">Date: {{table_data?.doi}}</p>
+                <div style="color: #444;font-weight: bold;padding: 10px 0px;">
+                    <p>To</p>
+                    <p>MRO/ Insurance department/ MS / Dean,</p>
+                    <p>{{table_data?.hname}},</p>
+                    <p>{{table_data?.hplace}}.</p>
+                </div>
+                <div class="row" style="text-align: center;padding-top: 10px;">
+                    <h3 style="color: #444;font-weight: bold;font-size: 1.3em;margin-bottom: 10px;">AUTHORIZATION LETTER
+                    </h3>
+                </div>
+                <div class="para-line">
+                    <p>This is to inform you that GICS (Service Provider) is duly authorized by Aditya
+                        Birla Health Insurance Co. Limited to collect the required information and copy of documents in
+                        with respect
+                        to the Policyholder/ Insured who are covered under Insurance Policy issued by Aditya Birla
+                        Health Insurance Co. Limited</p>
+                    <p>
+                        We are in receipt of claim from <span>{{table_data?.pname}}</span> who was under treatment at your esteemed hospital
+                        DOA <span>{{table_data?.doa}}</span> DOD: <span>{{table_data?.dod}}</span> UHID No: <span>{{table_data?.opno}} / {{table_data?.ipno}}</span>.
+                    </p>
+                    <p>
+                        We hereby authorize the representative of our Service Provider <span>{{table_data?.sname}}</span> to approach Hospital
+                        to collect all information and documents pertaining to the medical/family history of said
+                        Policyholder/ Insured for the particular claim at your hospital.
+                    </p>
+                    <p>
+                        The representative(s) of the Service Provider are also authorized for the above acts and to
+                        examine and obtain attested copies of the reports and records pertaining to said Policyholder/
+                        Insured.
+                    </p>
+                    <p>
+                        We look forward to your prompt action and kind co-operation.
+                    </p>
+                </div>
+                <div>
+                    <p>Kindly do the needful.</p>
+                    <p style="display: contents;">Thanking you.</p>
+                    <p class="float-text">Please provide the following documents,</p>
+                </div>
+                <div style="margin-left:64%;">
+                    <p>
+                        1. ICP copies
+                    </p>
+                    <p>
+                        2. OPD records
+                    </p>
+                    <p>
+                        3. Treating doctor statement
+                    </p>
+                </div>
+                <br>
+                <div>
+                    <p>Yours Sincerely</p>
+                    <img src="assets/images/aditya_sign.png" style="height: 80px;">
+                    <p>Authorized Signatory Claims Department</p>
+                    <p>Aditya Birla Health Insurance Co. Limited</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

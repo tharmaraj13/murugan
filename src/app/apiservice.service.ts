@@ -98,6 +98,23 @@ export class ApiserviceService {
     formData.append("id", id);
     return this.http.post(url, formData);
   }
+  view_bulk_invoice(id: any): Observable<Object> {
+    var url = this.website + 'view_bulk_invoice.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_bulk_invoice_annexure(id: any): Observable<Object> {
+    var url = this.website + 'view_bulk_invoice_annexure.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_bulk_invoice_report(): Observable<Object> {
+    var url = this.website + 'view_bulk_invoice_report.php';
+    var formData = new FormData();
+    return this.http.post(url, formData);
+  }
   view_insurance_id(id: any): Observable<Object> {
     var url = this.website + 'view_insurance_id.php';
     var formData = new FormData();
@@ -204,6 +221,27 @@ export class ApiserviceService {
     var url = this.website + 'del_staff.php';
     var formData = new FormData();
     formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_auth(id:any,eid:any): Observable<Object> {
+    var url = this.website + 'view_auth.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    formData.append("eid", eid);
+    return this.http.post(url, formData);
+  }
+  view_intimation_invoice(id: any): Observable<Object> {
+    var url = this.website + 'view_intimation_invoice.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  new_bulk_invoice(iname: any,date:any,caseid:any): Observable<Object> {
+    var url = this.website + 'new_bulk_invoice.php';
+    var formData = new FormData();
+    formData.append("iname", iname);
+    formData.append("date", date);
+    formData.append("caseid", JSON.stringify(caseid));
     return this.http.post(url, formData);
   }
 }

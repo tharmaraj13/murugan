@@ -1,0 +1,48 @@
+<div class="container">
+    <div id="invoiceholder">
+        <div id="invoice1">
+            <div class="cta-group">
+                <a style="cursor: pointer;" (click)="downloadPdf();" class="btn-primary">Print</a>
+            </div>
+        </div>
+
+        <div id="invoice">
+            <div class="invoiceheader">
+                <!-- <div style="width: 100%;height: 150px;"></div> -->
+                <img class="company-logo" src="assets/images/header.png" style="width: 100%;">
+            </div>
+            <div class="table-main" style="font-size: 0.9em;">
+                <p style="color: #444;font-weight: bold;text-align: right;">Date: {{table_data?.doi}}</p>
+                <div style="color: #444;font-weight: bold;padding: 10px 0px;">
+                    <p>To</p>
+                    <p>The Medical Superintendent,</p>
+                    <p>{{table_data?.hname}},</p>
+                    <p>{{table_data?.hplace}}.</p>
+                </div>
+                <div class="para-heads">
+                    <p><span>Sub:</span> Request for Records in respect of Patient <span>{{table_data?.pname}}</span>
+                    </p>
+                    <p>Respected Sir/Madam,</p>
+                </div>
+                <div class="para-line">
+                    <p>We M/S Global Insurance Claim Solutions are oﬃcial Veriﬁcation agency for <span>M/S Chola MS General
+                        Insurance Company</span> on Behalf we here by request you to kindly provide Medical Records/Case Sheet
+                        copy, Final bill and Anesthesia record (in surgical cases) along with all related documents to
+                        our veriﬁcation oﬃcer <span>{{table_data?.sname}}</span> for further process of the claim.</p>
+                </div>
+                <div>
+                    <p>Patient Name: <span>{{table_data?.pname}}</span> DOA: <span>{{table_data?.doa}}</span>, DOD: <span>{{table_data?.dod}}</span> with OP/IP No: <span>{{table_data?.opno}}</span> / <span>{{table_data?.ipno}}</span>.</p>
+                </div>
+                <br>
+                <div>
+                    <p>For Global Insurance Claim Solutions</p>
+                    <img src="assets/images/gics_sign.png" style="height: 80px;">
+                    <p><span>Murugan D</span></p>
+                    <p>(Authorized signatory)</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

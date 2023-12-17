@@ -16,6 +16,14 @@ import { CompanyComponent } from './company/company.component';
 import { ViewCardComponent } from './view-card/view-card.component';
 import { ViewStaffComponent } from './view-staff/view-staff.component';
 import { AddStaffComponent } from './add-staff/add-staff.component';
+import { AuthLettersComponent } from './auth-letters/auth-letters.component';
+import { AuthorizationComponent } from './authorization/authorization.component';
+import { AuthTataComponent } from './auth-tata/auth-tata.component';
+import { AuthGicsComponent } from './auth-gics/auth-gics.component';
+import { BulkInvoiceComponent } from './bulk-invoice/bulk-invoice.component';
+import { BulkViewComponent } from './bulk-view/bulk-view.component';
+import { BulkInvoiceReportComponent } from './bulk-invoice-report/bulk-invoice-report.component';
+import { BulkInvoiceAnnexureComponent } from './bulk-invoice-annexure/bulk-invoice-annexure.component';
 
 const routes: Routes = [
   // {path:'',component:SalesReportComponent},
@@ -24,9 +32,17 @@ const routes: Routes = [
   {path:'add-intimation/:id',component:AddProductsComponent},
   {path:'add-intimation',component:AddProductsComponent},
   {path:'intimation-report',component:SalesReportComponent},
+  {path:'auth-letters',component:AuthLettersComponent},
+  {path:'aditya-letter/:id/:eid',component:AuthorizationComponent},
+  {path:'tata-letter/:id/:eid',component:AuthTataComponent},
+  {path:'gics-letter/:id/:eid',component:AuthGicsComponent},
   {path:'view/:id',component:TestingComponent},
   {path:'invoice/:id',component:InvoiceComponent},
+  {path:'bulk-invoice/:id',component:BulkViewComponent},
+  {path:'view-annexure/:id',component:BulkInvoiceAnnexureComponent},
+  {path:'view-invoice',component:BulkInvoiceReportComponent},
   {path:'add-insurance',component:AddInsuranceComponent},
+  {path:'add-invoice',component:BulkInvoiceComponent},
   {path:'add-insurance/:id',component:AddInsuranceComponent},
   {path:'add-hospital',component:AddHospitalComponent},
   {path:'add-hospital/:id',component:AddHospitalComponent},
@@ -41,8 +57,6 @@ const routes: Routes = [
   {path:'view-staff',component:ViewStaffComponent},
   {path:'view-card/:id',component:ViewCardComponent},
   {path:'**',component:SalesReportComponent},
-
-
 ];
 
 @NgModule({
