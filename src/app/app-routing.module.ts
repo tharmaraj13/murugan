@@ -24,6 +24,8 @@ import { BulkInvoiceComponent } from './bulk-invoice/bulk-invoice.component';
 import { BulkViewComponent } from './bulk-view/bulk-view.component';
 import { BulkInvoiceReportComponent } from './bulk-invoice-report/bulk-invoice-report.component';
 import { BulkInvoiceAnnexureComponent } from './bulk-invoice-annexure/bulk-invoice-annexure.component';
+import { UsersPageComponent } from './users-page/users-page.component';
+import { PermissionsPageComponent } from './permissions-page/permissions-page.component';
 
 const routes: Routes = [
   // {path:'',component:SalesReportComponent},
@@ -55,6 +57,8 @@ const routes: Routes = [
   {path:'add-staff',component:AddStaffComponent},
   {path:'add-staff/:id',component:AddStaffComponent},
   {path:'view-staff',component:ViewStaffComponent},
+  {path:'view-users',component:UsersPageComponent},
+  {path:'view-permissions',component:PermissionsPageComponent},
   {path:'view-card/:id',component:ViewCardComponent},
   {path:'**',component:SalesReportComponent},
 ];

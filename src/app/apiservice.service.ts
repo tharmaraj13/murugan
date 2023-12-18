@@ -14,7 +14,7 @@ export class ApiserviceService {
   checking(): Observable<Object> {
     var token = this.Cookies.get('token');
     if (token == '') { token = 'empty' };
-    var url = this.website + '/token.php';
+    var url = this.website + 'token.php';
     var formData = new FormData();
     formData.append("token", token);
     return this.http.post(url, formData);
@@ -242,6 +242,36 @@ export class ApiserviceService {
     formData.append("iname", iname);
     formData.append("date", date);
     formData.append("caseid", JSON.stringify(caseid));
+    return this.http.post(url, formData);
+  }
+  view_users(): Observable<Object> {
+    var url = this.website + 'view_users.php';
+    var formData = new FormData();
+    return this.http.post(url, formData);
+  }
+  save_users(data:any): Observable<Object> {
+    var url = this.website + 'save_users.php';
+    var formData = new FormData();
+    formData.append("data", JSON.stringify(data));
+    return this.http.post(url, formData);
+  }
+  del_users(id:any): Observable<Object> {
+    var url = this.website + 'del_users.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  save_new_user(username:any,password:any,roles:any): Observable<Object> {
+    var url = this.website + 'save_new_user.php';
+    var formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
+    formData.append("roles", roles);
+    return this.http.post(url, formData);
+  }
+  view_roles(): Observable<any> {
+    var url = this.website + 'view_roles.php';
+    var formData = new FormData();
     return this.http.post(url, formData);
   }
 }
