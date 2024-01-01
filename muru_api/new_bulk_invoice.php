@@ -12,18 +12,22 @@ $caseid = json_decode($_POST['caseid']);
 
 // $dbcon->query("UPDATE intimations SET ");
 $response = [];
-$caseid=implode(',',$caseid);
+$caseid = implode(',', $caseid);
 $dbcon->query("UPDATE intimations SET invoice=1,created='$date'
 where id in ($caseid);");
 
-$year = date('Y');
+$year = date('Y', $date);
+$month = date('m', $date);
+if ($month < 4) {
+    $year = $year - 1;
+}
 $check1 = $dbcon->query("SELECT * from invoice where invoice_no like '%$year%';");
-$inv_no = str_pad($check1->num_rows + 1, 4, '0', STR_PAD_LEFT) . '/' . date('Y') . '-' . (substr(date('Y'), -2) + 1);
+$inv_no = str_pad($check1->num_rows + 1, 4, '0', STR_PAD_LEFT) . '/' . $year . '-' . (substr($year, -2) + 1);
 $dbcon->query("INSERT INTO invoice (invoice_no,intimations_id,created_date,bulk_status) VALUES ('$inv_no','$caseid','$date',1);");
 
 $resp = new stdClass;
-$resp->status='ok';
-$resp->id=mysqli_insert_id($dbcon);
+$resp->status = 'ok';
+$resp->id = mysqli_insert_id($dbcon);
 echo json_encode($resp);
 
 mysqli_close($dbcon);

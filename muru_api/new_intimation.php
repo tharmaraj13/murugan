@@ -12,9 +12,9 @@ $values[6] = strtotime($values[6]);
 $values[14] = strtotime($values[14]);
 $id = $values[20];
 $invoice = $values[21] ? 1 : 0;
-$incentive=$values[22];
+$incentive = $values[22];
 $values[23] = strtotime($values[23]);
-$payment=$values[24];
+$payment = $values[24];
 $values[25] = strtotime($values[25]);
 $time = time();
 
@@ -28,10 +28,14 @@ if ($id == NULL) {
     $gics = "GICS" . $time . "_" . $last_id;
     $dbcon->query("UPDATE intimations set gicsid='$gics' where id='$last_id';");
     if ($invoice) {
-        $year = date('Y');
+        $year = date('Y', $values[23]);
+        $month = date('m', $values[23]);
+        if ($month < 4) {
+            $year = $year - 1;
+        }
         $check = $dbcon->query("SELECT * from invoice where invoice_no like '%$year%';");
-        $inv_no = str_pad($check->num_rows + 1, 4, '0', STR_PAD_LEFT) . '/' . date('Y') . '-' . (substr(date('Y'), -2) + 1);
-        $dbcon->query("INSERT INTO invoice (invoice_no,intimations_id) VALUES ('$inv_no','$last_id');");
+        $inv_no = str_pad($check->num_rows + 1, 4, '0', STR_PAD_LEFT) . '/' . $year . '-' . (substr($year, -2) + 1);
+        $dbcon->query("INSERT INTO invoice (invoice_no,intimations_id,created_date) VALUES ('$inv_no','$last_id','$values[23]');");
     }
     $resp = new stdClass;
     $resp->gicsid = $gics;
@@ -50,9 +54,13 @@ if ($id == NULL) {
             $check2 = $dbcon->query("SELECT * from invoice where intimations_id='$id';");
             if ($check2->num_rows > 0) {
             } else {
-                $year = date('Y');
+                $year = date('Y', $values[23]);
+                $month = date('m', $values[23]);
+                if ($month < 4) {
+                    $year = $year - 1;
+                }
                 $check1 = $dbcon->query("SELECT * from invoice where invoice_no like '%$year%';");
-                $inv_no = str_pad($check1->num_rows + 1, 4, '0', STR_PAD_LEFT) . '/' . date('Y') . '-' . (substr(date('Y'), -2) + 1);
+                $inv_no = str_pad($check1->num_rows + 1, 4, '0', STR_PAD_LEFT) . '/' . $year . '-' . (substr($year, -2) + 1);
                 $dbcon->query("INSERT INTO invoice (invoice_no,intimations_id,created_date) VALUES ('$inv_no','$id','$values[23]');");
             }
         }
