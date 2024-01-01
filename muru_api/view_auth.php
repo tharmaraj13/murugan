@@ -30,6 +30,7 @@ if ($id == 'undefined' || $eid == 'undefined') {
     if ($check->num_rows > 0) {
         $result = mysqli_fetch_assoc($check);
         $resp->status = 'ok';
+        $resp->iname = $result['iname'];
         $resp->hname = $result['hname'];
         $resp->hplace = $result['hplace'];
         $resp->doi = Date("d/m/Y", $result['doi']);
