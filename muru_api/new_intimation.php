@@ -53,6 +53,7 @@ if ($id == NULL) {
         if ($invoice) {
             $check2 = $dbcon->query("SELECT * from invoice where intimations_id='$id';");
             if ($check2->num_rows > 0) {
+                $dbcon->query("UPDATE invoice SET created_date='$values[23]' where intimations_id='$id';");
             } else {
                 $year = date('Y', $values[23]);
                 $month = date('m', $values[23]);

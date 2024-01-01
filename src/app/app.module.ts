@@ -37,6 +37,7 @@ import { BulkInvoiceReportComponent } from './bulk-invoice-report/bulk-invoice-r
 import { BulkInvoiceAnnexureComponent } from './bulk-invoice-annexure/bulk-invoice-annexure.component';
 import { UsersPageComponent } from './users-page/users-page.component';
 import { PermissionsPageComponent } from './permissions-page/permissions-page.component';
+import { AuthCholaComponent } from './auth-chola/auth-chola.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { PermissionsPageComponent } from './permissions-page/permissions-page.co
     BulkInvoiceReportComponent,
     BulkInvoiceAnnexureComponent,
     UsersPageComponent,
-    PermissionsPageComponent
+    PermissionsPageComponent,
+    AuthCholaComponent
   ],
   imports: [
     BrowserModule,

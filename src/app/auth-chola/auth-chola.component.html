@@ -1,0 +1,61 @@
+<div class="container">
+    <div id="invoiceholder">
+        <div id="invoice1">
+            <div class="cta-group">
+                <a style="cursor: pointer;" (click)="downloadPdf();" class="btn-primary">Print</a>
+            </div>
+        </div>
+
+        <div id="invoice">
+            <div class="invoiceheader">
+                <!-- <div style="width: 100%;height: 150px;"></div> -->
+                <img class="company-logo" src="assets/images/cholas1.png" style="width: 100%;">
+            </div>
+            <div class="table-main" style="font-size: 0.9em;">
+                <p style="color: #444;font-weight: bold;">Date: {{table_data?.doi}}</p>
+                <div style="color: #444;font-weight: bold;padding: 10px 0px;">
+                    <p>To</p>
+                    <p>The Manager,</p>
+                    <p>{{table_data?.hname}},</p>
+                    <p>{{table_data?.hplace}}.</p>
+                </div>
+                <div class="para-heads">
+                    <p style="font-weight: bold;">Dear Sir / Madam</p>
+                    <p>Re: Health claim of <span>{{table_data?.pname}}</span> - Our Claim File No.
+                        <span>{{table_data?.claimno}}</span>
+                    </p>
+                    <p>We have authorized our service provider <span>GLOBAL INSURANCE CLAIM SOLUTIONS</span>, to facilitate the
+                        processing of the above
+                        claim preferred by the above insured.</p>
+                    <p>From the records furnished we understand that she has undergone treatment in your hospital
+                        between <span>{{table_data?.doa}}</span> to
+                        <span>{{table_data?.dod}}</span>
+                    </p>
+                    <p>We request you to provide/peruse all information regarding the Inpatient treatment undergone by
+                        the insured and provide
+                        photocopies of the indoor case records.</p>
+                    <p>We solicit your co-operation.</p>
+                </div>
+                <br>
+                <div>
+                    <p style="font-weight: bold;">Thanking you.</p>
+                </div>
+                <br>
+                <div>
+                    <p style="font-weight: bold;">Yours Sincerely,</p>
+                    <p style="font-weight: bold;">For Cholamandalam MS</p>
+                </div>
+                <br>
+                <div>
+                    <p style="font-weight: bold;">This is a System Generated Document, does not require signature.</p>
+                </div>
+                <div class="invoiceheader">
+                    <img class="footer-logo" src="assets/images/chola2.png">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

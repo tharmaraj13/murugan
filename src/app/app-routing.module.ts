@@ -26,6 +26,7 @@ import { BulkInvoiceReportComponent } from './bulk-invoice-report/bulk-invoice-r
 import { BulkInvoiceAnnexureComponent } from './bulk-invoice-annexure/bulk-invoice-annexure.component';
 import { UsersPageComponent } from './users-page/users-page.component';
 import { PermissionsPageComponent } from './permissions-page/permissions-page.component';
+import { AuthCholaComponent } from './auth-chola/auth-chola.component';
 
 const routes: Routes = [
   // {path:'',component:SalesReportComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:'auth-letters',component:AuthLettersComponent},
   {path:'aditya-letter/:id/:eid',component:AuthorizationComponent},
   {path:'tata-letter/:id/:eid',component:AuthTataComponent},
+  {path:'chola-letter/:id/:eid',component:AuthCholaComponent},
   {path:'gics-letter/:id/:eid',component:AuthGicsComponent},
   {path:'view/:id',component:TestingComponent},
   {path:'invoice/:id',component:InvoiceComponent},

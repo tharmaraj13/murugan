@@ -36,6 +36,7 @@ if ($id == 'undefined' || $eid == 'undefined') {
         $resp->pname = $result['pname'];
         $resp->doa = Date("d/m/Y", $result['doa']);
         $resp->dod = Date("d/m/Y", $result['dod']);
+        $resp->claimno = $result['claimno'];
         $resp->opno = $result['opno'];
         $resp->ipno = $result['ipno'];
 
