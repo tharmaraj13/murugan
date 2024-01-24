@@ -31,7 +31,7 @@ export class AuthLettersComponent {
   }
   create(id: any, iname: any) {
     var eid = <HTMLInputElement>document.querySelector('#staff_name'+id)
-    if (iname == 'Aditya Birla Health Insurance Company') {
+    if (iname == 'Aditya Birla Health Insurance Co Limited') {
       window.open(`/aditya-letter/${id}/${eid.value}`)
       window.open(`/gics-letter/${id}/${eid.value}`)
       // location.href = `/aditya-letter/${id}/${eid.value}`
