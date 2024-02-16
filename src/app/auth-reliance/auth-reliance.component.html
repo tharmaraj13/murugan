@@ -1,0 +1,85 @@
+<div class="container">
+    <div id="invoiceholder">
+        <div id="invoice1">
+            <div class="cta-group">
+                <a style="cursor: pointer;" (click)="downloadPdf();" class="btn-primary">Print</a>
+            </div>
+        </div>
+
+        <div id="invoice">
+            <div class="invoiceheader">
+                <!-- <div style="width: 100%;height: 150px;"></div> -->
+                <img class="company-logo" src="assets/images/reliance.png" style="width: 100%;">
+                <h1 class="heading">To whom it may concern</h1>
+            </div>
+            <div>
+            </div>
+            <div class="table-main" style="font-size: 14px;">
+                <p style="font-weight: bold;">Dear Concerned,</p>
+                <div class="para-heads">
+                    <p style="margin-bottom: 10px;">
+                        Representative of <span style="background-color: #e3e3e3;">GLOBAL INSURANCE CLAIM SOLUTIONS</span>, <span>{{table_data?.sname}}</span> is authorized
+on behalf of Reliance General Insurance Co. Ltd. to verify and collect the treatment records
+with regards to below mentioned claim numbers:-
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Claim Number</th>
+                                <th>Insured Name</th>
+                                <th>Hospital Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="height: 120px; font-size: 12px;">
+                                <td>
+                                <p>
+                                    <span>{{table_data?.claimno}}</span>
+                                </p>
+                            </td>
+                                <td>
+                                    <p>
+                                        <span>{{table_data?.pname}}</span>
+                                    </p>
+                                </td>
+                                <td>
+                                <p>
+                                    {{table_data?.hname}}, {{table_data?.hplace}}.
+                                </p>
+                                <p>
+                                    OP/UHID No: <span>{{table_data?.opno}}</span>, IP No: <span>{{table_data?.ipno}}</span>
+                                </p>
+                                <p>
+                                    DOA: <span>{{table_data?.doa}}</span>
+                                </p>
+                                <p>
+                                    DOD: <span>{{table_data?.dod}}</span>
+                                </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p style="margin-top: 10px;">Concern is hereby requested to extend their co-operation in facilitating the requisite
+                        information and documents of said Claim No. in order to expedite the processing of claims
+                        request received. In case if provider has any query/clarification kindly reach out to undersigned
+                        on the contact details mentioned herein below.</p>
+                </div><br>
+                <div>
+                    <p>Thanking You</p>
+                    <p>Dr. S. D. Sutharsan</p>
+                    <p>Manager(RCU)</p>
+                    <p>+919600088740</p>
+                    <p>Reliance General Insurance Co. Ltd</p>
+                </div>
+                <br>
+                <div>
+                    <p>This is system generated, signature not required.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

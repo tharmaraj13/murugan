@@ -38,6 +38,7 @@ import { BulkInvoiceAnnexureComponent } from './bulk-invoice-annexure/bulk-invoi
 import { UsersPageComponent } from './users-page/users-page.component';
 import { PermissionsPageComponent } from './permissions-page/permissions-page.component';
 import { AuthCholaComponent } from './auth-chola/auth-chola.component';
+import { AuthRelianceComponent } from './auth-reliance/auth-reliance.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { AuthCholaComponent } from './auth-chola/auth-chola.component';
     BulkInvoiceAnnexureComponent,
     UsersPageComponent,
     PermissionsPageComponent,
-    AuthCholaComponent
+    AuthCholaComponent,
+    AuthRelianceComponent
   ],
   imports: [
     BrowserModule,

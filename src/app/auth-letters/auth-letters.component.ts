@@ -45,6 +45,11 @@ export class AuthLettersComponent {
       window.open(`/gics-letter/${id}/${eid.value}`)
       // location.href = `/tata-letter/${id}/${eid.value}`
     }
+    else if (iname == 'Reliance General Insurance Company Limited') {
+      window.open(`/reliance-letter/${id}/${eid.value}`)
+      window.open(`/gics-letter/${id}/${eid.value}`)
+      // location.href = `/tata-letter/${id}/${eid.value}`
+    }
     // else if (iname == 'CHOLA MS GENERAL INSURANCE COMPANY LIMITED') {
     //   location.href = `/gics-letter/${id}/${eid.value}`
     // }
