@@ -14,7 +14,7 @@
                             <div class="border border-3 p-4 rounded">
                                 <div class="table-responsive">
                                     <table class="table mb-0" *ngIf="table_data?.length" datatable
-                                    [dtOptions]="dtOptions">
+                                        [dtOptions]="dtOptions">
                                         <thead class="table-light">
                                             <tr>
                                                 <th>S.No</th>
@@ -22,6 +22,7 @@
                                                 <th>Invoice Date</th>
                                                 <th>Insurance Name</th>
                                                 <th>Annexure</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -38,6 +39,9 @@
                                                 <td>{{prod.created}}</td>
                                                 <td>{{prod.iname}}</td>
                                                 <td><a target="_blank" href="/view-annexure/{{prod.id}}">View</a></td>
+                                                <td><a href="/add-invoice/{{prod.id}}">Edit</a>
+                                                    &nbsp;<a style="cursor: pointer;"
+                                                        (click)="remove(prod.id)">Remove</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

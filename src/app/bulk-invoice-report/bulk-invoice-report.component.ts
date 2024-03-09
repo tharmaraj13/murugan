@@ -9,19 +9,27 @@ import { ApiserviceService } from '../apiservice.service';
 export class BulkInvoiceReportComponent {
   table_data: any;
   dtOptions: any = {};
-  constructor(private apiservice:ApiserviceService) {}
-  ngOnInit(): void{
+  constructor(private apiservice: ApiserviceService) { }
+  ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 30,
       processing: true,
       dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'print'
-        ]
+      buttons: [
+        'copy', 'csv', 'excel', 'print'
+      ]
     };
     this.apiservice.view_bulk_invoice_report().subscribe((res) => {
       this.table_data = res;
     })
+  }
+  remove(id: any) {
+    var result = confirm("Are You sure?");
+    if (result) {
+      this.apiservice.del_invoice(id).subscribe((res) => {
+        location.reload();
+      })
+    }
   }
 }

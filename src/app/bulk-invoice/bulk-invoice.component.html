@@ -69,7 +69,7 @@
                                                             <td>{{prod.incentive}}</td>
                                                             <td>{{prod.mrd}}</td>
                                                             <td>{{prod.transport}}</td>
-                                                            <td><input type="checkbox" (click)="selectedCases($event,prod.id)"></td>
+                                                            <td><input type="checkbox" [checked]="prod.status" (click)="selectedCases($event,prod.id)"></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

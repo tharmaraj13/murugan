@@ -7,7 +7,8 @@ header("Access-Control-Allow-Headers:Access-Control-Allow-Headers, Origin,Accept
 include 'config.php';
 $gicsid = $_POST['gicsid'];
 $resp_status = new stdClass;
-$cases=['Genuinity'=>0,'PED'=>1,'Accident'=>2,'Infertility'=>3,'OPD to IPD'=>4];
+$cases = ['Genuinity' => 0, 'PED' => 1, 'Accident' => 2, 'Infertility' => 3, 'OPD to IPD' => 4];
+$types = ['Reimbursement' => 0, 'Cashless' => 1, 'Bill Verification' => 2, 'PA' => 3, 'MPA' => 4, 'Critical Illness' => 5, 'Life Insurance' => 6];
 $check = $dbcon->query("SELECT
 X.*,
 Y.hname,
@@ -45,16 +46,11 @@ if ($check->num_rows > 0) {
     $resp_status->claim_type = $result['claim_type'];
     $resp_status->case_type = $result['case_type'];
     $resp_status->created = date('d-M-Y', $result['created']);
-    $resp_status->paid_date = $result['paid_date']==null ? '' : Date('d-M-Y',$result['paid_date']);
+    $resp_status->paid_date = $result['paid_date'] == null ? '' : Date('d-M-Y', $result['paid_date']);
     $resp_status->vname = $result['vname'];
     $resp_status->created_by = $result['created_by'];
     $resp_status->caseno = $cases[$result['case_type']];
-    if($result['claim_type']=='PA' || $result['claim_type']=='MPA'){
-        $resp_status->typeno = 1;
-    }
-    else{
-        $resp_status->typeno = 0;
-    }
+    $resp_status->typeno = $types[$result['claim_type']];
 
     $resp_status->fees = $result['fees'];
     $resp_status->mrd = $result['mrd'];

@@ -15,6 +15,7 @@ if ($check->num_rows > 0) {
         $result = mysqli_fetch_assoc($check);
         $resp_status = new stdClass;
         $resp_status->id = $result['id'];
+        $resp_status->gicsid = $result['gicsid'];
         $resp_status->pname = $result['pname'];
         $resp_status->claim_type = $result['claim_type'];
         $resp_status->doi = Date('d-M-Y',$result['doi']);
@@ -23,6 +24,7 @@ if ($check->num_rows > 0) {
         $resp_status->incentive = $result['incentive'];
         $resp_status->mrd = $result['mrd'];
         $resp_status->transport = $result['transportation'];
+        $resp_status->status = false;
 
         $response[] = $resp_status;
     }

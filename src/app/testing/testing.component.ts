@@ -26,8 +26,13 @@ export class TestingComponent {
     ['opd_doctor.docx', 'opd_insured.docx']
   ];
   typenos=[
+    'ri_final_report.docx',
+    'cl_final_report.docx',
+    'bv_final_report.docx',
+    'pa_final_report.docx',
+    'pa_final_report.docx',
     'final_report.docx',
-    'pa_final_report.docx'
+    'final_report.docx',
   ];
   docx: any;
   typesno:any;

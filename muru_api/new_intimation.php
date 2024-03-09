@@ -51,9 +51,9 @@ if ($id == NULL) {
     claim_type='$values[15]',case_type='$values[16]',fees='$values[17]',mrd='$values[18]',transportation='$values[19]',created='$values[23]',created_by='admin'
     where id='$id';");
         if ($invoice) {
-            $check2 = $dbcon->query("SELECT * from invoice where intimations_id='$id';");
+            $check2 = $dbcon->query("SELECT * from invoice where FIND_IN_SET('$id', intimations_id);");
             if ($check2->num_rows > 0) {
-                $dbcon->query("UPDATE invoice SET created_date='$values[23]' where intimations_id='$id';");
+                $dbcon->query("UPDATE invoice SET created_date='$values[23]' where FIND_IN_SET('$id', intimations_id);");
             } else {
                 $year = date('Y', $values[23]);
                 $month = date('m', $values[23]);

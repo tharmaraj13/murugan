@@ -49,6 +49,7 @@ const routes: Routes = [
   {path:'view-invoice',component:BulkInvoiceReportComponent},
   {path:'add-insurance',component:AddInsuranceComponent},
   {path:'add-invoice',component:BulkInvoiceComponent},
+  {path:'add-invoice/:id',component:BulkInvoiceComponent},
   {path:'add-insurance/:id',component:AddInsuranceComponent},
   {path:'add-hospital',component:AddHospitalComponent},
   {path:'add-hospital/:id',component:AddHospitalComponent},

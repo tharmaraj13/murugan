@@ -8,8 +8,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ApiserviceService {
   // website = "http://10.10.10.195/mur_api/";
-  // website = "http://3.94.116.52/api/";
-  website = "/api/";
+  website = "http://3.94.116.52/api/";
+  // website = "/api/";
   constructor(private http: HttpClient, private Cookies: CookieService) { }
   checking(): Observable<Object> {
     var token = this.Cookies.get('token');
@@ -154,7 +154,7 @@ export class ApiserviceService {
     var formData = new FormData();
     return this.http.post(url, formData);
   }
-  view_sales_all(fdate: any, tdate: any,ifdate: any, itdate: any, claimno: any): Observable<Object> {
+  view_sales_all(fdate: any, tdate: any, ifdate: any, itdate: any, claimno: any): Observable<Object> {
     var url = this.website + 'view_intimation_all.php';
     var formData = new FormData();
     formData.append("fdate", fdate);
@@ -178,6 +178,12 @@ export class ApiserviceService {
   }
   del_intimation(id: any): Observable<Object> {
     var url = this.website + 'del_intimation.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  del_invoice(id: any): Observable<Object> {
+    var url = this.website + 'del_invoice.php';
     var formData = new FormData();
     formData.append("id", id);
     return this.http.post(url, formData);
@@ -223,7 +229,7 @@ export class ApiserviceService {
     formData.append("id", id);
     return this.http.post(url, formData);
   }
-  view_auth(id:any,eid:any): Observable<Object> {
+  view_auth(id: any, eid: any): Observable<Object> {
     var url = this.website + 'view_auth.php';
     var formData = new FormData();
     formData.append("id", id);
@@ -236,12 +242,20 @@ export class ApiserviceService {
     formData.append("id", id);
     return this.http.post(url, formData);
   }
-  new_bulk_invoice(iname: any,date:any,caseid:any): Observable<Object> {
+  view_intimation_invoice_id(id: any): Observable<Object> {
+    var url = this.website + 'view_intimation_invoice_id.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  new_bulk_invoice(iname: any, date: any, caseid: any, precase: any, id: any): Observable<Object> {
     var url = this.website + 'new_bulk_invoice.php';
     var formData = new FormData();
     formData.append("iname", iname);
+    formData.append("id", id);
     formData.append("date", date);
     formData.append("caseid", JSON.stringify(caseid));
+    formData.append("precase", JSON.stringify(precase));
     return this.http.post(url, formData);
   }
   view_users(): Observable<Object> {
@@ -249,19 +263,19 @@ export class ApiserviceService {
     var formData = new FormData();
     return this.http.post(url, formData);
   }
-  save_users(data:any): Observable<Object> {
+  save_users(data: any): Observable<Object> {
     var url = this.website + 'save_users.php';
     var formData = new FormData();
     formData.append("data", JSON.stringify(data));
     return this.http.post(url, formData);
   }
-  del_users(id:any): Observable<Object> {
+  del_users(id: any): Observable<Object> {
     var url = this.website + 'del_users.php';
     var formData = new FormData();
     formData.append("id", id);
     return this.http.post(url, formData);
   }
-  save_new_user(username:any,password:any,roles:any): Observable<Object> {
+  save_new_user(username: any, password: any, roles: any): Observable<Object> {
     var url = this.website + 'save_new_user.php';
     var formData = new FormData();
     formData.append("username", username);

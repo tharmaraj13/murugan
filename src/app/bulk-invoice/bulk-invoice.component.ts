@@ -16,6 +16,7 @@ export class BulkInvoiceComponent {
   table_data: any;
   dtOptions: any;
   selection = Array();
+  preSelection = Array();
   constructor(private apiservice: ApiserviceService, private router: Router, private route: ActivatedRoute) { }
   ngAfterViewInit(): void {
     this.apiservice.view_insurance().subscribe((res) => {
@@ -32,13 +33,24 @@ export class BulkInvoiceComponent {
         'copy', 'csv', 'excel', 'print'
       ]
     };
-    this.id = this.route.snapshot.params['id'];
     this.myForm = new FormGroup(
       {
-        insurance_tpa: new FormControl('', Validators.required),
+        insurance_tpa: new FormControl({ value: '', disabled: true }, Validators.required),
         invoice_date: new FormControl('', Validators.required),
       }
     );
+    this.id = this.route.snapshot.params['id'];
+    if (this.id == undefined) {
+      this.myForm.get('insurance_tpa')?.enable();
+    } else {
+      this.apiservice.view_intimation_invoice_id(this.id).subscribe((res: any) => {
+        this.table_data = res.data;
+        this.selection = res.selected;
+        this.preSelection = res.selected;
+        this.myForm.get('insurance_tpa').setValue(res.insurance_tpa);
+        this.myForm.get('invoice_date').setValue(res.created_date);
+      });
+    }
   }
   listCases() {
     this.selection = [];
@@ -58,10 +70,9 @@ export class BulkInvoiceComponent {
   onSubmit() {
     this.myForm.markAllAsTouched();
     if (this.selection.length > 0 && this.myForm.valid) {
-      console.log(this.selection)
-      var iname=this.myForm.get('insurance_tpa').value
-      var date=this.myForm.get('invoice_date').value
-      this.apiservice.new_bulk_invoice(iname,date,this.selection).subscribe((res:any) => {
+      var iname = this.myForm.get('insurance_tpa').value
+      var date = this.myForm.get('invoice_date').value
+      this.apiservice.new_bulk_invoice(iname, date, this.selection, this.preSelection, this.id).subscribe((res: any) => {
         Swal.fire({
           title: 'Intimation Added Successfully',
           icon: 'success',
