@@ -50,32 +50,44 @@
 
                         <div class="col-lg-12 mt-3">
                             <div class="border border-3 p-4 rounded">
+                                <div class="row">
+                                    <div *ngFor="let prod of columnList" class="col-md-2 distance">
+                                        <input type="checkbox" id="column{{prod.id}}" [checked]="prod.value"
+                                            (click)="selectedColumns($event,prod.id)">
+                                        <label for="column{{prod.id}}" class="form-label">{{prod.name}}</label>
+                                    </div>
+                                </div>
                                 <div class="table-responsive">
-                                    <table class="table mb-0" *ngIf="table_data?.length" datatable
+                                    <table class="table mb-0" *ngIf="showTable" datatable
                                         [dtOptions]="dtOptions">
                                         <thead class="table-light">
                                             <tr>
                                                 <th>S.No</th>
-                                                <th>Patient Name</th>
-                                                <th>Claim Type</th>
-                                                <th>Insurance/TPA</th>
-                                                <th>Date of Intimation</th>
-                                                <th>Claim Number</th>
-                                                <th>Invoice Number</th>
-                                                <th>Invoice Date</th>
-                                                <th>Fees</th>
-                                                <th>Incentive</th>
-                                                <th>MRD</th>
-                                                <th>Transport</th>
-                                                <th>Payment Details</th>
-                                                <th>Payment Date</th>
+                                                <th *ngIf="columnList[0].value">Patient Name</th>
+                                                <th *ngIf="columnList[1].value">Claim Type</th>
+                                                <th *ngIf="columnList[2].value">Insurance/TPA</th>
+                                                <th *ngIf="columnList[3].value">Date of Intimation</th>
+                                                <th *ngIf="columnList[4].value">Claim Number</th>
+                                                <th *ngIf="columnList[5].value">Invoice Number</th>
+                                                <th *ngIf="columnList[6].value">Invoice Date</th>
+                                                <th *ngIf="columnList[7].value">Fees</th>
+                                                <th *ngIf="columnList[8].value">Incentive</th>
+                                                <th *ngIf="columnList[9].value">MRD</th>
+                                                <th *ngIf="columnList[10].value">Transport</th>
+                                                <th *ngIf="columnList[11].value">Payment Details</th>
+                                                <th *ngIf="columnList[12].value">Payment Date</th>
+                                                <th *ngIf="columnList[17].value">Assigned To</th>
+                                                <th *ngIf="columnList[13].value">Hospital Name</th>
+                                                <th *ngIf="columnList[14].value">OP No</th>
+                                                <th *ngIf="columnList[15].value">IP No</th>
+                                                <th *ngIf="columnList[16].value">Type of Policy</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr *ngFor="let prod of table_data;let i=index">
                                                 <td>{{i+1}}</td>
-                                                <td>
+                                                <td *ngIf="columnList[0].value">
                                                     <div class="d-flex align-items-center">
                                                         <h6 class="mb-0 font-14">
                                                             <a target="_blank"
@@ -83,29 +95,35 @@
                                                         </h6>
                                                     </div>
                                                 </td>
-                                                <td>{{prod.claim_type}}</td>
-                                                <td>{{prod.iname}}</td>
-                                                <td>{{prod.doi}}</td>
-                                                <td>{{prod.claimno}}</td>
-                                                <td>
+                                                <td *ngIf="columnList[1].value">{{prod.claim_type}}</td>
+                                                <td *ngIf="columnList[2].value">{{prod.iname}}</td>
+                                                <td *ngIf="columnList[3].value">{{prod.doi}}</td>
+                                                <td *ngIf="columnList[4].value">{{prod.claimno}}</td>
+                                                <td *ngIf="columnList[5].value">
                                                     <div class="d-flex align-items-center" *ngIf="prod.bulk_status==1">
                                                         <h6 class="mb-0 font-14">
                                                             <a target="_blank"
                                                                 href="/bulk-invoice/{{prod.invoice_id}}">{{prod.invoice_no}}</a>
                                                         </h6>
                                                     </div>
-                                                    <h6 class="mb-0 font-14" *ngIf="prod.bulk_status==null || prod.bulk_status==0">
+                                                    <h6 class="mb-0 font-14"
+                                                        *ngIf="prod.bulk_status==null || prod.bulk_status==0">
                                                         <a target="_blank"
                                                             href="/invoice/{{prod.gicsid}}">{{prod.invoice_no}}</a>
                                                     </h6>
                                                 </td>
-                                                <td>{{prod.invdate}}</td>
-                                                <td>{{prod.fees}}</td>
-                                                <td>{{prod.incentive}}</td>
-                                                <td>{{prod.mrd}}</td>
-                                                <td>{{prod.transport}}</td>
-                                                <td>{{prod.payment}}</td>
-                                                <td>{{prod.paid_date}}</td>
+                                                <td *ngIf="columnList[6].value">{{prod.invdate}}</td>
+                                                <td *ngIf="columnList[7].value">{{prod.fees}}</td>
+                                                <td *ngIf="columnList[8].value">{{prod.incentive}}</td>
+                                                <td *ngIf="columnList[9].value">{{prod.mrd}}</td>
+                                                <td *ngIf="columnList[10].value">{{prod.transport}}</td>
+                                                <td *ngIf="columnList[11].value">{{prod.payment}}</td>
+                                                <td *ngIf="columnList[12].value">{{prod.paid_date}}</td>
+                                                <td *ngIf="columnList[17].value">{{prod.assigned}}</td>
+                                                <td *ngIf="columnList[13].value">{{prod.hname}}</td>
+                                                <td *ngIf="columnList[14].value">{{prod.opno}}</td>
+                                                <td *ngIf="columnList[15].value">{{prod.ipno}}</td>
+                                                <td *ngIf="columnList[16].value">{{prod.policy_type}}</td>
                                                 <td><a href="/add-intimation/{{prod.id}}">Edit</a>
                                                     &nbsp;<a style="cursor: pointer;"
                                                         (click)="remove(prod.id)">Remove</a></td>

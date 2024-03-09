@@ -64,6 +64,12 @@ if ($check->num_rows > 0) {
         $resp_status->invoice_no = $result['invoice']!=0 ? $result['invoice_no'] : '';
         $resp_status->invdate = $result['invoice']!=0 ? Date('d-M-Y',$result['created_date']) : '';
 
+        $resp_status->hname = $result['hname'] . ", " . $result['hplace'];
+        $resp_status->opno = $result['opno'];
+        $resp_status->ipno = $result['ipno'];
+        $resp_status->policy_type = $result['policy_type'];
+        $resp_status->assigned = $result['assigned'];
+
         $response[] = $resp_status;
     }
 }

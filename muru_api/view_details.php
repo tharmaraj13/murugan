@@ -56,6 +56,7 @@ if ($check->num_rows > 0) {
     $resp_status->mrd = $result['mrd'];
     $resp_status->incentive = $result['incentive'];
     $resp_status->transport = $result['transportation'];
+    $resp_status->assigned = $result['assigned'];
     echo json_encode($resp_status);
 } else {
     $resp_status->status = 'error';

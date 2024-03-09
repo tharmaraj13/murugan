@@ -9,6 +9,7 @@ include 'config.php';
 $response = [];
 $check = $dbcon->query("SELECT
 X.*,
+A.sname,
 V.invoice_no,
 V.bulk_status,
 V.id as invoice_id,
@@ -18,7 +19,8 @@ Y.hplace,
 Z.vname,
 W.iname
 FROM
-intimations X left join invoice V ON FIND_IN_SET(X.id, V.intimations_id) > 0,
+intimations X left join invoice V ON FIND_IN_SET(X.id, V.intimations_id) > 0
+left join staffs A ON A.id=X.assigned,
 hospitals Y,
 vendors Z,
 insurance W
@@ -35,7 +37,7 @@ if ($check->num_rows > 0) {
         $resp_status->claim_type = $result['claim_type'];
         $resp_status->iname = $result['iname'];
         $resp_status->vname = $result['vname'];
-        $resp_status->doi = Date('d-M-Y',$result['doi']);
+        $resp_status->doi = Date('d-M-Y', $result['doi']);
         $resp_status->claimno = $result['claimno'];
         $resp_status->fees = $result['fees'];
         $resp_status->mrd = $result['mrd'];
@@ -43,10 +45,16 @@ if ($check->num_rows > 0) {
         $resp_status->bulk_status = $result['bulk_status'];
         $resp_status->invoice_id = $result['invoice_id'];
         $resp_status->payment = $result['payment'];
-        $resp_status->paid_date = $result['paid_date']==null ? '' : Date('d-M-Y',$result['paid_date']);
+        $resp_status->paid_date = $result['paid_date'] == null ? '' : Date('d-M-Y', $result['paid_date']);
         $resp_status->transport = $result['transportation'];
-        $resp_status->invoice_no = $result['invoice']!=0 ? $result['invoice_no'] : '';
-        $resp_status->invdate = $result['invoice']!=0 ? Date('d-M-Y',$result['created_date']) : '';
+        $resp_status->invoice_no = $result['invoice'] != 0 ? $result['invoice_no'] : '';
+        $resp_status->invdate = $result['invoice'] != 0 ? Date('d-M-Y', $result['created_date']) : '';
+
+        $resp_status->hname = $result['hname'] . ", " . $result['hplace'];
+        $resp_status->opno = $result['opno'];
+        $resp_status->ipno = $result['ipno'];
+        $resp_status->policy_type = $result['policy_type'];
+        $resp_status->assigned = $result['sname'];
 
         $response[] = $resp_status;
     }

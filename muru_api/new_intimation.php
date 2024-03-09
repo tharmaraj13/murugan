@@ -20,10 +20,11 @@ $time = time();
 
 if ($id == NULL) {
     $dbcon->query("INSERT INTO intimations (vendor, pname, age, sex, doa, dod, doi, opno, ipno, hosp_details,
-    triggers, claimno, insurance_tpa, policy_type, doj, claim_type, case_type, fees, mrd, transportation,created,created_by,invoice,incentive,payment,paid_date) 
+    triggers, claimno, insurance_tpa, policy_type, doj, claim_type, case_type, fees, mrd, transportation,created,created_by,invoice,incentive,payment,paid_date,
+    assigned) 
     VALUES ('$values[0]','$values[1]','$values[2]','$values[3]','$values[4]','$values[5]','$values[6]','$values[7]',
     '$values[8]','$values[9]','$values[10]','$values[11]','$values[12]','$values[13]','$values[14]','$values[15]','$values[16]','$values[17]',
-   '$values[18]','$values[19]','$values[23]','admin',$invoice,'$incentive','$payment','$values[25]')");
+   '$values[18]','$values[19]','$values[23]','admin',$invoice,'$incentive','$payment','$values[25]','$values[26]')");
     $last_id = $dbcon->insert_id;
     $gics = "GICS" . $time . "_" . $last_id;
     $dbcon->query("UPDATE intimations set gicsid='$gics' where id='$last_id';");
@@ -48,7 +49,8 @@ if ($id == NULL) {
         $dbcon->query("UPDATE intimations SET vendor='$values[0]',pname='$values[1]',age='$values[2]',sex='$values[3]',doa='$values[4]',dod='$values[5]',
     doi='$values[6]',opno='$values[7]',ipno='$values[8]',hosp_details='$values[9]', incentive='$incentive',payment='$payment',paid_date='$values[25]',
     triggers='$values[10]',claimno='$values[11]',insurance_tpa='$values[12]',policy_type='$values[13]',doj='$values[14]',invoice=$invoice,
-    claim_type='$values[15]',case_type='$values[16]',fees='$values[17]',mrd='$values[18]',transportation='$values[19]',created='$values[23]',created_by='admin'
+    claim_type='$values[15]',case_type='$values[16]',fees='$values[17]',mrd='$values[18]',transportation='$values[19]',created='$values[23]',created_by='admin',
+    assigned='$values[26]'
     where id='$id';");
         if ($invoice) {
             $check2 = $dbcon->query("SELECT * from invoice where FIND_IN_SET('$id', intimations_id);");

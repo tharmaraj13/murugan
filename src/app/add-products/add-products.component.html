@@ -161,25 +161,15 @@
                                         </select>
                                         <small *ngIf="myForm.get('case_type').errors && myForm.get('case_type').touched"><i class="bi bi-exclamation-circle"></i> Select Type of Case</small>
                                     </div>
-                                    <!-- <div class="col-md-4">
-                                        <label class="form-label">Type of Case</label>
-                                        <label for="case_type1" class="form-label">Genuinity</label>
-                                        <input type="radio" class="form-control" id="case_type1"
-                                            name="case_type" formControlName="case_type" value="Genuinity">
-                                        <label for="case_type2" class="form-label">PED</label>
-                                        <input type="radio" class="form-control" id="case_type2"
-                                            name="case_type" formControlName="case_type" value="PED">
-                                        <label for="case_type3" class="form-label">Accident</label>
-                                        <input type="radio" class="form-control" id="case_type3"
-                                            name="case_type" formControlName="case_type" value="Accident">
-                                        <label for="case_type4" class="form-label">Infertility</label>
-                                        <input type="radio" class="form-control" id="case_type4"
-                                            name="case_type" formControlName="case_type" value="Infertility">
-                                        <label for="case_type5" class="form-label">OPD to IPD</label>
-                                        <input type="radio" class="form-control" id="case_type5"
-                                            name="case_type" formControlName="case_type" value="OPD to IPD">
-                                        <small *ngIf="myForm.get('case_type').errors && myForm.get('case_type').touched"><i class="bi bi-exclamation-circle"></i> Select Type of Case</small>
-                                    </div> -->
+                                    <div class="col-md-4">
+                                        <label for="assigned" class="form-label">Assigned To</label>
+                                        <select class="form-select" id="assigned" formControlName="assigned">
+                                            <option *ngFor="let vend of staff_names" value="{{vend.id}}">
+                                                {{vend.sname}}
+                                            </option>
+                                        </select>
+                                        <small *ngIf="myForm.get('assigned').errors && myForm.get('assigned').touched"><i class="bi bi-exclamation-circle"></i> Select Assigned To</small>
+                                    </div>
                                     <div class="col-md-4">
                                         <label for="invoice" class="form-label">Create Invoice</label>
                                         <input type="checkbox" id="invoice" formControlName="invoice">

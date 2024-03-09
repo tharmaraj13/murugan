@@ -15,17 +15,21 @@ export class AddProductsComponent {
   insurance: any;
   vendor_names: any;
   id:any;
+  staff_names: any;
   constructor(private apiservice: ApiserviceService, private router: Router,private route: ActivatedRoute) { }
   ngAfterViewInit(): void {
     this.apiservice.view_vendors().subscribe((res) => {
       this.vendor_names = res;
-    })
+    });
     this.apiservice.view_names().subscribe((res) => {
       this.prod_names = res;
-    })
+    });
     this.apiservice.view_insurance().subscribe((res) => {
       this.insurance = res;
-    })
+    });
+    this.apiservice.view_staff().subscribe((res) => {
+      this.staff_names = res;
+    });
   }
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -52,6 +56,7 @@ export class AddProductsComponent {
         incentive: new FormControl('', Validators.required),
         mrd: new FormControl('', Validators.required),
         transport: new FormControl('', Validators.required),
+        assigned: new FormControl('', Validators.required),
         invoice:new FormControl(false),
         created: new FormControl(''),
         payment: new FormControl(''),
@@ -81,6 +86,7 @@ export class AddProductsComponent {
         this.myForm.get('incentive').setValue(res.incentive);
         this.myForm.get('mrd').setValue(res.mrd);
         this.myForm.get('transport').setValue(res.transportation);
+        this.myForm.get('assigned').setValue(res.assigned);
         this.myForm.get('invoice').setValue(res.invoice);
         this.myForm.get('incentive').setValue(res.incentive);
         this.myForm.get('created').setValue(res.created);
@@ -122,6 +128,7 @@ export class AddProductsComponent {
       data.push(this.myForm.get('created').value);
       data.push(this.myForm.get('payment').value);
       data.push(this.myForm.get('paid_date').value);
+      data.push(this.myForm.get('assigned').value);
       this.apiservice.add_products(data).subscribe((res: any) => {
         Swal.fire({
           title: 'Intimation Added Successfully',
