@@ -288,4 +288,12 @@ export class ApiserviceService {
     var formData = new FormData();
     return this.http.post(url, formData);
   }
+  save_paid_details(id: any, payment: any, paid_date: any): Observable<any> {
+    var url = this.website + 'save_paid_details.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    formData.append("payment", payment);
+    formData.append("paid_date", paid_date);
+    return this.http.post(url, formData);
+  }
 }

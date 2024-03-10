@@ -38,7 +38,7 @@ if ($id == 'undefined') {
         $resp->created = Date("Y-m-d", $result['created']);
         $resp->created_by = $result['created_by'];
         $resp->payment = $result['payment'];
-        $resp->paid_date = $result['paid_date']==null ? '' : Date('d-M-Y',$result['paid_date']);
+        $resp->paid_date = $result['paid_date']==null ? '' : Date('Y-m-d',$result['paid_date']);
         $resp->invoice = $result['invoice'] == '0' ? 0 : 1;
         $resp->assigned = $result['assigned'];
         

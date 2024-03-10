@@ -15,6 +15,7 @@ export class SalesReportComponent {
   table_data: any;
   dtOptions: any = {};
   showTable = false;
+  updated: any = {};
 
   columnList = [
     { name: 'Patient Name', id: 0, value: true },
@@ -85,6 +86,16 @@ export class SalesReportComponent {
         location.reload();
       })
     }
+  }
+  save_paid_details(id: any) {
+    var payment = document.querySelector<HTMLInputElement>('#paid_' + id)!.value
+    var paidDate = document.querySelector<HTMLInputElement>('#paid_date_' + id)!.value
+
+    this.apiservice.save_paid_details(id, payment, paidDate).subscribe((res) => {
+      document.querySelector<HTMLInputElement>('#paid_date_' + id)!.parentElement!.innerHTML = res.paid_date
+      document.querySelector<HTMLInputElement>('#paid_' + id)!.parentElement!.innerHTML = res.payment
+      this.updated[id] = true;
+    })
   }
   selectedColumns(e: any, caseid: any) {
     this.showTable = false;
