@@ -17,7 +17,7 @@ $precase = array_diff($precase, $caseid);
 $caseid = implode(',', $caseid);
 $precase = implode(',', $precase);
 
-if ($id == NULL) {
+if ($id == NULL || $id == 'undefined') {
     $dbcon->query("UPDATE intimations SET invoice=1,created='$date'
     where id in ($caseid);");
 
