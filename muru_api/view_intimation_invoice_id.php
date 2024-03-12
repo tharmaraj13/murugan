@@ -45,7 +45,7 @@ if ($check->num_rows > 0) {
 
         $response[] = $resp_status;
     }
-    $check1 = $dbcon->query("SELECT * FROM intimations where invoice=0 and insurance_tpa='" . $result->insurance_tpa . "';");
+    $check1 = $dbcon->query("SELECT * FROM intimations where invoice=0 and insurance_tpa='" . $result1->insurance_tpa . "';");
     if ($check1->num_rows > 0) {
         for ($i = 0; $i < $check1->num_rows; $i++) {
             $result = mysqli_fetch_assoc($check1);
