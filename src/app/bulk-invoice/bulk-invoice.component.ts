@@ -46,7 +46,7 @@ export class BulkInvoiceComponent {
       this.apiservice.view_intimation_invoice_id(this.id).subscribe((res: any) => {
         this.table_data = res.data;
         this.selection = res.selected;
-        this.preSelection = res.selected;
+        this.preSelection = [...res.selected];
         this.myForm.get('insurance_tpa').setValue(res.insurance_tpa);
         this.myForm.get('invoice_date').setValue(res.created_date);
       });
