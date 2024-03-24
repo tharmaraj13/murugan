@@ -39,6 +39,7 @@ import { UsersPageComponent } from './users-page/users-page.component';
 import { PermissionsPageComponent } from './permissions-page/permissions-page.component';
 import { AuthCholaComponent } from './auth-chola/auth-chola.component';
 import { AuthRelianceComponent } from './auth-reliance/auth-reliance.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { AuthRelianceComponent } from './auth-reliance/auth-reliance.component';
     UsersPageComponent,
     PermissionsPageComponent,
     AuthCholaComponent,
-    AuthRelianceComponent
+    AuthRelianceComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,

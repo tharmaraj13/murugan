@@ -131,7 +131,7 @@
                                                 <td *ngIf="columnList[16].value">{{prod.policy_type}}</td>
                                                 <td><a style="cursor: pointer;" *ngIf="prod.invoice_no!='' && prod.payment=='' && !updated[prod.invoice_id]"
                                                     (click)="save_paid_details(prod.invoice_id)">Save</a>&nbsp;<a href="/add-intimation/{{prod.id}}">Edit</a>
-                                                    &nbsp;<a style="cursor: pointer;"
+                                                    &nbsp;<a style="cursor: pointer;" *ngIf="userData['del-button']"
                                                         (click)="remove(prod.id)">Remove</a></td>
                                             </tr>
                                         </tbody>

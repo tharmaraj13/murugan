@@ -9,14 +9,9 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   constructor(private apiservice: ApiserviceService,private router: Router) { }
+  userData = this.apiservice.userData;
+  permissions = JSON.parse(this.apiservice.userData.permissions);
   ngOnInit(): void {
-    this.apiservice.checking().subscribe((res: any) => {
-      if (res.status == 'error') {
-        this.router.navigate(['login']);
-      }
-      if (res.status == 'ok') {
-      }
-    })
   }
   ngAfterViewInit(){
     document.querySelector('.mobile-toggle-menu')!.addEventListener('click',()=>{

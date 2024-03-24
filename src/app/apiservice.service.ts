@@ -2,22 +2,37 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiserviceService {
   // website = "http://10.10.10.195/mur_api/";
-  // website = "http://3.94.116.52/api/";
-  website = "/api/";
+  // private website = "http://3.94.116.52/api/";
+  private website = "/api/";
+  // Secret key for JWT
+  userData = Object();
+  private secretKey: string = 'asdfasdfqwerty';
   constructor(private http: HttpClient, private Cookies: CookieService) { }
-  checking(): Observable<Object> {
+  // Encrypt JSON data and return JWT token
+  encrypt(data: any): string {
+    return CryptoJS.AES.encrypt(JSON.stringify(data), this.secretKey).toString();
+  }
+  // Decrypt JWT token and return JSON data
+  decrypt(token: string): any {
+    try {
+      const decryptedData = CryptoJS.AES.decrypt(token, this.secretKey).toString(CryptoJS.enc.Utf8);
+      return JSON.parse(decryptedData);
+    } catch (error: any) {
+      console.log('JWT Verification failed:', error.message);
+      return { status: 'error' };
+    }
+  }
+  checking(): any {
     var token = this.Cookies.get('token');
-    if (token == '') { token = 'empty' };
-    var url = this.website + 'token.php';
-    var formData = new FormData();
-    formData.append("token", token);
-    return this.http.post(url, formData);
+    const data = this.decrypt(token);
+    return data;
   }
   signin(username: any, password: any): Observable<Object> {
     var url = this.website + 'signin.php';
@@ -26,7 +41,8 @@ export class ApiserviceService {
     formData.append("password", password);
     return this.http.post(url, formData);
   }
-  settoken(token: any) {
+  settoken(data: any) {
+    const token = this.encrypt(data);
     this.Cookies.set('token', token);
   }
   signout() {
@@ -34,6 +50,7 @@ export class ApiserviceService {
     if (token == '') { token = 'empty' }
     else {
       this.Cookies.delete('token');
+      this.userData = Object();
     }
   }
   add_products(data: any): Observable<Object> {
@@ -149,12 +166,13 @@ export class ApiserviceService {
     formData.append("id", id);
     return this.http.post(url, formData);
   }
-  view_sales(): Observable<Object> {
+  view_sales(alldata: any): Observable<Object> {
     var url = this.website + 'view_intimation.php';
     var formData = new FormData();
+    formData.append("alldata", alldata);
     return this.http.post(url, formData);
   }
-  view_sales_all(fdate: any, tdate: any, ifdate: any, itdate: any, claimno: any): Observable<Object> {
+  view_sales_all(fdate: any, tdate: any, ifdate: any, itdate: any, claimno: any, alldata: any): Observable<Object> {
     var url = this.website + 'view_intimation_all.php';
     var formData = new FormData();
     formData.append("fdate", fdate);
@@ -162,6 +180,7 @@ export class ApiserviceService {
     formData.append("ifdate", ifdate);
     formData.append("itdate", itdate);
     formData.append("claimno", claimno);
+    formData.append("alldata", alldata);
     return this.http.post(url, formData);
   }
   view_details(gicsid: any): Observable<Object> {
@@ -294,6 +313,25 @@ export class ApiserviceService {
     formData.append("id", id);
     formData.append("payment", payment);
     formData.append("paid_date", paid_date);
+    return this.http.post(url, formData);
+  }
+  view_permissions(): Observable<any> {
+    var url = this.website + 'view_permissions.php';
+    var formData = new FormData();
+    return this.http.post(url, formData);
+  }
+  view_permissions_id(id: any): Observable<any> {
+    var url = this.website + 'view_permissions_id.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  save_new_permission(role_id: any, home_page: any, permissions: any): Observable<Object> {
+    var url = this.website + 'save_new_permission.php';
+    var formData = new FormData();
+    formData.append("role_id", role_id);
+    formData.append("home_page", home_page);
+    formData.append("permissions", JSON.stringify(permissions));
     return this.http.post(url, formData);
   }
 }

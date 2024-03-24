@@ -32,7 +32,7 @@
                                                 <td>{{prod.address2}}</td>
                                                 <td>{{prod.gstin}}</td>
                                                 <td><a href="/add-insurance/{{prod.id}}">Edit</a>
-                                                    &nbsp;<a style="cursor: pointer;" (click)="remove(prod.id)">Remove</a></td>
+                                                    &nbsp;<a *ngIf="userData['del-button']" style="cursor: pointer;" (click)="remove(prod.id)">Remove</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

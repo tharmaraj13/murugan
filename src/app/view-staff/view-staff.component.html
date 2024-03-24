@@ -61,7 +61,7 @@
                                                 <td>{{prod.blood}}</td>
                                                 <td>{{prod.contact}}</td>
                                                 <td><a href="/add-staff/{{prod.id}}">Edit</a>
-                                                    &nbsp;<a style="cursor: pointer;" (click)="remove(prod.id)">Remove</a></td>
+                                                    &nbsp;<a *ngIf="userData['del-button']" style="cursor: pointer;" (click)="remove(prod.id)">Remove</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

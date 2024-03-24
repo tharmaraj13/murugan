@@ -6,6 +6,8 @@ header("Access-Control-Allow-Headers:Access-Control-Allow-Headers, Origin,Accept
 
 include 'config.php';
 
+$all = $_POST['alldata'] != 'false' ? '' : ' AND X.fees=0 ';
+
 $response = [];
 $check = $dbcon->query("SELECT
 X.*,
@@ -26,6 +28,7 @@ vendors Z,
 insurance W
 WHERE
 X.vendor = Z.id AND X.hosp_details = Y.id AND W.id = X.insurance_tpa
+" . $all . " 
 ORDER by id DESC;");
 if ($check->num_rows > 0) {
     for ($i = 0; $i < $check->num_rows; $i++) {

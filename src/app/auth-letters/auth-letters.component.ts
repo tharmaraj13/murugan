@@ -22,7 +22,7 @@ export class AuthLettersComponent {
         'copy', 'csv', 'excel', 'print'
       ]
     };
-    this.apiservice.view_sales().subscribe((res) => {
+    this.apiservice.view_sales(true).subscribe((res) => {
       this.table_data = res;
     });
     this.apiservice.view_staff().subscribe((res) => {

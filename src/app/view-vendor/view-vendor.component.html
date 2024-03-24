@@ -26,7 +26,7 @@
                                                 <td>{{i+1}}</td>
                                                 <td>{{prod.name}}</td>
                                                 <td><a href="/add-vendor/{{prod.id}}">Edit</a>
-                                                    &nbsp;<a style="cursor: pointer;" (click)="remove(prod.id)">Remove</a></td>
+                                                    &nbsp;<a *ngIf="userData['del-button']" style="cursor: pointer;" (click)="remove(prod.id)">Remove</a></td>
                                             </tr>
                                         </tbody>
                                     </table>

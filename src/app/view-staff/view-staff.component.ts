@@ -10,6 +10,7 @@ export class ViewStaffComponent {
   table_data: any;
   dtOptions: any = {};
   constructor(private apiservice: ApiserviceService) { }
+  userData = JSON.parse(this.apiservice.userData.permissions);
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',

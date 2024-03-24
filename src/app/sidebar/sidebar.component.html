@@ -9,7 +9,7 @@
         </div>
         <!--navigation-->
         <ul class="metismenu" id="menu">
-            <li>
+            <li *ngIf="userData['add-intimation']">
                 <a routerLink="/add-intimation" routerLinkActive="active">
                     <div class="parent-icon"><i class='bx bx-folder-plus'></i>
                     </div>
@@ -23,36 +23,36 @@
                     <div class="menu-title">Reports</div>
                 </a>
                 <ul class="dropdown-menu down-menu" routerLinkActive="show">
-                    <li> <a routerLink="/intimation-report" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Intimation Reports</a>
+                    <li *ngIf="userData['intimation-report']"> <a routerLink="/intimation-report" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Intimation Reports</a>
                     </li>
-                    <li> <a routerLink="/auth-letters" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Authorization Letters</a>
+                    <li *ngIf="userData['auth-letters']"> <a routerLink="/auth-letters" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Authorization Letters</a>
                     </li>
-                    <li> <a routerLink="/hospitals" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Hospitals List</a>
+                    <li *ngIf="userData['hospitals']"> <a routerLink="/hospitals" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Hospitals List</a>
                     </li>
-                    <li> <a routerLink="/vendors" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Vendors List</a>
+                    <li *ngIf="userData['vendors']"> <a routerLink="/vendors" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Vendors List</a>
                     </li>
-                    <li> <a routerLink="/insurance" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Insurance / TPA List</a>
+                    <li *ngIf="userData['insurance']"> <a routerLink="/insurance" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Insurance / TPA List</a>
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown" *ngIf="userData['add-hospital'] || userData['add-insurance'] || userData['add-vendor'] || userData['company']">
                 <a href="javascript:;" class="has-arrow" data-bs-toggle="dropdown">
                     <div class="parent-icon"><i class='bx bx-home-circle'></i>
                     </div>
                     <div class="menu-title">Masters</div>
                 </a>
                 <ul class="dropdown-menu down-menu" routerLinkActive="show">
-                    <li> <a routerLink="/add-hospital" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Add Hospitals</a>
+                    <li *ngIf="userData['add-hospital']"> <a routerLink="/add-hospital" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Add Hospitals</a>
                     </li>
-                    <li> <a routerLink="/add-insurance" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Add Insurance/TPA</a>
+                    <li *ngIf="userData['add-insurance']"> <a routerLink="/add-insurance" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Add Insurance/TPA</a>
                     </li>
-                    <li> <a routerLink="/add-vendor" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Add Vendors</a>
+                    <li *ngIf="userData['add-vendor']"> <a routerLink="/add-vendor" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Add Vendors</a>
                     </li>
-                    <li> <a routerLink="/company" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Company Details</a>
+                    <li *ngIf="userData['company']"> <a routerLink="/company" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Company Details</a>
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown" *ngIf="userData['add-staff']">
                 <a href="javascript:;" class="has-arrow" data-bs-toggle="dropdown">
                     <div class="parent-icon"><i class='bx bx-chart'></i>
                     </div>
@@ -65,7 +65,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown" *ngIf="userData['add-invoice']">
                 <a href="javascript:;" class="has-arrow" data-bs-toggle="dropdown">
                     <div class="parent-icon"><i class='bx bx-money'></i>
                     </div>
@@ -78,7 +78,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown" *ngIf="userData['view-users']">
                 <a href="javascript:;" class="has-arrow" data-bs-toggle="dropdown">
                     <div class="parent-icon"><i class='bx bx-user'></i>
                     </div>

@@ -10,35 +10,47 @@
                 <div class="form-body mt-4">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form class="row g-3" [formGroup]="myForm" (ngSubmit)="onSubmit()">
-                                <div class="border border-3 p-4 rounded">
+                            <div class="border border-3 p-4 rounded">
+                                <form class="row g-3" [formGroup]="myForm" (ngSubmit)="onSubmit()">
                                     <div class="row g-3">
-                                        <div class="col-md-2">
-                                            <label for="newuser" class="form-label">New User</label>
-                                            <input type="checkbox" id="newuser"
-                                                formControlName="newuser">
+                                        <div class="col-md-4">
+                                            <label for="role_id" class="form-label">Role</label>
+                                            <select class="form-select" id="role_id" formControlName="role_id"
+                                                (change)="listCases()">
+                                                <option *ngFor="let loc of roles" value="{{loc.id}}">{{loc.name}}
+                                                </option>
+                                            </select>
+                                            <small
+                                                *ngIf="myForm.get('role_id').errors && myForm.get('role_id').touched"><i
+                                                    class="bi bi-exclamation-circle"></i> Select Role</small>
                                         </div>
-                                        <div class="col-md-2">
-                                            <label for="viewuser" class="form-label">View Users</label>
-                                            <input type="checkbox" id="viewuser"
-                                                formControlName="viewuser">
-                                        </div>
-                                        <div class="col-md-2">
-                                            <label for="newintimation" class="form-label">New Intimation</label>
-                                            <input type="checkbox" id="newintimation"
-                                                formControlName="newintimation">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="row g-3 mt-3">
-                                    <div class="col-md-4">
-                                        <div class="d-grid">
-                                            <button type="submit" class="btn btn-light">Save Details</button>
+                                        <div class="col-md-4">
+                                            <label for="home_page" class="form-label">Home Page</label>
+                                            <input type="text" class="form-control" id="home_page"
+                                                formControlName="home_page">
+                                            <small
+                                                *ngIf="myForm.get('home_page').errors && myForm.get('home_page').touched"><i
+                                                    class="bi bi-exclamation-circle"></i> Enter Home Page</small>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
+                                    <div class="row g-3 mt-3">
+                                        <div *ngFor="let prod of permissions; let i=index;" class="col-md-2 distance">
+                                            <input type="checkbox" id="column-{{prod.id}}" [checked]="prod.value"
+                                                (click)="selectedColumns($event,i,prod.array_name)">
+                                            <label for="column-{{prod.id}}"
+                                                class="form-label">{{prod.display_name}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3 mt-3">
+                                        <div class="col-md-4">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-light">Save Details</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
 
                         </div>
                     </div><!--end row-->

@@ -9,6 +9,7 @@ import { ApiserviceService } from '../apiservice.service';
 export class ViewHospitalComponent {
   table_data: any;
   constructor(private apiservice:ApiserviceService) {}
+  userData = JSON.parse(this.apiservice.userData.permissions);
   ngAfterViewInit(): void{
     this.apiservice.view_names().subscribe((res) => {
       this.table_data = res;

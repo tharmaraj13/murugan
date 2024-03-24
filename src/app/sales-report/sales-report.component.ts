@@ -38,8 +38,8 @@ export class SalesReportComponent {
     { name: 'Assigned To', id: 17, value: false },
   ];
   constructor(private apiservice: ApiserviceService) { }
+  userData = JSON.parse(this.apiservice.userData.permissions);
   ngAfterViewInit(): void {
-
   }
   ngOnInit(): void {
     this.dtOptions = {
@@ -61,7 +61,7 @@ export class SalesReportComponent {
         claimno: new FormControl('')
       }
     );
-    this.apiservice.view_sales().subscribe((res) => {
+    this.apiservice.view_sales(this.userData['all-data']).subscribe((res) => {
       this.table_data = res;
       this.showTable = true;
     })
@@ -73,7 +73,8 @@ export class SalesReportComponent {
       this.myForm.get('todate').value,
       this.myForm.get('ifromdate').value,
       this.myForm.get('itodate').value,
-      this.myForm.get('claimno').value
+      this.myForm.get('claimno').value,
+      this.userData['all-data']
     ).subscribe((res) => {
       this.table_data = res;
       this.showTable = true;
