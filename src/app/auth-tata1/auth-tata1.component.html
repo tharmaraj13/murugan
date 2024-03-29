@@ -1,0 +1,80 @@
+<div class="container">
+    <div id="invoiceholder">
+        <div id="invoice1">
+            <div class="cta-group">
+                <a style="cursor: pointer;" (click)="downloadPdf();" class="btn-primary">Print</a>
+            </div>
+        </div>
+
+        <div id="invoice">
+            <div class="invoiceheader">
+                <!-- <div style="width: 100%;height: 150px;"></div> -->
+                <img class="company-logo" src="assets/images/tata.png" style="width: 30%;">
+                <p class="company-heading">Tata AIG General Insurance Company Ltd.</p>
+                <p class="company-address">2nd Floor, Samson Towers<br>
+                    No: 403L, Pantheon Road<br>
+                    Egmore, Chennai - 600 008<br>
+                    Phone: 044 - 66220222</p>
+            </div>
+            <div class="table-main" style="font-size: 0.9em;">
+                <p style="color: #444;font-weight: bold;text-align: right;">Date: {{table_data?.doi}}</p>
+                <div style="color: #444;font-weight: bold;padding: 10px 0px;">
+                    <p>To</p>
+                    <p>The Medical Superintendent /Hospital Authority,</p>
+                    <p>{{table_data?.hname}},</p>
+                    <p>{{table_data?.hplace}}.</p>
+                </div>
+                <div class="para-heads">
+                    <p class="company-subject">Re: Case Sheet & Injury /Discharge Summary, Hospital Bills Particulars of
+                        {{table_data?.pname}}</p>
+                    <p>We have engaged the services of <span>GLOBAL INSURANCE CLAIM SOLUTIONS</span> to look into the TP
+                        Claim filed
+                        with us by the injured <span>{{table_data?.pname}}</span></p>
+                    <p>Ref: OP/UHID No: <span>{{table_data?.opno}}</span>, IP No: <span>{{table_data?.ipno}}</span>,
+                        DOA: <span>{{table_data?.doa}}</span>, DOD: <span>{{table_data?.dod}}</span></p>
+                    <p>Kindly provide us the following details to enable us to decide on the claim: -</p>
+                    <p>Kindly handover the AR entry, Case sheet, Injury Summary Report & other relevant documents
+                        pertaining to this
+                        case duly attested by <span>{{table_data?.hname}}</span>,</p>
+                    <p>Details of Medical expense spent by patient Injured <span>{{table_data?.pname}}</span></p>
+                    <ul>
+                        <li>
+                            <p>If any medi claim insurance claimed by the patient injured
+                                <span>{{table_data?.pname}}</span></p>
+                        </li>
+                        <li>
+                            <p>Confirm the medical bills and Discharge summary settled by the Patient
+                                <span>{{table_data?.pname}}</span></p>
+                        </li>
+                        <li>
+                            <p>We hereby authorize <span>{{table_data?.sname}}</span> from Global Insurance Claim
+                                Solutions to verify and
+                                for collecting the required documents in respect of the above facts on our behalf.</p>
+                        </li>
+                    </ul>
+
+                    <p>We therefore request the concerned to render all necessary assistance as may be necessary in
+                        completing the
+                        investigations including parting with copies of all relevant records pertaining to the
+                        treatment.</p>
+                </div>
+                <div>
+                    <p>Thanking you in advance.</p>
+                </div>
+                <br>
+                <div>
+                    <p>Yours sincerely,</p>
+                    <p><span>For TATA AIG GENERAL INSURANCE CO LTD.</span></p>
+                    <img src="assets/images/tata1_sign.png" style="height: 120px;">
+                    <p><span>Authorized Signatory</span></p>
+                </div>
+                <div class="para-footer">
+                    <img src="assets/images/tata1_foot.png" style="width: 100%;">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

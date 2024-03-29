@@ -40,6 +40,11 @@ export class AuthLettersComponent {
       window.open(`/gics-letter/${id}/${eid.value}`)
       // location.href = `/tata-letter/${id}/${eid.value}`
     }
+    else if (iname == 'TATA AIG General Insurance Company Ltd') {
+      window.open(`/tata-letter/${id}/${eid.value}/1`)
+      window.open(`/gics-letter/${id}/${eid.value}`)
+      // location.href = `/tata-letter/${id}/${eid.value}`
+    }
     else if (iname == 'CHOLA MS GENERAL INSURANCE COMPANY LIMITED') {
       window.open(`/chola-letter/${id}/${eid.value}`)
       window.open(`/gics-letter/${id}/${eid.value}`)

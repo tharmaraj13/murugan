@@ -30,6 +30,7 @@ import { AuthCholaComponent } from './auth-chola/auth-chola.component';
 import { AuthRelianceComponent } from './auth-reliance/auth-reliance.component';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { AuthTata1Component } from './auth-tata1/auth-tata1.component';
 
 const routes: Routes = [
   // {path:'',component:SalesReportComponent},
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'auth-letters', component: AuthLettersComponent, canActivate: [AuthGuardGuard] },
   { path: 'aditya-letter/:id/:eid', component: AuthorizationComponent, canActivate: [AuthGuardGuard] },
   { path: 'tata-letter/:id/:eid', component: AuthTataComponent, canActivate: [AuthGuardGuard] },
+  { path: 'tata-letter/:id/:eid/:taj', component: AuthTata1Component, canActivate: [AuthGuardGuard] },
   { path: 'chola-letter/:id/:eid', component: AuthCholaComponent, canActivate: [AuthGuardGuard] },
   { path: 'reliance-letter/:id/:eid', component: AuthRelianceComponent, canActivate: [AuthGuardGuard] },
   { path: 'gics-letter/:id/:eid', component: AuthGicsComponent, canActivate: [AuthGuardGuard] },

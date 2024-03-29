@@ -11,6 +11,7 @@ export class AuthGuardGuard {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
     const url: any = route.url[0]?.path;
+    const url1: any = route.routeConfig?.path;
     let data = this.apiservice.userData;
     if (Object.keys(this.apiservice.userData).length === 0 || this.apiservice.userData.status != 'ok') {
       data = this.apiservice.checking();
@@ -18,15 +19,15 @@ export class AuthGuardGuard {
     }
     if (data.status == 'ok') {
       const permissions = JSON.parse(data.permissions);
-      if (url == 'login' || url == '') {
+      if (url1 == '' || url == 'login') {
         this.router.navigate([data.homepage]);
       }
-      if (!permissions[url]) {
+      else if (!permissions[url]) {
         this.router.navigate(['404-page']);
       }
       return true;
     } else {
-      if (url == 'login' || url == '') {
+      if (url1 == '' || url == 'login') {
         return true;
       }
     }
