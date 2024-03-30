@@ -51,6 +51,9 @@ export class PermissionsPageComponent {
     var id = this.myForm.get('role_id').value;
     this.apiservice.view_permissions_id(id).subscribe((res) => {
       if (res.status == 'ok') {
+        for (const [index, perm] of this.permissions.entries()) {
+          this.permissions[index].value = false;
+        }
         this.myForm.get('home_page').setValue(res.homepage);
         this.listCol = JSON.parse(res.permissions);
         for (const list in this.listCol) {
