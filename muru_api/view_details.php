@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers:Access-Control-Allow-Headers, Origin,Accept
 include 'config.php';
 $gicsid = $_POST['gicsid'];
 $resp_status = new stdClass;
-$cases = ['Genuinity' => 0, 'PED' => 1, 'Accident' => 2, 'Infertility' => 3, 'OPD to IPD' => 4];
+$cases = ['Genuinity' => 0, 'PED' => 1, 'Accident' => 2, 'Infertility' => 3, 'OPD to IPD' => 4, 'Critical Illness' => 5];
 $types = ['Reimbursement' => 0, 'Cashless' => 1, 'Bill Verification' => 2, 'PA' => 3, 'MPA' => 4, 'Critical Illness' => 5, 'Life Insurance' => 6];
 $check = $dbcon->query("SELECT
 X.*,

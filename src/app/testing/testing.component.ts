@@ -23,7 +23,8 @@ export class TestingComponent {
     ['ped_doctor.docx', 'ped_insured.docx'],
     ['accident_doctor.docx', 'accident_insured.docx'],
     ['infertile_doctor.docx', 'infertile_insured.docx'],
-    ['opd_doctor.docx', 'opd_insured.docx']
+    ['opd_doctor.docx', 'opd_insured.docx'],
+    ['ci_doctor.docx', 'ci_insured.docx'],
   ];
   typenos=[
     'ri_final_report.docx',
@@ -31,7 +32,7 @@ export class TestingComponent {
     'bv_final_report.docx',
     'pa_final_report.docx',
     'pa_final_report.docx',
-    'final_report.docx',
+    'ci_final_report.docx',
     'final_report.docx',
   ];
   docx: any;
