@@ -31,8 +31,9 @@ X.vendor = Z.id AND X.hosp_details = Y.id AND W.id = X.insurance_tpa
 " . $all . " 
 ORDER by id DESC;");
 if ($check->num_rows > 0) {
-    for ($i = 0; $i < $check->num_rows; $i++) {
-        $result = mysqli_fetch_assoc($check);
+    while ($result = $check->fetch_assoc()) {
+    // for ($i = 0; $i < $check->num_rows; $i++) {
+    //     $result = mysqli_fetch_assoc($check);
         $resp_status = new stdClass;
         $resp_status->id = $result['id'];
         $resp_status->gicsid = $result['gicsid'];

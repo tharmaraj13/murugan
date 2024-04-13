@@ -91,6 +91,23 @@
                     </li>
                 </ul>
             </li>
+            <li class="dropdown" *ngIf="userData['view-expenses']">
+                <a href="javascript:;" class="has-arrow" data-bs-toggle="dropdown">
+                    <div class="parent-icon"><i class='bx bx-money'></i>
+                    </div>
+                    <div class="menu-title">Expenses</div>
+                </a>
+                <ul class="dropdown-menu down-menu" routerLinkActive="show">
+                    <li> <a routerLink="/view-expenses" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>View Expenses</a>
+                    </li>
+                    <li> <a routerLink="/add-expenses" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Add Expenses</a>
+                    </li>
+                    <li> <a routerLink="/add-expense-type" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>Add Expense Types</a>
+                    </li>
+                    <li> <a routerLink="/view-expense-type" routerLinkActive="active"><i class="bx bx-right-arrow-alt"></i>View Expense Types</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
         <!--end navigation-->
     </div>

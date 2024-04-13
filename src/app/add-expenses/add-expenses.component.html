@@ -1,0 +1,86 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body p-4">
+                <h5 class="card-title">Add New Expense</h5>
+                <hr />
+                <div class="form-body mt-4">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="border border-3 p-4 rounded">
+                                <form class="row g-3" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                    <div class="col-md-4">
+                                        <label for="staff_id" class="form-label">Staff Name</label>
+                                        <select class="form-select" id="staff_id" formControlName="staff_id">
+                                            <option *ngFor="let vend of staffs" value="{{vend.id}}">{{vend.sname}}
+                                            </option>
+                                        </select>
+                                        <small
+                                            *ngIf="myForm.get('staff_id').errors && myForm.get('staff_id').touched"><i
+                                                class="bi bi-exclamation-circle"></i> Staff Name is required</small>
+                                    </div>
+                                    <div class="col-md-4" *ngIf="myForm.get('staff_id').value==otherId">
+                                        <label for="staff_name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="staff_name"
+                                            formControlName="staff_name">
+                                        <small
+                                            *ngIf="(myForm.get('staff_id').value==otherId) && myForm.get('staff_name').touched"><i
+                                                class="bi bi-exclamation-circle"></i> Name is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="e_date" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="e_date" formControlName="e_date">
+                                        <small *ngIf="myForm.get('e_date').errors && myForm.get('e_date').touched"><i
+                                                class="bi bi-exclamation-circle"></i> Enter Date</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="e_type_id" class="form-label">Expense Type</label>
+                                        <select class="form-select" id="e_type_id" formControlName="e_type_id">
+                                            <option *ngFor="let vend of expenseTypes" value="{{vend.id}}">{{vend.ename}}
+                                            </option>
+                                        </select>
+                                        <small
+                                            *ngIf="myForm.get('e_type_id').errors && myForm.get('e_type_id').touched"><i
+                                                class="bi bi-exclamation-circle"></i> Expense Type is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="amount" class="form-label">Amount</label>
+                                        <input type="number" class="form-control" id="amount" formControlName="amount">
+                                        <small *ngIf="myForm.get('amount').errors && myForm.get('amount').touched"><i
+                                                class="bi bi-exclamation-circle"></i> Amount is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="payment_mode" class="form-label">Payment Mode</label>
+                                        <input type="text" class="form-control" id="payment_mode"
+                                            formControlName="payment_mode">
+                                        <small
+                                            *ngIf="myForm.get('payment_mode').errors && myForm.get('payment_mode').touched"><i
+                                                class="bi bi-exclamation-circle"></i> Payment Mode is required</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="remarks" class="form-label">Remarks</label>
+                                        <input type="text" class="form-control" id="remarks" formControlName="remarks">
+                                        <small *ngIf="myForm.get('remarks').errors && myForm.get('remarks').touched"><i
+                                                class="bi bi-exclamation-circle"></i> Remarks is required</small>
+                                    </div>
+                                    <div class="row g-3 mt-3">
+                                        <div class="col-md-4">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-light">Save Expense</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--end page wrapper -->

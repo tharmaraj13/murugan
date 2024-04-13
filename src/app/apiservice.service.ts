@@ -334,4 +334,49 @@ export class ApiserviceService {
     formData.append("permissions", JSON.stringify(permissions));
     return this.http.post(url, formData);
   }
+  add_expense_type(ename: any, id: any): Observable<Object> {
+    var url = this.website + 'add_expense_type.php';
+    var formData = new FormData();
+    formData.append("ename", ename);
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_expense_type(id: any): Observable<Object> {
+    var url = this.website + 'view_expense_type.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  del_expense_type(id: any): Observable<Object> {
+    var url = this.website + 'del_expense_type.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  add_expenses(staff_id: any, staff_name: any, e_date: any, e_type_id: any,
+    amount: any, payment_mode: any, remarks: any, id: any): Observable<Object> {
+    var url = this.website + 'add_expenses.php';
+    var formData = new FormData();
+    formData.append("staff_id", staff_id);
+    formData.append("staff_name", staff_name);
+    formData.append("e_date", e_date);
+    formData.append("e_type_id", e_type_id);
+    formData.append("amount", amount);
+    formData.append("payment_mode", payment_mode);
+    formData.append("remarks", remarks);
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_expenses(id: any): Observable<Object> {
+    var url = this.website + 'view_expenses.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  del_expenses(id: any): Observable<Object> {
+    var url = this.website + 'del_expenses.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
 }

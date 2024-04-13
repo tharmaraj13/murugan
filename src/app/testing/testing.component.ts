@@ -26,7 +26,7 @@ export class TestingComponent {
     ['opd_doctor.docx', 'opd_insured.docx'],
     ['ci_doctor.docx', 'ci_insured.docx'],
   ];
-  typenos=[
+  typenos = [
     'ri_final_report.docx',
     'cl_final_report.docx',
     'bv_final_report.docx',
@@ -36,7 +36,7 @@ export class TestingComponent {
     'final_report.docx',
   ];
   docx: any;
-  typesno:any;
+  typesno: any;
   constructor(private apiservice: ApiserviceService, private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];

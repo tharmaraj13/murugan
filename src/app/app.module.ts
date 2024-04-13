@@ -41,6 +41,10 @@ import { AuthCholaComponent } from './auth-chola/auth-chola.component';
 import { AuthRelianceComponent } from './auth-reliance/auth-reliance.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { AuthTata1Component } from './auth-tata1/auth-tata1.component';
+import { AddExpenseTypeComponent } from './add-expense-type/add-expense-type.component';
+import { ViewExpenseTypeComponent } from './view-expense-type/view-expense-type.component';
+import { AddExpensesComponent } from './add-expenses/add-expenses.component';
+import { ViewExpensesComponent } from './view-expenses/view-expenses.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +80,11 @@ import { AuthTata1Component } from './auth-tata1/auth-tata1.component';
     AuthCholaComponent,
     AuthRelianceComponent,
     UnauthorizedComponent,
-    AuthTata1Component
+    AuthTata1Component,
+    AddExpenseTypeComponent,
+    ViewExpenseTypeComponent,
+    AddExpensesComponent,
+    ViewExpensesComponent
   ],
   imports: [
     BrowserModule,

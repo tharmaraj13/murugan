@@ -31,6 +31,10 @@ import { AuthRelianceComponent } from './auth-reliance/auth-reliance.component';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { AuthTata1Component } from './auth-tata1/auth-tata1.component';
+import { AddExpenseTypeComponent } from './add-expense-type/add-expense-type.component';
+import { ViewExpenseTypeComponent } from './view-expense-type/view-expense-type.component';
+import { ViewExpensesComponent } from './view-expenses/view-expenses.component';
+import { AddExpensesComponent } from './add-expenses/add-expenses.component';
 
 const routes: Routes = [
   // {path:'',component:SalesReportComponent},
@@ -69,8 +73,14 @@ const routes: Routes = [
   { path: 'view-users', component: UsersPageComponent, canActivate: [AuthGuardGuard] },
   { path: 'view-permissions', component: PermissionsPageComponent, canActivate: [AuthGuardGuard] },
   { path: 'view-card/:id', component: ViewCardComponent, canActivate: [AuthGuardGuard] },
+  { path: 'add-expense-type', component: AddExpenseTypeComponent, canActivate: [AuthGuardGuard] },
+  { path: 'add-expense-type/:id', component: AddExpenseTypeComponent, canActivate: [AuthGuardGuard] },
+  { path: 'view-expense-type', component: ViewExpenseTypeComponent, canActivate: [AuthGuardGuard] },
+  { path: 'add-expenses', component: AddExpensesComponent, canActivate: [AuthGuardGuard] },
+  { path: 'add-expenses/:id', component: AddExpensesComponent, canActivate: [AuthGuardGuard] },
+  { path: 'view-expenses', component: ViewExpensesComponent, canActivate: [AuthGuardGuard] },
   { path: '404-page', component: UnauthorizedComponent },
-  { path: '**', component: SalesReportComponent, canActivate: [AuthGuardGuard] },
+  { path: '**', component: UnauthorizedComponent },
 ];
 
 @NgModule({
