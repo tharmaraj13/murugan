@@ -18,22 +18,23 @@ function loadFile(url: any, callback: any) {
 export class TestingComponent {
   id: any;
   table_data: any;
+  iname: any;
   cases = [
-    ['gen_doctor.docx', 'gen_insured.docx'],
-    ['ped_doctor.docx', 'ped_insured.docx'],
-    ['accident_doctor.docx', 'accident_insured.docx'],
-    ['infertile_doctor.docx', 'infertile_insured.docx'],
-    ['opd_doctor.docx', 'opd_insured.docx'],
-    ['ci_doctor.docx', 'ci_insured.docx'],
+    ['gen_doctor.docx', 'gen_insured.docx', 'tata_gen_insured.docx'],
+    ['ped_doctor.docx', 'ped_insured.docx', 'tata_ped_insured.docx'],
+    ['accident_doctor.docx', 'accident_insured.docx', 'tata_accident_insured.docx'],
+    ['infertile_doctor.docx', 'infertile_insured.docx', 'tata_infertile_insured.docx'],
+    ['opd_doctor.docx', 'opd_insured.docx', 'tata_opd_insured.docx'],
+    ['ci_doctor.docx', 'ci_insured.docx', 'tata_ci_insured.docx'],
   ];
   typenos = [
-    'ri_final_report.docx',
-    'cl_final_report.docx',
-    'bv_final_report.docx',
-    'pa_final_report.docx',
-    'pa_final_report.docx',
-    'ci_final_report.docx',
-    'final_report.docx',
+    ['ri_final_report.docx', 'tata_ri_final_report.docx'],
+    ['cl_final_report.docx', 'tata_cl_final_report.docx'],
+    ['bv_final_report.docx', 'tata_bv_final_report.docx'],
+    ['pa_final_report.docx', 'tata_pa_final_report.docx'],
+    ['mpa_final_report.docx', 'tata_mpa_final_report.docx'],
+    ['ci_final_report.docx', 'tata_ci_final_report.docx'],
+    ['li_final_report.docx', 'tata_li_final_report.docx'],
   ];
   docx: any;
   typesno: any;
@@ -45,6 +46,7 @@ export class TestingComponent {
       if (res.status == 'ok') {
         this.docx = this.cases[res.caseno];
         this.typesno = this.typenos[res.typeno];
+        this.iname = res.iname;
       }
     })
   }
@@ -52,8 +54,12 @@ export class TestingComponent {
     location.href = '/invoice/' + this.table_data.gicsid;
   }
   downloading1() {
+    let template = this.typesno[0];
+    if (this.iname == "TATA AIG General Insurance Company Ltd" || this.iname == "TATA AIG General Insurance Company Limited") {
+      template = this.typesno[1];
+    }
     loadFile(
-      "assets/template/" + this.typesno,
+      "assets/template/" + template,
       (error: any, content: any) => {
         if (error) {
           throw error;
@@ -71,7 +77,7 @@ export class TestingComponent {
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         });
         // Output the document using Data-URI
-        saveAs(blob, this.typesno);
+        saveAs(blob, template);
       }
     );
   }
@@ -100,8 +106,12 @@ export class TestingComponent {
     );
   }
   downloading3() {
+    let template = this.docx[1];
+    if (this.iname == "TATA AIG General Insurance Company Ltd" || this.iname == "TATA AIG General Insurance Company Limited") {
+      template = this.docx[2];
+    }
     loadFile(
-      "assets/template/" + this.docx[1],
+      "assets/template/" + template,
       (error: any, content: any) => {
         if (error) {
           throw error;
@@ -119,7 +129,7 @@ export class TestingComponent {
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         });
         // Output the document using Data-URI
-        saveAs(blob, this.docx[1]);
+        saveAs(blob, template);
       }
     );
   }
