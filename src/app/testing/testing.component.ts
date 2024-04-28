@@ -55,7 +55,7 @@ export class TestingComponent {
   }
   downloading1() {
     let template = this.typesno[0];
-    if (this.iname == "TATA AIG General Insurance Company Ltd" || this.iname == "TATA AIG General Insurance Company Limited") {
+    if (this.iname == "TATA AIG General Insurance Company Limited") {
       template = this.typesno[1];
     }
     loadFile(
@@ -107,7 +107,7 @@ export class TestingComponent {
   }
   downloading3() {
     let template = this.docx[1];
-    if (this.iname == "TATA AIG General Insurance Company Ltd" || this.iname == "TATA AIG General Insurance Company Limited") {
+    if (this.iname == "TATA AIG General Insurance Company Limited") {
       template = this.docx[2];
     }
     loadFile(
