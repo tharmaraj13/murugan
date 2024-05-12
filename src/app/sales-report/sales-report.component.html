@@ -58,8 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="table-responsive">
-                                    <table class="table mb-0" *ngIf="showTable" datatable
-                                        [dtOptions]="dtOptions">
+                                    <table class="table mb-0" *ngIf="showTable" datatable [dtOptions]="dtOptions">
                                         <thead class="table-light">
                                             <tr>
                                                 <th>S.No</th>
@@ -118,20 +117,25 @@
                                                 <td *ngIf="columnList[9].value">{{prod.mrd}}</td>
                                                 <td *ngIf="columnList[10].value">{{prod.transport}}</td>
                                                 <td *ngIf="columnList[11].value">{{prod.payment}}
-                                                    <input *ngIf="prod.invoice_no!='' && prod.payment==''" type="text" id="paid_{{prod.invoice_id}}">
+                                                    <input *ngIf="prod.invoice_no!='' && prod.payment==''" type="text"
+                                                        id="paid_{{prod.invoice_id}}">
                                                 </td>
                                                 <td *ngIf="columnList[12].value">
                                                     {{prod.paid_date}}
-                                                    <input *ngIf="prod.invoice_no!='' && prod.payment==''" type="date" id="paid_date_{{prod.invoice_id}}">
+                                                    <input *ngIf="prod.invoice_no!='' && prod.payment==''" type="date"
+                                                        id="paid_date_{{prod.invoice_id}}">
                                                 </td>
                                                 <td *ngIf="columnList[17].value">{{prod.assigned}}</td>
                                                 <td *ngIf="columnList[13].value">{{prod.hname}}</td>
                                                 <td *ngIf="columnList[14].value">{{prod.opno}}</td>
                                                 <td *ngIf="columnList[15].value">{{prod.ipno}}</td>
                                                 <td *ngIf="columnList[16].value">{{prod.policy_type}}</td>
-                                                <td><a style="cursor: pointer;" *ngIf="prod.invoice_no!='' && prod.payment=='' && !updated[prod.invoice_id]"
-                                                    (click)="save_paid_details(prod.invoice_id)">Save</a>&nbsp;<a href="/add-intimation/{{prod.id}}">Edit</a>
-                                                    &nbsp;<a style="cursor: pointer;" *ngIf="userData['del-button']"
+                                                <td><a tabindex="0" style="cursor: pointer;"
+                                                        *ngIf="prod.invoice_no!='' && prod.payment=='' && !updated[prod.invoice_id]"
+                                                        (click)="save_paid_details(prod.invoice_id)">Save</a>&nbsp;<a
+                                                        tabindex="0" href="/add-intimation/{{prod.id}}">Edit</a>
+                                                    &nbsp;<a tabindex="0" style="cursor: pointer;"
+                                                        *ngIf="userData['del-button']"
                                                         (click)="remove(prod.id)">Remove</a></td>
                                             </tr>
                                         </tbody>
