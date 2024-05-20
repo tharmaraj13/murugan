@@ -29,7 +29,7 @@ insurance W
 WHERE
 X.vendor = Z.id AND X.hosp_details = Y.id AND W.id = X.insurance_tpa
 " . $all . " 
-ORDER by id DESC;");
+ORDER by id DESC LIMIT 500;");
 if ($check->num_rows > 0) {
     while ($result = $check->fetch_assoc()) {
     // for ($i = 0; $i < $check->num_rows; $i++) {
