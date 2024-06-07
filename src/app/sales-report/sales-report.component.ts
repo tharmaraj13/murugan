@@ -98,6 +98,12 @@ export class SalesReportComponent {
       this.updated[id] = true;
     })
   }
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault(); // Prevent default action to avoid scrolling
+      (event.target as HTMLElement).click(); // Simulate a click event
+    }
+  }
   selectedColumns(e: any, caseid: any) {
     this.showTable = false;
     if (e.target.checked) {

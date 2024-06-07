@@ -132,11 +132,13 @@
                                                 <td *ngIf="columnList[16].value">{{prod.policy_type}}</td>
                                                 <td><a tabindex="0" style="cursor: pointer;"
                                                         *ngIf="prod.invoice_no!='' && prod.payment=='' && !updated[prod.invoice_id]"
-                                                        (click)="save_paid_details(prod.invoice_id)">Save</a>&nbsp;<a
-                                                        tabindex="0" href="/add-intimation/{{prod.id}}">Edit</a>
-                                                    &nbsp;<a tabindex="0" style="cursor: pointer;"
-                                                        *ngIf="userData['del-button']"
-                                                        (click)="remove(prod.id)">Remove</a></td>
+                                                        (click)="save_paid_details(prod.invoice_id)"
+                                                        (keydown)="handleKeyDown($event)">Save</a>&nbsp;<a tabindex="0"
+                                                        href="/add-intimation/{{prod.id}}"
+                                                        (keydown)="handleKeyDown($event)">Edit</a>&nbsp;<a tabindex="0"
+                                                        style="cursor: pointer;" *ngIf="userData['del-button']"
+                                                        (click)="remove(prod.id)"
+                                                        (keydown)="handleKeyDown($event)">Remove</a></td>
                                             </tr>
                                         </tbody>
                                     </table>
