@@ -1,0 +1,101 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body p-4">
+                <h5 class="card-title">Create Bulk Invoice</h5>
+                <hr />
+                <div class="form-body mt-4">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="border border-3 p-4 rounded">
+                                <form class="row g-3" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                    <div class="col-md-4">
+                                        <label for="insurance_tpa" class="form-label">Insurance / TPA</label>
+                                        <select class="form-select" id="insurance_tpa" formControlName="insurance_tpa"
+                                            (change)="listCases()">
+                                            <option *ngFor="let loc of insurance" value="{{loc.id}}">{{loc.name}}
+                                            </option>
+                                        </select>
+                                        <small
+                                            *ngIf="myForm.get('insurance_tpa').errors && myForm.get('insurance_tpa').touched"><i
+                                                class="bi bi-exclamation-circle"></i> Select Insurance / TPA</small>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="invoice_date" class="form-label">Invoice Date</label>
+                                        <input type="date" class="form-control" id="invoice_date"
+                                            formControlName="invoice_date">
+                                        <small
+                                            *ngIf="myForm.get('invoice_date').errors && myForm.get('invoice_date').touched"><i
+                                                class="bi bi-exclamation-circle"></i> Invoice Date is required</small>
+                                    </div>
+
+                                    <div class="col-lg-12 mt-3">
+                                        <div class="border border-3 p-4 rounded">
+                                            <div class="table-responsive">
+                                                <table class="table mb-0" *ngIf="table_data?.length" datatable
+                                                    [dtOptions]="dtOptions">
+                                                    <thead class="table-light">
+                                                        <tr>
+                                                            <th>S.No</th>
+                                                            <th>Patient Name</th>
+                                                            <th>Claim Type</th>
+                                                            <th>Date of Intimation</th>
+                                                            <th>Claim Number</th>
+                                                            <th>Fees</th>
+                                                            <th>Incentive</th>
+                                                            <th>MRD</th>
+                                                            <th>Transport</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let prod of table_data;let i=index">
+                                                            <td>{{i+1}}</td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <h6 class="mb-0 font-14">
+                                                                        <a target="_blank"
+                                                                            href="/view/{{prod.gicsid}}">{{prod.pname}}</a>
+                                                                    </h6>
+                                                                </div>
+                                                            </td>
+                                                            <td>{{prod.claim_type}}</td>
+                                                            <td>{{prod.doi}}</td>
+                                                            <td>{{prod.claimno}}</td>
+                                                            <td>{{prod.fees}}</td>
+                                                            <td>{{prod.incentive}}</td>
+                                                            <td>{{prod.mrd}}</td>
+                                                            <td>{{prod.transport}}</td>
+                                                            <td><input type="checkbox" [checked]="prod.status" (click)="selectedCases($event,prod.id)"></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="text-center mt-3">
+                                                    <h4 *ngIf="!table_data?.length">No Pending Cases</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3 mt-3">
+                                        <div class="col-md-4">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-light">Create Invoice</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--end page wrapper -->
+<app-footer></app-footer>

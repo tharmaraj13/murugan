@@ -45,6 +45,10 @@ import { AddExpenseTypeComponent } from './add-expense-type/add-expense-type.com
 import { ViewExpenseTypeComponent } from './view-expense-type/view-expense-type.component';
 import { AddExpensesComponent } from './add-expenses/add-expenses.component';
 import { ViewExpensesComponent } from './view-expenses/view-expenses.component';
+import { IbulkInvoiceComponent } from './ibulk-invoice/ibulk-invoice.component';
+import { IbulkInvoiceReportComponent } from './ibulk-invoice-report/ibulk-invoice-report.component';
+import { IbulkViewComponent } from './ibulk-view/ibulk-view.component';
+import { IbulkInvoiceAnnexureComponent } from './ibulk-invoice-annexure/ibulk-invoice-annexure.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +88,11 @@ import { ViewExpensesComponent } from './view-expenses/view-expenses.component';
     AddExpenseTypeComponent,
     ViewExpenseTypeComponent,
     AddExpensesComponent,
-    ViewExpensesComponent
+    ViewExpensesComponent,
+    IbulkInvoiceComponent,
+    IbulkInvoiceReportComponent,
+    IbulkViewComponent,
+    IbulkInvoiceAnnexureComponent
   ],
   imports: [
     BrowserModule,

@@ -8,9 +8,8 @@ import * as CryptoJS from 'crypto-js';
   providedIn: 'root'
 })
 export class ApiserviceService {
-  // website = "http://10.10.10.195/mur_api/";
-  // private website = "http://3.94.116.52/api/";
-  private website = "/api/";
+  private website = "http://13.201.13.37/api/";
+  // private website = "/api/";
   // Secret key for JWT
   userData = Object();
   private secretKey: string = 'asdfasdfqwerty';
@@ -263,6 +262,18 @@ export class ApiserviceService {
   }
   view_intimation_invoice_id(id: any): Observable<Object> {
     var url = this.website + 'view_intimation_invoice_id.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_intimation_binvoice(id: any): Observable<Object> {
+    var url = this.website + 'view_intimation_binvoice.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_intimation_binvoice_id(id: any): Observable<Object> {
+    var url = this.website + 'view_intimation_binvoice_id.php';
     var formData = new FormData();
     formData.append("id", id);
     return this.http.post(url, formData);
