@@ -5,8 +5,10 @@ header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT');
 header("Access-Control-Allow-Headers:Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
 
 include 'config.php';
-
-$all = $_POST['alldata'] != 'false' ? '' : ' AND X.fees=0 ';
+$all = '';
+if (isset($_POST['alldata'])) {
+    $all = $_POST['alldata'] != 'false' ? '' : ' AND X.fees=0 ';
+}
 
 $response = [];
 $check = $dbcon->query("SELECT
@@ -32,8 +34,8 @@ X.vendor = Z.id AND X.hosp_details = Y.id AND W.id = X.insurance_tpa
 ORDER by id DESC;");
 if ($check->num_rows > 0) {
     while ($result = $check->fetch_assoc()) {
-    // for ($i = 0; $i < $check->num_rows; $i++) {
-    //     $result = mysqli_fetch_assoc($check);
+        // for ($i = 0; $i < $check->num_rows; $i++) {
+        //     $result = mysqli_fetch_assoc($check);
         $resp_status = new stdClass;
         $resp_status->id = $result['id'];
         $resp_status->gicsid = $result['gicsid'];
@@ -52,7 +54,7 @@ if ($check->num_rows > 0) {
         $resp_status->paid_date = $result['paid_date'] == null ? '' : Date('d-M-Y', $result['paid_date']);
         $resp_status->transport = $result['transportation'];
         $resp_status->invoice_no = $result['invoice'] != 0 ? $result['invoice_no'] : '';
-        $resp_status->invdate = $result['invoice'] != 0 ? Date('d-M-Y', $result['created_date']) : '';
+        $resp_status->invdate = $result['invoice'] != 0 ? ($result['created_date'] == null ? '' : Date('d-M-Y', $result['created_date'])) : '';
 
         $resp_status->hname = $result['hname'] . ", " . $result['hplace'];
         $resp_status->opno = $result['opno'];

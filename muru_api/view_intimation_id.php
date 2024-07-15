@@ -28,14 +28,14 @@ if ($id == 'undefined') {
         $resp->claimno = $result['claimno'];
         $resp->insurance_tpa = $result['insurance_tpa'];
         $resp->policy_type = $result['policy_type'];
-        $resp->doj = Date("Y-m-d", $result['doj']);
+        $resp->doj = $result['doj']==null ? '' : Date('Y-m-d',$result['doj']);
         $resp->claim_type = $result['claim_type'];
         $resp->case_type = $result['case_type'];
         $resp->fees = $result['fees'];
         $resp->incentive = $result['incentive'];
         $resp->mrd = $result['mrd'];
         $resp->transportation = $result['transportation'];
-        $resp->created = Date("Y-m-d", $result['created']);
+        $resp->created = $result['created']==null ? '' : Date('Y-m-d',$result['created']);
         $resp->created_by = $result['created_by'];
         $resp->payment = $result['payment'];
         $resp->paid_date = $result['paid_date']==null ? '' : Date('Y-m-d',$result['paid_date']);
