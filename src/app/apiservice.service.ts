@@ -8,7 +8,8 @@ import * as CryptoJS from 'crypto-js';
   providedIn: 'root'
 })
 export class ApiserviceService {
-  private website = "http://13.201.13.37/api/";
+  // private website = "http://13.201.13.37/api/";
+  private website = "http://localhost:2000/";
   // private website = "/api/";
   // Secret key for JWT
   userData = Object();
@@ -116,6 +117,23 @@ export class ApiserviceService {
   }
   view_bulk_invoice(id: any): Observable<Object> {
     var url = this.website + 'view_bulk_invoice.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_ibulk_invoice(id: any): Observable<Object> {
+    var url = this.website + 'view_ibulk_invoice.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  view_ibulk_invoice_report(): Observable<Object> {
+    var url = this.website + 'view_ibulk_invoice_report.php';
+    var formData = new FormData();
+    return this.http.post(url, formData);
+  }
+  view_ibulk_invoice_annexure(id: any): Observable<Object> {
+    var url = this.website + 'view_ibulk_invoice_annexure.php';
     var formData = new FormData();
     formData.append("id", id);
     return this.http.post(url, formData);
@@ -276,6 +294,16 @@ export class ApiserviceService {
     var url = this.website + 'view_intimation_binvoice_id.php';
     var formData = new FormData();
     formData.append("id", id);
+    return this.http.post(url, formData);
+  }
+  new_ibulk_invoice(iname: any, date: any, caseid: any, precase: any, id: any): Observable<Object> {
+    var url = this.website + 'new_ibulk_invoice.php';
+    var formData = new FormData();
+    formData.append("iname", iname);
+    formData.append("id", id);
+    formData.append("date", date);
+    formData.append("caseid", JSON.stringify(caseid));
+    formData.append("precase", JSON.stringify(precase));
     return this.http.post(url, formData);
   }
   new_bulk_invoice(iname: any, date: any, caseid: any, precase: any, id: any): Observable<Object> {

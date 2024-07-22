@@ -17,7 +17,7 @@ y.created_date,
 z.*
 FROM
 intimations z left join invoice y ON FIND_IN_SET(z.id, y.intimations_id) > 0
-WHERE
+WHERE y.bulk_status=2 AND
 y.id ='$id';";
 
 $check = $dbcon->query($sql);
@@ -45,7 +45,7 @@ if ($check->num_rows > 0) {
 
         $response[] = $resp_status;
     }
-    $check1 = $dbcon->query("SELECT * FROM intimations where invoice=1 and insurance_tpa='" . $result1->insurance_tpa . "';");
+    $check1 = $dbcon->query("SELECT * FROM intimations where binvoice=0 and invoice=1 and insurance_tpa='" . $result1->insurance_tpa . "';");
     if ($check1->num_rows > 0) {
         for ($i = 0; $i < $check1->num_rows; $i++) {
             $result = mysqli_fetch_assoc($check1);

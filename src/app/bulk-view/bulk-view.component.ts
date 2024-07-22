@@ -17,7 +17,7 @@ export class BulkViewComponent {
   subtotal: any;
   roundoff: any;
   before: any;
-  incentive=true;
+  incentive=false;
   igst=false;
   words = 'Rupees';
   gst_half:any;

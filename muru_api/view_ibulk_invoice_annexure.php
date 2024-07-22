@@ -41,7 +41,7 @@ company x,
 intimations z left join invoice y ON FIND_IN_SET(z.id, y.intimations_id) > 0,
 insurance a
 WHERE
-a.id = z.insurance_tpa AND y.bulk_status=1 AND z.id IN ($caseid);";
+a.id = z.insurance_tpa AND y.bulk_status=2 AND z.id IN ($caseid);";
     $check = $dbcon->query($sql);
     if ($check->num_rows > 0) {
         for ($i = 0; $i < $check->num_rows; $i++) {

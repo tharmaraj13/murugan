@@ -17,7 +17,7 @@ y.created_date,
 z.*
 FROM
 intimations z left join invoice y ON FIND_IN_SET(z.id, y.intimations_id) > 0
-WHERE
+WHERE y.bulk_status=1 AND
 y.id ='$id';";
 
 $check = $dbcon->query($sql);

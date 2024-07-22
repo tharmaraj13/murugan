@@ -72,7 +72,7 @@ export class IbulkInvoiceComponent {
     if (this.selection.length > 0 && this.myForm.valid) {
       var iname = this.myForm.get('insurance_tpa').value
       var date = this.myForm.get('invoice_date').value
-      this.apiservice.new_bulk_invoice(iname, date, this.selection, this.preSelection, this.id).subscribe((res: any) => {
+      this.apiservice.new_ibulk_invoice(iname, date, this.selection, this.preSelection, this.id).subscribe((res: any) => {
         Swal.fire({
           title: 'Invoice Created Successfully',
           icon: 'success',

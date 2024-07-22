@@ -18,7 +18,7 @@ $caseid = implode(',', $caseid);
 $precase = implode(',', $precase);
 
 if ($id == NULL || $id == 'undefined') {
-    $dbcon->query("UPDATE intimations SET invoice=1,created='$date'
+    $dbcon->query("UPDATE intimations SET binvoice=1
     where id in ($caseid);");
 
     $year = date('Y', $date);
@@ -28,7 +28,7 @@ if ($id == NULL || $id == 'undefined') {
     }
     $check1 = $dbcon->query("SELECT * from invoice where invoice_no like '%$year%';");
     $inv_no = str_pad($check1->num_rows + 1, 4, '0', STR_PAD_LEFT) . '/' . $year . '-' . (substr($year, -2) + 1);
-    $dbcon->query("INSERT INTO invoice (invoice_no,intimations_id,created_date,bulk_status) VALUES ('$inv_no','$caseid','$date',1);");
+    $dbcon->query("INSERT INTO invoice (invoice_no,intimations_id,created_date,bulk_status) VALUES ('$inv_no','$caseid','$date',2);");
 
     $resp = new stdClass;
     $resp->status = 'ok';
@@ -39,11 +39,11 @@ if ($id == NULL || $id == 'undefined') {
     mysqli_close($dbcon);
 } else {
     if ($precase != '') {
-        $dbcon->query("UPDATE intimations SET invoice=0, created=null
+        $dbcon->query("UPDATE intimations SET binvoice=0 
     where id in ($precase);");
     }
 
-    $dbcon->query("UPDATE intimations SET invoice=1, created='$date'
+    $dbcon->query("UPDATE intimations SET binvoice=1 
     where id in ($caseid);");
 
     $dbcon->query("UPDATE invoice SET intimations_id='$caseid', created_date='$date'

@@ -25,7 +25,7 @@ export class IbulkInvoiceAnnexureComponent {
       ]
     };
     this.id = this.route.snapshot.params['id'];
-    this.apiservice.view_bulk_invoice_annexure(this.id).subscribe((res: any) => {
+    this.apiservice.view_ibulk_invoice_annexure(this.id).subscribe((res: any) => {
       this.table_data = res;
       if (res.length > 0) {
         this.claim_no = res[0].iname

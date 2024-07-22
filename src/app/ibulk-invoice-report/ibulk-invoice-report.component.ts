@@ -20,7 +20,7 @@ export class IbulkInvoiceReportComponent {
         'copy', 'csv', 'excel', 'print'
       ]
     };
-    this.apiservice.view_bulk_invoice_report().subscribe((res) => {
+    this.apiservice.view_ibulk_invoice_report().subscribe((res) => {
       this.table_data = res;
     })
   }

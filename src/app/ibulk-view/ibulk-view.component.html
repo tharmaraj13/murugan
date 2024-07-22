@@ -31,10 +31,7 @@
                             <th>S.No</th>
                             <th>Claim No</th>
                             <th>Claim / Case Type (LOB)</th>
-                            <th>Fees</th>
                             <th *ngIf="incentive">Incentive for TAT</th>
-                            <th>Transport Charges</th>
-                            <th>MRD Charges</th>
                             <th>Total</th>
                         </tr>
                     </thead>
@@ -43,34 +40,31 @@
                             <td>1</td>
                             <td>Annexure Enclosed</td>
                             <td style="min-width: 150px;text-align: right;white-space: pre-line;">{{table_data?.claim_type}}</td>
-                            <td>{{+table_data?.fees}}</td>
                             <td *ngIf="incentive">{{+table_data?.incentive}}</td>
-                            <td>{{+table_data?.transport}}</td>
-                            <td>{{+table_data?.mrd}}</td>
                             <td class="text-right">{{subtotal}}</td>
                         </tr>
                         <tr *ngIf="!igst">
-                            <td class="text-right" [attr.colspan]="incentive ? 7 : 6">IGST 18%</td>
+                            <td class="text-right" [attr.colspan]="incentive ? 4 : 3">IGST 18%</td>
                             <td class="text-right">{{gst_value}}</td>
                         </tr>
                         <tr *ngIf="igst">
-                            <td class="text-right" [attr.colspan]="incentive ? 7 : 6">CGST 9%</td>
+                            <td class="text-right" [attr.colspan]="incentive ? 4 : 3">CGST 9%</td>
                             <td class="text-right">{{gst_half}}</td>
                         </tr>
                         <tr *ngIf="igst">
-                            <td class="text-right" [attr.colspan]="incentive ? 7 : 6">SGST 9%</td>
+                            <td class="text-right" [attr.colspan]="incentive ? 4 : 3">SGST 9%</td>
                             <td class="text-right">{{gst_half}}</td>
                         </tr>
                         <tr>
-                            <td class="text-right" [attr.colspan]="incentive ? 7 : 6">Round Off</td>
+                            <td class="text-right" [attr.colspan]="incentive ? 4 : 3">Round Off</td>
                             <td class="text-right">{{roundoff}}</td>
                         </tr>
                         <tr>
-                            <td class="text-right bold" [attr.colspan]="incentive ? 7 : 6">Grand Total</td>
+                            <td class="text-right bold" [attr.colspan]="incentive ? 4 : 3">Grand Total</td>
                             <td class="text-right bold">{{total}}</td>
                         </tr>
                         <tr>
-                            <td class="text-left bold" [attr.colspan]="incentive ? 8 : 7">Rupees {{words}} only</td>
+                            <td class="text-left bold" [attr.colspan]="incentive ? 5 : 4">Rupees {{words}} only</td>
                         </tr>
                     </tbody>
                 </table>

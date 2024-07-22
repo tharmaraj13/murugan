@@ -9,7 +9,7 @@ $id = $_POST['id'];
 
 $response = [];
 
-$check = $dbcon->query("SELECT * FROM intimations where invoice=0 and insurance_tpa='$id';");
+$check = $dbcon->query("SELECT * FROM intimations where binvoice=0 and invoice=1 and insurance_tpa='$id';");
 if ($check->num_rows > 0) {
     for ($i = 0; $i < $check->num_rows; $i++) {
         $result = mysqli_fetch_assoc($check);
