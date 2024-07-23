@@ -14,9 +14,9 @@ export class AddProductsComponent {
   prod_names: any;
   insurance: any;
   vendor_names: any;
-  id:any;
+  id: any;
   staff_names: any;
-  constructor(private apiservice: ApiserviceService, private router: Router,private route: ActivatedRoute) { }
+  constructor(private apiservice: ApiserviceService, private router: Router, private route: ActivatedRoute) { }
   ngAfterViewInit(): void {
     this.apiservice.view_vendors().subscribe((res) => {
       this.vendor_names = res;
@@ -57,14 +57,24 @@ export class AddProductsComponent {
         mrd: new FormControl('', Validators.required),
         transport: new FormControl('', Validators.required),
         assigned: new FormControl('', Validators.required),
-        invoice:new FormControl(false),
+        invoice: new FormControl(false),
         created: new FormControl(''),
         payment: new FormControl(''),
         paid_date: new FormControl('')
       }
     );
-    this.apiservice.view_sales_id(this.id).subscribe((res:any) => {
-      if(res.status=='ok'){
+    // Subscribe to valueChanges of the invoice control
+    this.myForm.get('invoice').valueChanges.subscribe((value: any) => {
+      const createdControl = this.myForm.get('created');
+      if (value) {
+        createdControl.setValidators(Validators.required);
+      } else {
+        createdControl.clearValidators();
+      }
+      createdControl.updateValueAndValidity();
+    });
+    this.apiservice.view_sales_id(this.id).subscribe((res: any) => {
+      if (res.status == 'ok') {
         this.myForm.get('vendorname').setValue(res.vendor);
         this.myForm.get('patientname').setValue(res.pname);
         this.myForm.get('patientage').setValue(res.age);
@@ -98,7 +108,7 @@ export class AddProductsComponent {
   onSubmit() {
     this.myForm.markAllAsTouched();
     console.log(this.myForm.get('invoice').value);
-    
+
     // alert('Data Added Successfully');
     if (this.myForm.valid) {
       var data = Array();

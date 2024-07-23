@@ -179,6 +179,7 @@
                                         <label for="created" class="form-label">Invoice Date</label>
                                         <input type="date" class="form-control" id="created"
                                             formControlName="created">
+                                        <small *ngIf="myForm.get('created').errors && myForm.get('created').touched"><i class="bi bi-exclamation-circle"></i> Select Invoice Date</small>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="payment" class="form-label">Payment Details(UTR)</label>

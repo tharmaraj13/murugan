@@ -9,8 +9,8 @@ import * as CryptoJS from 'crypto-js';
 })
 export class ApiserviceService {
   // private website = "http://13.201.13.37/api/";
-  private website = "http://localhost:2000/";
-  // private website = "/api/";
+  // private website = "http://localhost:2000/";
+  private website = "/api/";
   // Secret key for JWT
   userData = Object();
   private secretKey: string = 'asdfasdfqwerty';
