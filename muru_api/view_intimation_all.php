@@ -33,12 +33,11 @@ Y.hplace,
 Z.vname,
 W.iname
 FROM
-intimations X left join invoice V ON FIND_IN_SET(X.id, V.intimations_id) > 0,
+intimations X left join invoice V ON FIND_IN_SET(X.id, V.intimations_id) > 0 AND V.bulk_status!=2,
 hospitals Y,
 vendors Z,
 insurance W
 WHERE
-V.bulk_status!=2 AND
 X.vendor = Z.id AND X.hosp_details = Y.id AND W.id = X.insurance_tpa 
 " . $all . " 
 and X.claimno like '%$claimno%' 
