@@ -66,7 +66,7 @@ if ($check->num_rows > 0) {
         $resp_status->paid_date = $result['paid_date'] == null ? '' : Date('d-M-Y', $result['paid_date']);
         $resp_status->transport = $result['transportation'];
         $resp_status->invoice_no = $result['invoice'] != 0 ? $result['invoice_no'] : '';
-        $resp_status->invdate = $result['invoice'] != 0 ? Date('d-M-Y', $result['created']) : '';
+        $resp_status->invdate = $result['invoice'] != 0 ? Date('d-M-Y', $result['created_date']) : '';
 
         $resp_status->hname = $result['hname'] . ", " . $result['hplace'];
         $resp_status->opno = $result['opno'];
