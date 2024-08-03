@@ -9,7 +9,29 @@
                 <hr />
                 <div class="form-body mt-4">
                     <div class="row">
-
+                        <div class="col-lg-12">
+                            <div class="border border-3 p-4 rounded">
+                                <div class="row g-3">
+                                    <form class="row g-3" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                                        <div class="col-md-4">
+                                            <label for="fromdate" class="form-label">From Date</label>
+                                            <input type="date" class="form-control" id="fromdate"
+                                                formControlName="fromdate">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="todate" class="form-label">To Date</label>
+                                            <input type="date" class="form-control" id="todate"
+                                                formControlName="todate">
+                                        </div>
+                                        <div class="col-md-4 d-flex justify-content-left align-items-end">
+                                            <div class="d-grid">
+                                                <button type="submit" class="btn btn-light">View Report</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-lg-12 mt-3">
                             <div class="border border-3 p-4 rounded">
                                 <div class="table-responsive">

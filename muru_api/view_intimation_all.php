@@ -24,6 +24,7 @@ $all = $_POST['alldata'] != 'false' ? '' : ' AND X.fees=0 ';
 
 $check = $dbcon->query("SELECT
 X.*,
+A.sname,
 V.invoice_no,
 V.bulk_status,
 V.id as invoice_id,
@@ -33,7 +34,8 @@ Y.hplace,
 Z.vname,
 W.iname
 FROM
-intimations X left join invoice V ON FIND_IN_SET(X.id, V.intimations_id) > 0 AND V.bulk_status!=2,
+intimations X left join invoice V ON FIND_IN_SET(X.id, V.intimations_id) > 0 AND V.bulk_status!=2 
+left join staffs A ON A.id=X.assigned,
 hospitals Y,
 vendors Z,
 insurance W
@@ -71,7 +73,7 @@ if ($check->num_rows > 0) {
         $resp_status->opno = $result['opno'];
         $resp_status->ipno = $result['ipno'];
         $resp_status->policy_type = $result['policy_type'];
-        $resp_status->assigned = $result['assigned'];
+        $resp_status->assigned = $result['sname'];
 
         $response[] = $resp_status;
     }

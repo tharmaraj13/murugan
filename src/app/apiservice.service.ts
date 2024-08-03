@@ -412,6 +412,13 @@ export class ApiserviceService {
     formData.append("id", id);
     return this.http.post(url, formData);
   }
+  view_expenses_all(fdate: any, tdate: any): Observable<Object> {
+    var url = this.website + 'view_expenses.php';
+    var formData = new FormData();
+    formData.append("fdate", fdate);
+    formData.append("tdate", tdate);
+    return this.http.post(url, formData);
+  }
   del_expenses(id: any): Observable<Object> {
     var url = this.website + 'del_expenses.php';
     var formData = new FormData();

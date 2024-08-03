@@ -27,7 +27,7 @@ staffs Z
 WHERE
 X.staff_id = Z.id AND X.e_type_id = Y.id
 " . $querysql . " 
-ORDER by id DESC;");
+ORDER by X.e_date DESC;");
     if ($check->num_rows > 0) {
         for ($i = 0; $i < $check->num_rows; $i++) {
             $result = mysqli_fetch_assoc($check);
