@@ -22,6 +22,8 @@
                                                 <th>Invoice Date</th>
                                                 <th>Insurance Name</th>
                                                 <th>Annexure</th>
+                                                <th>Payment Details</th>
+                                                <th>Payment Date</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -39,6 +41,8 @@
                                                 <td>{{prod.created}}</td>
                                                 <td>{{prod.iname}}</td>
                                                 <td><a target="_blank" href="/view-annexure/{{prod.id}}">View</a></td>
+                                                <td>{{prod.payment}}</td>
+                                                <td>{{prod.paid_date}}</td>
                                                 <td><a href="/add-invoice/{{prod.id}}">Edit</a>
                                                     </td>
                                             </tr>

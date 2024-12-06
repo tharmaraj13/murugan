@@ -354,6 +354,14 @@ export class ApiserviceService {
     formData.append("paid_date", paid_date);
     return this.http.post(url, formData);
   }
+  save_paid_idetails(id: any, payment: any, paid_date: any): Observable<any> {
+    var url = this.website + 'save_paid_idetails.php';
+    var formData = new FormData();
+    formData.append("id", id);
+    formData.append("payment", payment);
+    formData.append("paid_date", paid_date);
+    return this.http.post(url, formData);
+  }
   view_permissions(): Observable<any> {
     var url = this.website + 'view_permissions.php';
     var formData = new FormData();

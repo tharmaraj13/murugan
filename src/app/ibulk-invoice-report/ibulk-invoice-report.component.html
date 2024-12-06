@@ -22,6 +22,8 @@
                                                 <th>Invoice Date</th>
                                                 <th>Insurance Name</th>
                                                 <th>Annexure</th>
+                                                <th>Payment Details</th>
+                                                <th>Payment Date</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -39,7 +41,19 @@
                                                 <td>{{prod.created}}</td>
                                                 <td>{{prod.iname}}</td>
                                                 <td><a target="_blank" href="/view-bannexure/{{prod.id}}">View</a></td>
-                                                <td><a href="/add-binvoice/{{prod.id}}">Edit</a>
+                                                <td>{{prod.payment}}
+                                                    <input *ngIf="prod.payment==null" type="text"
+                                                        id="paid_{{prod.id}}">
+                                                </td>
+                                                <td>{{prod.paid_date}}
+                                                    <input *ngIf="prod.payment==null" type="date"
+                                                        id="paid_date_{{prod.id}}">
+                                                </td>
+                                                <td><a tabindex="0" style="cursor: pointer;"
+                                                    *ngIf="prod.payment==null && !updated[prod.id]"
+                                                    (click)="save_paid_details(prod.id)"
+                                                    (keydown)="handleKeyDown($event)">Save</a>&nbsp;
+                                                    <a href="/add-binvoice/{{prod.id}}">Edit</a>
                                                     </td>
                                             </tr>
                                         </tbody>

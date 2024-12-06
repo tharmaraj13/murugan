@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 header("Access-Control-Allow-Origin:*");
 header("Access-Control-Allow-Credentials:true");
 header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT');
@@ -21,9 +22,9 @@ if ($check1->num_rows > 0) {
         $claimtype = [];
         $consol = '';
         $caseid = $result1['intimations_id'];
-        
+
         $resp_status = new stdClass;
-        
+
         $resp_status->id = $result1['id'];
         $sql = "SELECT
 x.*,
@@ -35,6 +36,8 @@ z.fees,
 z.incentive,
 z.transportation,
 z.mrd,
+z.paid_date,
+z.payment,
 a.iname,
 a.address1,
 a.address2,
@@ -70,6 +73,9 @@ a.id = z.insurance_tpa AND y.bulk_status=1 AND z.id IN ($caseid);";
                     $resp_status->branch = $result['branch'];
                     $resp_status->accno = $result['accno'];
                     $resp_status->ifsc = $result['ifsc'];
+
+                    $resp_status->payment = $result['payment'];
+                    $resp_status->paid_date = $result['paid_date'] == null ? '' : Date('d-M-Y', $result['paid_date']);
                 }
                 $claimtype[] = $result['claim_type'];
                 $fees += $result['fees'];
@@ -88,7 +94,7 @@ a.id = z.insurance_tpa AND y.bulk_status=1 AND z.id IN ($caseid);";
             $resp_status->transport = $transportation;
             $resp_status->mrd = $mrd;
 
-           $response[]=$resp_status;
+            $response[] = $resp_status;
         }
     }
     echo json_encode($response);

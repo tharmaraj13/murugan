@@ -12,10 +12,9 @@ $paid_date = strtotime($_POST['paid_date']);
 
 $resp_status = new stdClass;
 
-$sql = "UPDATE intimations x
-LEFT JOIN invoice y ON FIND_IN_SET(x.id, y.intimations_id) > 0
-SET x.payment='$payment', x.paid_date='$paid_date'
-WHERE y.id='$id';";
+$sql = "UPDATE invoice
+SET payment='$payment', paid_date='$paid_date'
+WHERE id='$id';";
 
 $dbcon->query($sql);
 $resp_status->status = 'ok';
