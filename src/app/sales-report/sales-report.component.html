@@ -61,6 +61,44 @@
                                     <table class="table mb-0" *ngIf="showTable" datatable [dtOptions]="dtOptions">
                                         <thead class="table-light">
                                             <tr>
+                                                <th></th>
+                                                <th *ngIf="columnList[0].value"></th>
+                                                <th *ngIf="columnList[1].value">
+                                                    <select class="form-select" [(ngModel)]="claim_type" (change)="onFilterChange()">
+                                                        <option value="">All</option>
+                                                        <option *ngFor="let eType of claim_types" [value]="eType">{{ eType }}</option>
+                                                    </select>
+                                                </th>
+                                                <th *ngIf="columnList[2].value">
+                                                    <select class="form-select" [(ngModel)]="iname" (change)="onFilterChange()">
+                                                        <option value="">All</option>
+                                                        <option *ngFor="let eType of inames" [value]="eType">{{ eType }}</option>
+                                                    </select>
+                                                </th>
+                                                <th *ngIf="columnList[3].value"><input type="date" [(ngModel)]="doi" class="form-control"
+                                                    (change)="onFilterChange()"></th>
+                                                <th *ngIf="columnList[4].value"></th>
+                                                <th *ngIf="columnList[5].value"></th>
+                                                <th *ngIf="columnList[6].value"></th>
+                                                <th *ngIf="columnList[7].value"></th>
+                                                <th *ngIf="columnList[8].value"></th>
+                                                <th *ngIf="columnList[9].value"></th>
+                                                <th *ngIf="columnList[10].value"></th>
+                                                <th *ngIf="columnList[11].value"></th>
+                                                <th *ngIf="columnList[12].value"></th>
+                                                <th *ngIf="columnList[17].value"></th>
+                                                <th *ngIf="columnList[13].value">
+                                                    <select class="form-select" [(ngModel)]="hname" (change)="onFilterChange()">
+                                                        <option value="">All</option>
+                                                        <option *ngFor="let eType of hnames" [value]="eType">{{ eType }}</option>
+                                                    </select>
+                                                </th>
+                                                <th *ngIf="columnList[14].value"></th>
+                                                <th *ngIf="columnList[15].value"></th>
+                                                <th *ngIf="columnList[16].value"></th>
+                                                <th></th>
+                                            </tr>
+                                            <tr>
                                                 <th>S.No</th>
                                                 <th *ngIf="columnList[0].value">Patient Name</th>
                                                 <th *ngIf="columnList[1].value">Claim Type</th>
