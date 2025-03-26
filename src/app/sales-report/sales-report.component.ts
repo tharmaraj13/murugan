@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiserviceService } from '../apiservice.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sales-report',
@@ -46,9 +47,10 @@ export class SalesReportComponent {
     { name: 'Type of Policy', id: 16, value: false },
     { name: 'Assigned To', id: 17, value: false },
   ];
-  constructor(private apiservice: ApiserviceService) {}
+  constructor(private apiservice: ApiserviceService, private route: ActivatedRoute) { }
   userData = JSON.parse(this.apiservice.userData.permissions);
-  ngAfterViewInit(): void {}
+  allData = this.userData['all-data'];
+  ngAfterViewInit(): void { }
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -65,11 +67,16 @@ export class SalesReportComponent {
       itodate: new FormControl(currentDate),
       claimno: new FormControl(''),
     });
-    this.apiservice.view_sales(this.userData['all-data']).subscribe((res) => {
-      this.table_data_base = res;
-      this.table_data = [...this.table_data_base];
-      this.showTable = true;
-      this.extractUniqueValues();
+    this.route.data.subscribe(data => {
+      if (this.allData) {
+        this.allData = data['allData']; // Get the passed property
+      }
+      this.apiservice.view_sales(this.allData).subscribe((res) => {
+        this.table_data_base = res;
+        this.table_data = [...this.table_data_base];
+        this.showTable = true;
+        this.extractUniqueValues();
+      });
     });
   }
   onSubmit() {
@@ -81,7 +88,7 @@ export class SalesReportComponent {
         this.myForm.get('ifromdate').value,
         this.myForm.get('itodate').value,
         this.myForm.get('claimno').value,
-        this.userData['all-data']
+        this.allData
       )
       .subscribe((res) => {
         this.table_data_base = res;
@@ -153,15 +160,15 @@ export class SalesReportComponent {
     ];
   }
   onFilterChange(): void {
-    const oldDate=this.doi;
+    const oldDate = this.doi;
     if (this.doi) {
       const [year, month, day] = this.doi.split('-'); // Splitting "YYYY-MM-DD"
       const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
       const formattedDate = `${day}-${months[+month - 1]}-${year}`; // Converting to "dd-MMM-yyyy"
-  
+
       this.doi = formattedDate;
     }
-    
+
     this.showTable = false;
     this.table_data = this.table_data_base.filter(
       (item: any) =>
@@ -173,7 +180,7 @@ export class SalesReportComponent {
     setTimeout(() => {
       this.showTable = true;
     }, 10);
-    this.doi=oldDate;
+    this.doi = oldDate;
     // this.rerender();
   }
 }

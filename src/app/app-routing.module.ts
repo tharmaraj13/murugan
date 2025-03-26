@@ -46,7 +46,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-intimation/:id', component: AddProductsComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-intimation', component: AddProductsComponent, canActivate: [AuthGuardGuard] },
-  { path: 'intimation-report', component: SalesReportComponent, canActivate: [AuthGuardGuard] },
+  { path: 'mis-report', component: SalesReportComponent, canActivate: [AuthGuardGuard], data: { allData: true } },
+  { path: 'intimation-report', component: SalesReportComponent, canActivate: [AuthGuardGuard], data: { allData: false } },
   { path: 'auth-letters', component: AuthLettersComponent, canActivate: [AuthGuardGuard] },
   { path: 'aditya-letter/:id/:eid', component: AuthorizationComponent, canActivate: [AuthGuardGuard] },
   { path: 'tata-letter/:id/:eid', component: AuthTataComponent, canActivate: [AuthGuardGuard] },
@@ -57,19 +58,19 @@ const routes: Routes = [
   { path: 'view/:id', component: TestingComponent, canActivate: [AuthGuardGuard] },
   { path: 'invoice/:id', component: InvoiceComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-insurance', component: AddInsuranceComponent, canActivate: [AuthGuardGuard] },
-  
+
   { path: 'add-binvoice', component: IbulkInvoiceComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-binvoice/:id', component: IbulkInvoiceComponent, canActivate: [AuthGuardGuard] },
   { path: 'view-binvoice', component: IbulkInvoiceReportComponent, canActivate: [AuthGuardGuard] },
   { path: 'ibulk-invoice/:id', component: IbulkViewComponent, canActivate: [AuthGuardGuard] },
   { path: 'view-bannexure/:id', component: IbulkInvoiceAnnexureComponent, canActivate: [AuthGuardGuard] },
-  
+
   { path: 'add-invoice', component: BulkInvoiceComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-invoice/:id', component: BulkInvoiceComponent, canActivate: [AuthGuardGuard] },
   { path: 'view-invoice', component: BulkInvoiceReportComponent, canActivate: [AuthGuardGuard] },
   { path: 'bulk-invoice/:id', component: BulkViewComponent, canActivate: [AuthGuardGuard] },
   { path: 'view-annexure/:id', component: BulkInvoiceAnnexureComponent, canActivate: [AuthGuardGuard] },
-  
+
   { path: 'add-insurance/:id', component: AddInsuranceComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-hospital', component: AddHospitalComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-hospital/:id', component: AddHospitalComponent, canActivate: [AuthGuardGuard] },
