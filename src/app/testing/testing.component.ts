@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import Docxtemplater from "docxtemplater";
-import * as PizZip from "pizzip";
+import PizZip from "pizzip";
 import PizZipUtils from "pizzip/utils/index.js";
 import { saveAs } from "file-saver";
 import { ApiserviceService } from '../apiservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import * as Handlebars from 'handlebars';
+import TurndownService from 'turndown';
 
 function loadFile(url: any, callback: any) {
   PizZipUtils.getBinaryContent(url, callback);
@@ -18,6 +21,7 @@ function loadFile(url: any, callback: any) {
 export class TestingComponent {
   id: any;
   table_data: any;
+  reportData: any = [];
   iname: any;
   cases = [
     ['gen_doctor.docx', 'gen_insured.docx', 'tata_gen_insured.docx'],
@@ -36,14 +40,17 @@ export class TestingComponent {
     ['ci_final_report.docx', 'tata_ci_final_report.docx'],
     ['li_final_report.docx', 'tata_li_final_report.docx'],
   ];
+  keys = ["insured_findings", "hospital_records", "other_findings", "evidences", "final_recommendation"];
   docx: any;
   typesno: any;
-  constructor(private apiservice: ApiserviceService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private apiservice: ApiserviceService, private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  turndownService = new TurndownService();
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.apiservice.view_details(this.id).subscribe((res: any) => {
       this.table_data = res
       if (res.status == 'ok') {
+        this.reportData = res?.reportData || [];
         this.docx = this.cases[res.caseno];
         this.typesno = this.typenos[res.typeno];
         this.iname = res.iname;
@@ -133,5 +140,68 @@ export class TestingComponent {
       }
     );
   }
-
+  downloading4() {
+    const fromTable = this.reportData?.reduce((acc: any, report: any, index: number) => {
+      acc[this.keys[index]] = report.html_value;
+      return acc;
+    }, {});
+    this.http.get('assets/template/template.html', { responseType: 'text' }).subscribe((html) => {
+      const template = Handlebars.compile(html);
+      const result = template({
+        pname: this.table_data.pname,
+        claimno: this.table_data.claimno,
+        hname: this.table_data.hname,
+        hplace: this.table_data.hplace,
+        triggers: this.table_data.triggers,
+        doi: this.table_data.doi,
+        doj: this.table_data.doj,
+        doa: this.table_data.doa,
+        ...fromTable,
+      });
+      this.http.post(this.apiservice.website + 'convert.php', {
+        html: result
+      }, { responseType: 'blob' }).subscribe((blob) => {
+        saveAs(blob, 'final_report.docx');
+      });
+    });
+  }
+  downloading5() {
+    const fromTable = this.reportData?.reduce((acc: any, report: any, index: number) => {
+      acc[this.keys[index]] = this.turndownService.turndown(report.html_value);
+      return acc;
+    }, {});
+    const doc_name = "default_report.docx";
+    loadFile(
+      "assets/template/" + doc_name,
+      (error: any, content: any) => {
+        if (error) {
+          throw error;
+        }
+        const zip = new PizZip(content);
+        const doc = new Docxtemplater(zip, {
+          paragraphLoop: true,
+          linebreaks: true,
+        });
+        // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
+        doc.render({
+          pname: this.table_data.pname,
+          claimno: this.table_data.claimno,
+          hname: this.table_data.hname,
+          hplace: this.table_data.hplace,
+          triggers: this.table_data.triggers,
+          doi: this.table_data.doi,
+          doj: this.table_data.doj,
+          doa: this.table_data.doa,
+          ...fromTable,
+        });
+        const blob = doc.getZip().generate({
+          type: "blob",
+          mimeType:
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        });
+        // Output the document using Data-URI
+        saveAs(blob, "final_report.docx");
+      }
+    );
+  }
 }

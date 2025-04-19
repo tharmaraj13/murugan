@@ -39,6 +39,8 @@ import { IbulkInvoiceComponent } from './ibulk-invoice/ibulk-invoice.component';
 import { IbulkInvoiceReportComponent } from './ibulk-invoice-report/ibulk-invoice-report.component';
 import { IbulkViewComponent } from './ibulk-view/ibulk-view.component';
 import { IbulkInvoiceAnnexureComponent } from './ibulk-invoice-annexure/ibulk-invoice-annexure.component';
+import { ReportEntryComponent } from './report-entry/report-entry.component';
+import { ReportDefaultComponent } from './report-default/report-default.component';
 
 const routes: Routes = [
   // {path:'',component:SalesReportComponent},
@@ -59,6 +61,9 @@ const routes: Routes = [
   { path: 'invoice/:id', component: InvoiceComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-insurance', component: AddInsuranceComponent, canActivate: [AuthGuardGuard] },
 
+  { path: 'report-default', component: ReportDefaultComponent, canActivate: [AuthGuardGuard] },
+  { path: 'report-entry', component: ReportEntryComponent, canActivate: [AuthGuardGuard] },
+  { path: 'report-entry/:id', component: ReportEntryComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-binvoice', component: IbulkInvoiceComponent, canActivate: [AuthGuardGuard] },
   { path: 'add-binvoice/:id', component: IbulkInvoiceComponent, canActivate: [AuthGuardGuard] },
   { path: 'view-binvoice', component: IbulkInvoiceReportComponent, canActivate: [AuthGuardGuard] },

@@ -1,0 +1,52 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body p-4">
+                <h5 class="card-title">{{claim_type}} - Final Report</h5>
+                <hr />
+                <div class="form-body mt-4">
+                    <div class="row">
+                        <div class="col-lg-12 mt-3">
+                            <div class="border border-3 p-4 rounded">
+                                <div class="col-md-4">
+                                    <label for="claim_type" class="form-label">Claim Type</label>
+                                    <select class="form-select" id="claim_type" [(ngModel)]="claim_type"
+                                        (change)="fetchData()">
+                                        <option>Reimbursement</option>
+                                        <option>Cashless</option>
+                                        <option>Bill Verification</option>
+                                        <option>PA</option>
+                                        <option>MPA</option>
+                                        <option>Critical Illness</option>
+                                        <option>Life Insurance</option>
+                                    </select>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <tbody>
+                                            <tr *ngFor="let field of fields; let i = index">
+                                                <td>{{field}}</td>
+                                                <td>
+                                                    <div #editorContainer class="editor-container"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td><button type="button" (click)="onSubmit()">Save</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--end page wrapper -->

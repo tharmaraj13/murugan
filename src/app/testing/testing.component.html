@@ -97,7 +97,8 @@
                                     </div>
                                     <div class="col-md-4" *ngIf="table_data?.status=='ok'">
                                         <label class="form-label">Final Report</label>&nbsp;
-                                        <button type="button" class="btn btn-light" (click)="downloading1()">Download</button>
+                                        <button type="button" class="btn btn-light" (click)="downloading1()">Download</button>&nbsp;
+                                        <button *ngIf="reportData.length" type="button" class="btn btn-light" (click)="downloading4()">New Download</button>
                                     </div>
                                     <div class="col-md-4" *ngIf="table_data?.invoice=='1'">
                                         <button type="button" class="btn btn-light" (click)="invoice()">View Invoice</button>

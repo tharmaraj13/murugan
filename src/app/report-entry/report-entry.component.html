@@ -1,0 +1,71 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!--start page wrapper -->
+<div class="page-wrapper">
+    <div class="page-content">
+        <div class="card">
+            <div class="card-body p-4">
+                <h5 class="card-title">{{claim_type}} - Final Report</h5>
+                <hr />
+                <div class="form-body mt-4">
+                    <div class="row">
+                        <div class="col-lg-12 mt-3">
+                            <div class="border border-3 p-4 rounded">
+                                <div class="table-responsive">
+                                    <table class="table mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <td>Insured Name</td>
+                                                <td>{{reportData?.pname}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Claim number</td>
+                                                <td>{{reportData?.claimno}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Hospital name</td>
+                                                <td>{{reportData?.hname}}, {{reportData?.hplace}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Trigger</td>
+                                                <td>{{reportData?.triggers}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>D O Intimation</td>
+                                                <td>{{reportData?.doi}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DOJ</td>
+                                                <td>{{reportData?.doj}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DOA</td>
+                                                <td>{{reportData?.doa}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DOD</td>
+                                                <td>Not yet discharged</td>
+                                            </tr>
+                                            <tr *ngFor="let field of fields; let i = index">
+                                                <td>{{field}}</td>
+                                                <td>
+                                                    <div #editorContainer class="editor-container"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td><button type="button" (click)="onSubmit()">Save</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end row-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--end page wrapper -->

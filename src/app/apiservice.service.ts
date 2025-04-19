@@ -2,15 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import * as CryptoJS from 'crypto-js';
+import CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiserviceService {
-  // private website = "http://13.201.13.37/api/";
-  // private website = "http://localhost:2000/";
-  private website = "/api/";
+  // public website = "http://13.201.13.37/api/";
+  // public website = "http://localhost:2000/";
+  public website = "/api/";
   // Secret key for JWT
   userData = Object();
   private secretKey: string = 'asdfasdfqwerty';
@@ -203,6 +203,36 @@ export class ApiserviceService {
   view_details(gicsid: any): Observable<Object> {
     var url = this.website + 'view_details.php';
     var formData = new FormData();
+    formData.append("gicsid", gicsid);
+    return this.http.post(url, formData);
+  }
+  report_details(gicsid: any): Observable<Object> {
+    var url = this.website + 'report_details.php';
+    var formData = new FormData();
+    formData.append("gicsid", gicsid);
+    return this.http.post(url, formData);
+  }
+  report_defaults(claim_type: any): Observable<Object> {
+    var url = this.website + 'report_defaults.php';
+    var formData = new FormData();
+    formData.append("claim_type", claim_type);
+    return this.http.post(url, formData);
+  }
+  save_report_defaults(values: any, fields: any, keys: any, claim_type: any): Observable<Object> {
+    var url = this.website + 'save_report_defaults.php';
+    var formData = new FormData();
+    formData.append("values", JSON.stringify(values));
+    formData.append("fields", JSON.stringify(fields));
+    formData.append("keys", JSON.stringify(keys));
+    formData.append("claim_type", claim_type);
+    return this.http.post(url, formData);
+  }
+  save_report_entries(values: any, fields: any, keys: any, gicsid: any): Observable<Object> {
+    var url = this.website + 'save_report_entries.php';
+    var formData = new FormData();
+    formData.append("values", JSON.stringify(values));
+    formData.append("fields", JSON.stringify(fields));
+    formData.append("keys", JSON.stringify(keys));
     formData.append("gicsid", gicsid);
     return this.http.post(url, formData);
   }

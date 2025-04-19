@@ -49,6 +49,8 @@ import { IbulkInvoiceComponent } from './ibulk-invoice/ibulk-invoice.component';
 import { IbulkInvoiceReportComponent } from './ibulk-invoice-report/ibulk-invoice-report.component';
 import { IbulkViewComponent } from './ibulk-view/ibulk-view.component';
 import { IbulkInvoiceAnnexureComponent } from './ibulk-invoice-annexure/ibulk-invoice-annexure.component';
+import { ReportEntryComponent } from './report-entry/report-entry.component';
+import { ReportDefaultComponent } from './report-default/report-default.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import { IbulkInvoiceAnnexureComponent } from './ibulk-invoice-annexure/ibulk-in
     IbulkInvoiceComponent,
     IbulkInvoiceReportComponent,
     IbulkViewComponent,
-    IbulkInvoiceAnnexureComponent
+    IbulkInvoiceAnnexureComponent,
+    ReportEntryComponent,
+    ReportDefaultComponent
   ],
   imports: [
     BrowserModule,

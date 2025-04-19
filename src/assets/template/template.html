@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <style>
+        .header {
+            text-align: center;
+        }
+
+        tr {
+            min-height: 150px;
+        }
+
+        .fw-bold {
+            font-weight: bold;
+        }
+    </style>
+    <p class="header"><strong>Global Insurance Claim Solutions – Final Report</strong></p>
+    <table>
+        <colgroup>
+            <col style="width: 31%" />
+            <col style="width: 68%" />
+        </colgroup>
+        <tbody>
+            <tr>
+                <td>Insured Name</td>
+                <td class="fw-bold">{{pname}}</td>
+            </tr>
+            <tr>
+                <td>Claim number</td>
+                <td>{{claimno}}</td>
+            </tr>
+            <tr>
+                <td>Hospital name</td>
+                <td>{{hname}}, {{hplace}}</td>
+            </tr>
+            <tr>
+                <td>Trigger</td>
+                <td>{{triggers}}</td>
+            </tr>
+            <tr>
+                <td>D O Intimation</td>
+                <td>{{doi}}</td>
+            </tr>
+            <tr>
+                <td>DOJ</td>
+                <td>{{doj}}</td>
+            </tr>
+            <tr>
+                <td>DOA</td>
+                <td>{{doa}}</td>
+            </tr>
+            <tr>
+                <td>DOD</td>
+                <td>Not yet discharged</td>
+            </tr>
+            <tr>
+                <td>
+                    Insured / Doctor Finding
+                </td>
+                <td>
+                    {{{insured_findings}}}
+                </td>
+            </tr>
+            <tr>
+                <td>Hospital records</td>
+                <td>
+                    {{{hospital_records}}}
+                </td>
+            </tr>
+            <tr>
+                <td>Other findings</td>
+                <td>
+                    {{{other_findings}}}
+                </td>
+            </tr>
+            <tr>
+                <td>Evidences attached</td>
+                <td>
+                    {{{evidences}}}
+                </td>
+            </tr>
+            <tr>
+                <td>FINAL RECOMMENDATION</td>
+                <td>
+                    {{{final_recommendation}}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><img src="./templates/seal.png" width="260" height="95" /></p>
+</body>
+
+</html>

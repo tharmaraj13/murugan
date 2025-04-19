@@ -17,24 +17,27 @@ export class InvoiceComponent {
   subtotal: any;
   roundoff: any;
   before: any;
-  incentive=true;
-  igst=false;
+  incentive = true;
+  igst = false;
   words = 'Rupees';
-  gst_half:any;
+  gst_half: any;
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.apiservice.view_invoice(this.id).subscribe((res: any) => {
       if (res.status == 'ok') {
         this.table_data = res;
         this.subtotal = (+res.mrd + +res.transport + +res.fees + +res.incentive).toFixed(2);
-        if(res.incentive=="0"){
-          this.incentive=false;
+        if (res.incentive == "0") {
+          this.incentive = false;
         }
-        if(res.gst_type=='CGST & SGST'){
-          this.igst=true;
+        if (res.gst_type == 'CGST & SGST') {
+          this.igst = true;
         }
         this.gst_value = ((+res.fees + +res.incentive) * 0.18).toFixed(2);
-        this.gst_half=(this.gst_value/2).toFixed(2);
+        if (res.iname == 'Reliance General Insurance Company Limited') {
+          this.gst_value = (this.subtotal * 0.18).toFixed(2);
+        }
+        this.gst_half = (this.gst_value / 2).toFixed(2);
         this.before = (+this.subtotal + +this.gst_value).toFixed(2);
         this.total = Math.round(+this.subtotal + +this.gst_value).toFixed(2);
         this.roundoff = (this.total - this.before).toFixed(2);

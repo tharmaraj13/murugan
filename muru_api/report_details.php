@@ -57,15 +57,23 @@ if ($check->num_rows > 0) {
     $resp_status->incentive = $result['incentive'];
     $resp_status->transport = $result['transportation'];
     $resp_status->assigned = $result['assigned'];
-
     $reportData = [];
+    $reportDefault = [];
+
     $check1 = $dbcon->query("SELECT * FROM reportEntries WHERE gicsid='$gicsid';");
     if ($check1->num_rows > 0) {
         while ($row = mysqli_fetch_object($check1)) {
             $reportData[] = $row;
         }
     }
+    $check2 = $dbcon->query("SELECT * FROM reportDefaults WHERE claim_type='$result[claim_type]';");
+    if ($check2->num_rows > 0) {
+        while ($row = mysqli_fetch_object($check2)) {
+            $reportDefault[] = $row;
+        }
+    }
     $resp_status->reportData = $reportData;
+    $resp_status->reportDefault = $reportDefault;
     echo json_encode($resp_status);
 } else {
     $resp_status->status = 'error';

@@ -1,0 +1,25 @@
+textarea {
+    min-height: 150px;
+}
+
+.editor-container .ql-editor {
+    min-height: 150px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.editor-container {
+    height: 150px;
+    background-color: #f5f5f5;
+    color: #000;
+    /* light gray background */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.editor-container .ql-editor {
+    background-color: #ffffff;
+    /* content area background */
+    padding: 15px;
+    font-size: 16px;
+}

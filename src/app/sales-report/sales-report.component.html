@@ -64,19 +64,23 @@
                                                 <th></th>
                                                 <th *ngIf="columnList[0].value"></th>
                                                 <th *ngIf="columnList[1].value">
-                                                    <select class="form-select" [(ngModel)]="claim_type" (change)="onFilterChange()">
+                                                    <select class="form-select" [(ngModel)]="claim_type"
+                                                        (change)="onFilterChange()">
                                                         <option value="">All</option>
-                                                        <option *ngFor="let eType of claim_types" [value]="eType">{{ eType }}</option>
+                                                        <option *ngFor="let eType of claim_types" [value]="eType">{{
+                                                            eType }}</option>
                                                     </select>
                                                 </th>
                                                 <th *ngIf="columnList[2].value">
-                                                    <select class="form-select" [(ngModel)]="iname" (change)="onFilterChange()">
+                                                    <select class="form-select" [(ngModel)]="iname"
+                                                        (change)="onFilterChange()">
                                                         <option value="">All</option>
-                                                        <option *ngFor="let eType of inames" [value]="eType">{{ eType }}</option>
+                                                        <option *ngFor="let eType of inames" [value]="eType">{{ eType }}
+                                                        </option>
                                                     </select>
                                                 </th>
-                                                <th *ngIf="columnList[3].value"><input type="date" [(ngModel)]="doi" class="form-control"
-                                                    (change)="onFilterChange()"></th>
+                                                <th *ngIf="columnList[3].value"><input type="date" [(ngModel)]="doi"
+                                                        class="form-control" (change)="onFilterChange()"></th>
                                                 <th *ngIf="columnList[4].value"></th>
                                                 <th *ngIf="columnList[5].value"></th>
                                                 <th *ngIf="columnList[6].value"></th>
@@ -88,9 +92,11 @@
                                                 <th *ngIf="columnList[12].value"></th>
                                                 <th *ngIf="columnList[17].value"></th>
                                                 <th *ngIf="columnList[13].value">
-                                                    <select class="form-select" [(ngModel)]="hname" (change)="onFilterChange()">
+                                                    <select class="form-select" [(ngModel)]="hname"
+                                                        (change)="onFilterChange()">
                                                         <option value="">All</option>
-                                                        <option *ngFor="let eType of hnames" [value]="eType">{{ eType }}</option>
+                                                        <option *ngFor="let eType of hnames" [value]="eType">{{ eType }}
+                                                        </option>
                                                     </select>
                                                 </th>
                                                 <th *ngIf="columnList[14].value"></th>
@@ -100,6 +106,7 @@
                                             </tr>
                                             <tr>
                                                 <th>S.No</th>
+                                                <th>Report</th>
                                                 <th *ngIf="columnList[0].value">Patient Name</th>
                                                 <th *ngIf="columnList[1].value">Claim Type</th>
                                                 <th *ngIf="columnList[2].value">Insurance/TPA</th>
@@ -124,6 +131,10 @@
                                         <tbody>
                                             <tr *ngFor="let prod of table_data;let i=index">
                                                 <td>{{i+1}}</td>
+                                                <td>
+                                                    <a target="_blank"
+                                                        href="/report-entry/{{prod.gicsid}}">Entry</a>
+                                                </td>
                                                 <td *ngIf="columnList[0].value">
                                                     <div class="d-flex align-items-center">
                                                         <h6 class="mb-0 font-14">
