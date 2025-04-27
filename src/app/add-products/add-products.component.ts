@@ -33,6 +33,7 @@ export class AddProductsComponent {
   }
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    const currentDate = new Date().toJSON().slice(0, 10);
     this.myForm = new FormGroup(
       {
         vendorname: new FormControl('', Validators.required),
@@ -58,7 +59,7 @@ export class AddProductsComponent {
         transport: new FormControl('', Validators.required),
         assigned: new FormControl('', Validators.required),
         invoice: new FormControl(false),
-        created: new FormControl(''),
+        created: new FormControl(currentDate),
         payment: new FormControl(''),
         paid_date: new FormControl('')
       }
@@ -99,7 +100,7 @@ export class AddProductsComponent {
         this.myForm.get('assigned').setValue(res.assigned);
         this.myForm.get('invoice').setValue(res.invoice);
         this.myForm.get('incentive').setValue(res.incentive);
-        this.myForm.get('created').setValue(res.created);
+        this.myForm.get('created').setValue(res.created || currentDate);
         this.myForm.get('payment').setValue(res.payment);
         this.myForm.get('paid_date').setValue(res.paid_date);
       }
@@ -135,7 +136,11 @@ export class AddProductsComponent {
       data.push(this.id);
       data.push(this.myForm.get('invoice').value);
       data.push(this.myForm.get('incentive').value);
-      data.push(this.myForm.get('created').value);
+      if (this.myForm.get('invoice').value) {
+        data.push(this.myForm.get('created').value);
+      } else {
+        data.push(null);
+      }
       data.push(this.myForm.get('payment').value);
       data.push(this.myForm.get('paid_date').value);
       data.push(this.myForm.get('assigned').value);
