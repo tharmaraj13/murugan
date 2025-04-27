@@ -39,7 +39,7 @@ export class ReportEntryComponent {
             tempSource = res.reportDefault;
           }
           this.editors.forEach((editor, index) => {
-            const deltaValue = tempSource[index].delta_value || '[]';
+            const deltaValue = tempSource[index]?.delta_value || '[]';
             const template = Handlebars.compile(deltaValue);
             const htmlContent = template({
               hname: res.hname,
@@ -119,6 +119,7 @@ export class ReportEntryComponent {
         customButton.innerHTML = '🎤'; // Change to start button
         customButton.setAttribute('class', 'mic-button');
       } else {
+        annyangInstance.removeCommands();
         annyangInstance.addCommands(commands);
         annyangInstance.start();
         customButton.innerHTML = '⏹'; // Change to stop button
@@ -139,30 +140,4 @@ export class ReportEntryComponent {
     // Ensure that the cursor moves to the end of the inserted text
     editor.setSelection(cursorPosition + word.length + 1);
   }
-
-  // downloading2(table_data: any) {
-  //   const doc_name = "default_report.docx";
-  //   loadFile(
-  //     "assets/template/" + doc_name,
-  //     (error: any, content: any) => {
-  //       if (error) {
-  //         throw error;
-  //       }
-  //       const zip = new PizZip(content);
-  //       const doc = new Docxtemplater(zip, {
-  //         paragraphLoop: true,
-  //         linebreaks: true,
-  //       });
-  //       // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
-  //       doc.render(table_data);
-  //       const blob = doc.getZip().generate({
-  //         type: "blob",
-  //         mimeType:
-  //           "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  //       });
-  //       // Output the document using Data-URI
-  //       saveAs(blob, doc_name);
-  //     }
-  //   );
-  // }
 }
