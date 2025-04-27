@@ -23,7 +23,7 @@ if (!$html) {
     echo "Error: No HTML content received.";
     exit(1);
 }
-// file_put_contents("templates/temp_input.html", $html);
+file_put_contents("templates/temp_input.html", $html);
 // API URL (your Node.js server endpoint)
 $url = 'http://localhost:4000/api/v1/convert';
 
