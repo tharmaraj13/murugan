@@ -8,7 +8,7 @@ import CryptoJS from 'crypto-js';
   providedIn: 'root'
 })
 export class ApiserviceService {
-  // public website = "http://13.201.13.37/api/";
+  // public website = "https://gics.devxpro.in/api/";
   // public website = "http://localhost:2000/";
   public website = "/api/";
   // Secret key for JWT

@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import * as Handlebars from 'handlebars';
 import TurndownService from 'turndown';
+import { firstValueFrom } from 'rxjs';
 
 function loadFile(url: any, callback: any) {
   PizZipUtils.getBinaryContent(url, callback);
@@ -140,30 +141,86 @@ export class TestingComponent {
       }
     );
   }
-  downloading4() {
+  convertQuillStylesToInline(html: string) {
+    // Convert 'ql-align-center' class to inline style
+    html = html.replace(/class="ql-align-center"/g, 'style="text-align: center;"');
+
+    // Convert 'ql-align-left' class to inline style
+    html = html.replace(/class="ql-align-left"/g, 'style="text-align: left;"');
+
+    // Convert 'ql-align-right' class to inline style
+    html = html.replace(/class="ql-align-right"/g, 'style="text-align: right;"');
+
+    //convert all bullets
+    html = html.replace(/<li data-list="bullet">/g, '<li>')
+               .replace(/<\/li>/g, '</li>'); // Closing <li> tag
+
+    // Replace <ol> with <ul> for unordered list (bullet list)
+    html = html.replace(/<ol>/g, '<ul>').replace(/<\/ol>/g, '</ul>');
+
+    // Remove unnecessary span elements that Quill uses for styling
+    html = html.replace(/<span class="ql-ui" contenteditable="false"><\/span>/g, '');
+
+    return html;
+  }
+  async downloading4() {
     const fromTable = this.reportData?.reduce((acc: any, report: any, index: number) => {
-      acc[this.keys[index]] = report.html_value;
+      acc[this.keys[index]] = this.convertQuillStylesToInline(report.html_value);
       return acc;
     }, {});
-    this.http.get('assets/template/template.html', { responseType: 'text' }).subscribe((html) => {
-      const template = Handlebars.compile(html);
-      const result = template({
-        pname: this.table_data.pname,
-        claimno: this.table_data.claimno,
-        hname: this.table_data.hname,
-        hplace: this.table_data.hplace,
-        triggers: this.table_data.triggers,
-        doi: this.table_data.doi,
-        doj: this.table_data.doj,
-        doa: this.table_data.doa,
-        ...fromTable,
-      });
-      this.http.post(this.apiservice.website + 'convert.php', {
-        html: result
-      }, { responseType: 'blob' }).subscribe((blob) => {
-        saveAs(blob, 'final_report.docx');
-      });
+    const htmlTemplate = await firstValueFrom(
+      this.http.get('assets/template/template.html', { responseType: 'text' })
+    );
+    const htmlHeader = await firstValueFrom(
+      this.http.get('assets/template/header.html', { responseType: 'text' })
+    );
+    // const htmlTemplate = await this.http.get('assets/template/template.html', { responseType: 'text' }).toPromise();
+    const template = Handlebars.compile(htmlTemplate);
+    const resultHtml = template({
+      pname: this.table_data.pname,
+      claimno: this.table_data.claimno,
+      hname: this.table_data.hname,
+      hplace: this.table_data.hplace,
+      triggers: this.table_data.triggers,
+      doi: this.table_data.doi,
+      doj: this.table_data.doj,
+      doa: this.table_data.doa,
+      ...fromTable,
     });
+    this.http.post(this.apiservice.website + 'convertNew.php', {
+      html: resultHtml,header:htmlHeader
+    }, { responseType: 'blob' }).subscribe((blob) => {
+      saveAs(blob, 'final_report.docx');
+    });
+    // const htmlToDocx = (await import('html-to-docx')).default;
+    // // const blob: any = await htmlToDocx(resultHtml, null, {
+    // //   table: { row: { cantSplit: true } },
+    // //   footer: true,
+    // //   pageNumber: true,
+    // // });
+    // // console.log(blob);
+    // // saveAs(blob, 'final_report.docx');
+    // const fileBuffer = await htmlToDocx(resultHtml);
+    // saveAs(new Blob([fileBuffer]), 'final_report.docx');
+    // this.http.get('assets/template/template.html', { responseType: 'text' }).subscribe((html) => {
+    //   const template = Handlebars.compile(html);
+    //   const result = template({
+    //     pname: this.table_data.pname,
+    //     claimno: this.table_data.claimno,
+    //     hname: this.table_data.hname,
+    //     hplace: this.table_data.hplace,
+    //     triggers: this.table_data.triggers,
+    //     doi: this.table_data.doi,
+    //     doj: this.table_data.doj,
+    //     doa: this.table_data.doa,
+    //     ...fromTable,
+    //   });
+    //   this.http.post(this.apiservice.website + 'convert.php', {
+    //     html: result
+    //   }, { responseType: 'blob' }).subscribe((blob) => {
+    //     saveAs(blob, 'final_report.docx');
+    //   });
+    // });
   }
   downloading5() {
     const fromTable = this.reportData?.reduce((acc: any, report: any, index: number) => {
