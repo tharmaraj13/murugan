@@ -24,6 +24,7 @@ export class BulkInvoiceComponent {
     });
   }
   ngOnInit() {
+    const currentDate = new Date().toJSON().slice(0, 10);
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 30,
@@ -36,7 +37,7 @@ export class BulkInvoiceComponent {
     this.myForm = new FormGroup(
       {
         insurance_tpa: new FormControl({ value: '', disabled: true }, Validators.required),
-        invoice_date: new FormControl('', Validators.required),
+        invoice_date: new FormControl(currentDate, Validators.required),
       }
     );
     this.id = this.route.snapshot.params['id'];
