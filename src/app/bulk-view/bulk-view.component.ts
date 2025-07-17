@@ -26,14 +26,16 @@ export class BulkViewComponent {
     this.apiservice.view_bulk_invoice(this.id).subscribe((res: any) => {
       if (res.status == 'ok') {
         this.table_data = res;
-        this.subtotal = (+res.mrd + +res.transport + +res.fees + +res.incentive).toFixed(2);
+        this.subtotal = (+res.mrd + +res.transport + +res.fees).toFixed(2);
+        // this.subtotal = (+res.mrd + +res.transport + +res.fees + +res.incentive).toFixed(2);
         if(res.incentive=="0"){
           this.incentive=false;
         }
         if(res.gst_type=='CGST & SGST'){
           this.igst=true;
         }
-        this.gst_value = ((+res.fees + +res.incentive) * 0.18).toFixed(2);
+        this.gst_value = ((+res.fees) * 0.18).toFixed(2);
+        // this.gst_value = ((+res.fees + +res.incentive) * 0.18).toFixed(2);
         this.gst_half=(this.gst_value/2).toFixed(2);
         this.before = (+this.subtotal + +this.gst_value).toFixed(2);
         this.total = Math.round(+this.subtotal + +this.gst_value).toFixed(2);
