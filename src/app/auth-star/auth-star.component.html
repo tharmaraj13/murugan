@@ -1,0 +1,82 @@
+<div class="container">
+    <div id="invoiceholder">
+        <div id="invoice1">
+            <div class="cta-group">
+                <a style="cursor: pointer;" (click)="downloadPdf();" class="btn-primary">Print</a>
+            </div>
+        </div>
+
+        <div id="invoice">
+            <div class="invoiceheader">
+                <!-- <div style="width: 100%;height: 150px;"></div> -->
+                <img class="company-logo" src="assets/images/starHead.png" style="width: 100%;">
+            </div>
+            <div class="table-main" style="font-size: 1em;">
+                <p
+                    style="color: #444;font-weight: bold;text-align: center;font-size: 1.2em;text-decoration: underline;">
+                    TO WHOM SO EVER IT MAY
+                    CONCERN</p>
+                <div class="para-heads my-2">
+                    <p>Sir / Madam</p>
+                </div>
+                <div>
+                    <table class="mb-4" style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width:33%;">Intimation No.</td>
+                                <td style="width: 67%;">{{table_data?.claimno}}</td>
+                            </tr>
+                            <tr>
+                                <td>Policy-No</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Insured Name</td>
+                                <td>{{table_data?.pname}}</td>
+                            </tr>
+                            <tr>
+                                <td>Hospital Name</td>
+                                <td>{{table_data?.hname}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="mt-2 mb-3" style="width: 100%;">
+                        <tbody>
+                            <tr style="font-weight: bold;">
+                                <td class="text-center">Agency Name</td>
+                                <td class="text-center">State</td>
+                                <td class="text-center">City</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" style="width:34%;">SIE labs</td>
+                                <td class="text-center" style="width: 33%;">Tamil Nadu</td>
+                                <td class="text-center" style="width: 33%;">{{table_data?.hplace}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Therefore, we request you to kindly permit the above mentioned person to access all the details
+                        pertaining to this
+                        admission, the hospital records relating to the hospitalization and provide copies of such
+                        records that may be requested to
+                        proceed the claim further.
+                    </p>
+                </div>
+                <br>
+                <div>
+                    <p>Thanking you, Yours</p>
+                    <img src="assets/images/starSign.png" style="height: 80px;">
+                    <p>AUTHORISED SIGNATORY</p>
+                    <p>Fraud Control Vertical</p>
+                </div>
+                <br>
+                <div class="text-center">
+                    <p style="line-height: 1.3em;">IRDA Regn.No.129</p>
+                    <p style="line-height: 1.3em;">Corporate Identity Number U66010TN2005PL C056649</p>
+                    <p style="line-height: 1.3em;">Email ID: info@starhealth.in</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

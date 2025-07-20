@@ -30,7 +30,7 @@ export class AuthLettersComponent {
     });
   }
   create(id: any, iname: any) {
-    var eid = <HTMLInputElement>document.querySelector('#staff_name'+id)
+    var eid = <HTMLInputElement>document.querySelector('#staff_name' + id)
     if (iname == 'Aditya Birla Health Insurance Co Limited') {
       window.open(`/aditya-letter/${id}/${eid.value}`)
       window.open(`/gics-letter/${id}/${eid.value}`)
@@ -54,6 +54,10 @@ export class AuthLettersComponent {
       window.open(`/reliance-letter/${id}/${eid.value}`)
       window.open(`/gics-letter/${id}/${eid.value}`)
       // location.href = `/tata-letter/${id}/${eid.value}`
+    }
+    else if (iname == 'STAR HEALTH AND ALLIED INSURNACE COMPANY LTD') {
+      window.open(`/star-letter/${id}/${eid.value}`)
+      window.open(`/gics-letter/${id}/${eid.value}`)
     }
     // else if (iname == 'CHOLA MS GENERAL INSURANCE COMPANY LIMITED') {
     //   location.href = `/gics-letter/${id}/${eid.value}`

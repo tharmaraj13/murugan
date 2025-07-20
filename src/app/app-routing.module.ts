@@ -41,6 +41,7 @@ import { IbulkViewComponent } from './ibulk-view/ibulk-view.component';
 import { IbulkInvoiceAnnexureComponent } from './ibulk-invoice-annexure/ibulk-invoice-annexure.component';
 import { ReportEntryComponent } from './report-entry/report-entry.component';
 import { ReportDefaultComponent } from './report-default/report-default.component';
+import { AuthStarComponent } from './auth-star/auth-star.component';
 
 const routes: Routes = [
   // {path:'',component:SalesReportComponent},
@@ -56,6 +57,7 @@ const routes: Routes = [
   { path: 'tata-letter/:id/:eid/:taj', component: AuthTata1Component, canActivate: [AuthGuardGuard] },
   { path: 'chola-letter/:id/:eid', component: AuthCholaComponent, canActivate: [AuthGuardGuard] },
   { path: 'reliance-letter/:id/:eid', component: AuthRelianceComponent, canActivate: [AuthGuardGuard] },
+  { path: 'star-letter/:id/:eid', component: AuthStarComponent, canActivate: [AuthGuardGuard] },
   { path: 'gics-letter/:id/:eid', component: AuthGicsComponent, canActivate: [AuthGuardGuard] },
   { path: 'view/:id', component: TestingComponent, canActivate: [AuthGuardGuard] },
   { path: 'invoice/:id', component: InvoiceComponent, canActivate: [AuthGuardGuard] },

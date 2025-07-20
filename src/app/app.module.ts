@@ -51,6 +51,7 @@ import { IbulkViewComponent } from './ibulk-view/ibulk-view.component';
 import { IbulkInvoiceAnnexureComponent } from './ibulk-invoice-annexure/ibulk-invoice-annexure.component';
 import { ReportEntryComponent } from './report-entry/report-entry.component';
 import { ReportDefaultComponent } from './report-default/report-default.component';
+import { AuthStarComponent } from './auth-star/auth-star.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { ReportDefaultComponent } from './report-default/report-default.componen
     IbulkViewComponent,
     IbulkInvoiceAnnexureComponent,
     ReportEntryComponent,
-    ReportDefaultComponent
+    ReportDefaultComponent,
+    AuthStarComponent
   ],
   imports: [
     BrowserModule,
